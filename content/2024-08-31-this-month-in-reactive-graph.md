@@ -1,4 +1,4 @@
-# This month in Reactive Graph
+# This Month in Reactive Graph (2024-08-31)
 
 ## Extended the Rust GraphQL Client
 
