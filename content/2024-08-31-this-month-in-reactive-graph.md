@@ -59,7 +59,7 @@
 
 (highest priority on top)
 
-* Finish work on the rust GraphQL client
+* Finish work on the rust GraphQL client and the Command Line Interface
 * Finish replacing OpenSSL with rustls
 * Start work on the Type System Persistence
 * Start work on the Identity and Permission System
