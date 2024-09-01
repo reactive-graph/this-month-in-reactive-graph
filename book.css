@@ -29,6 +29,10 @@ h2, h3 {
     margin-block-start: var(--size-6);
 }
 
+ul, h2, h3 {
+    margin-block-end: var(--size-3);
+}
+
 code {
     font-family: var(--font-code);
 }
@@ -91,4 +95,18 @@ section.rg-emphasis-box {
 
 :where(p, ul, ol, dl, h6) {
     font-size: var(--font-size-4);
+}
+
+:where(p) {
+    max-inline-size: var(--size-content-4);
+    margin-bottom: var(--size-8);
+}
+
+:where(svg) {
+    block-size: revert-layer;
+}
+
+:root {
+    --content-max-width: 1024px;
+    --size-content-4: 120ch;
 }

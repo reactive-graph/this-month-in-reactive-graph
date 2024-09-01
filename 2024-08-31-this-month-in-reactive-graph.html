@@ -117,7 +117,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="2024.html"><strong aria-hidden="true">1.</strong> 2024</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2024-09-30-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.1.</strong> September 2024 in Reactive Graph</a></li><li class="chapter-item expanded "><a href="2024-08-31-this-month-in-reactive-graph.html" class="active"><strong aria-hidden="true">1.2.</strong> August 2024 in Reactive Graph</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="2024.html"><strong aria-hidden="true">1.</strong> 2024</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2024-08-31-this-month-in-reactive-graph.html" class="active"><strong aria-hidden="true">1.1.</strong> August 2024 in Reactive Graph</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -207,75 +207,224 @@
     <p class="intro">Hello and welcome to another issue of This Month in Reactive Graph! Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
     <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
 </section>
-<h2 id="extended-the-rust-graphql-client"><a class="header" href="#extended-the-rust-graphql-client">Extended the Rust GraphQL Client</a></h2>
-<ul>
-<li>This step is important to make Reactive Graph more useful and accessible, since it allows to access the Reactive Graph programmatically from an independent rust process by simply using the rust GraphQL client crate</li>
-<li>Also, the rust GraphQL client is the foundation for the command line interface (see below)</li>
-<li>Refactored reusable parts before implementing the rest of the rust GraphQL client</li>
-<li>Finished the implementation of managing the type system - components, entity types and relation types can be managed now via the rust GraphQL client</li>
-<li>There might be some more</li>
-<li>Started the implementation of the instance system (managing entity instances and relation instances)</li>
-<li>Decided to defer work on the flow types and flow instances till instance system has been fully implemented</li>
-</ul>
-<h2 id="extended-the-command-line-interface"><a class="header" href="#extended-the-command-line-interface">Extended the Command Line Interface</a></h2>
-<ul>
-<li>Implemented a generic way of presenting the output in table format, as JSON and as TOML</li>
-<li>This allows to use the Reactive Graph CLI as tool for exporting types and instances</li>
-<li>Also it allows to use the CLI as stdin for other CLI programs by using shell pipes `reactive-graph client entity-type get UUID --output-format=JSON | less</li>
-<li>Finished the implementation of managing the type system via CLI</li>
-</ul>
-<h2 id="identity-and-permission-system"><a class="header" href="#identity-and-permission-system">Identity and Permission System</a></h2>
-<ul>
-<li>Reactive Graph lacks an identity and permission system</li>
-<li>Decided to not use an existing framework because it doesn't fit well</li>
-<li>The type system has to be threatened a bit different from the instance system and the permission system is more complex for the instance system</li>
-<li>Specified how to implement the identity management and the permission system (https://github.com/reactive-graph/reactive-graph/issues/26)</li>
-</ul>
-<h2 id="replacing-openssl-with-rustls"><a class="header" href="#replacing-openssl-with-rustls">Replacing OpenSSL with rustls</a></h2>
+<hr />
+<h2 id="extended-the-rust-graphql-client"><a class="header" href="#extended-the-rust-graphql-client">Extended the <span class="token rg-component">Rust GraphQL Client</span></a></h2>
+<p>The Rust GraphQL Client is important to make Reactive Graph more useful and accessible. It allows to access the Reactive Graph programmatically by simply
+using the crate <code>reactive-graph-client</code>. The client crate is the foundation for the command line interface and for rust applications.</p>
+<p>The Rust GraphQL Client is now capable to <span class="token rg-component">manage the type system</span>. This means you can query or alter components, entity
+types and relation types. Furthermore, we started with the implementation of <span class="token rg-component">managing the instance system</span>. This means
+you can query and alter entity instances and relation instances. Last but not least, we decided to defer work on the flow types and flow instances till instance
+system has been fully implemented.</p>
+<p>The following diagram shows the importance of the Rust GraphQL Client:</p>
+<pre class="mermaid">flowchart TD
+
+    subgraph Runtime
+        G[GraphQL API]
+        A[Reactive Graph]
+
+        G --&gt; A
+    end
+
+    subgraph Client
+        CLI[Command Line Interface]
+        RC1[Rust Client]
+
+        CLI --&gt; RC1
+        RC1 --&gt; G
+    end
+
+    subgraph Rust Application
+        RA[Rust Application]
+        RC2[Rust Client]
+
+        RA --&gt; RC2
+        RC2 --&gt; G
+    end
+</pre>
+<hr />
+<h2 id="extended-the-command-line-interface"><a class="header" href="#extended-the-command-line-interface">Extended the <span class="token rg-component">Command Line Interface</span></a></h2>
+<p>The command line interface made big progress.</p>
+<h3 id="manage-type-system-via-cli"><a class="header" href="#manage-type-system-via-cli">Manage Type System via CLI</a></h3>
+<pre><code class="language-shell">➜  reactive-graph client entity-types get string title_case                                                        
+╔════════════════════════╦════════════════════════╦══════════════════════════════════╦══════════════════════════════════════╦══════════════════════════════════════════════════════════════════════════════╦════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ namespace              ║ name                   ║ description                      ║ components                           ║ properties                                                                   ║ extensions                                                                                                         ║
+╠════════════════════════╬════════════════════════╬══════════════════════════════════╬══════════════════════════════════════╬══════════════════════════════════════════════════════════════════════════════╬════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ string                 ║ title_case             ║ Converts the input to title case ║  namespace       │ name              ║  name                                │ data_type │ socket_type │ mutability  ║  namespace              │ name                   │ description │ extension                                         ║
+║                        ║                        ║                                  ║ ─────────────────┼────────────────── ║ ─────────────────────────────────────┼───────────┼─────────────┼──────────── ║ ────────────────────────┼────────────────────────┼─────────────┼────────────────────────────────────────────────── ║
+║                        ║                        ║                                  ║  string          │ string_operation  ║  result                              │ String    │ Output      │ Immutable   ║  core                   │ divergent              │             │ []                                                ║
+║                        ║                        ║                                  ║                                      ║ ─────────────────────────────────────┼───────────┼─────────────┼──────────── ║ ────────────────────────┼────────────────────────┼─────────────┼────────────────────────────────────────────────── ║
+║                        ║                        ║                                  ║                                      ║  lhs                                 │ String    │ Input       │ Mutable     ║  metadata               │ dublin-core            │             │ {                                                 ║
+║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │   "creator": "Hanack",                            ║
+║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │   "subject": "Converts the input to title case",  ║
+║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │   "title": "Title Case"                           ║
+║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │ }                                                 ║
+╚════════════════════════╩════════════════════════╩══════════════════════════════════╩══════════════════════════════════════╩══════════════════════════════════════════════════════════════════════════════╩════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+</code></pre>
+<p>With the new parameter <code>--output-format</code> it is possible to output the data in table format (default), or as JSON or as TOML:</p>
+<h3 id="output-format-table"><a class="header" href="#output-format-table">Output Format Table</a></h3>
+<pre><code class="language-shell">➜  reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7
+╔════════════╦═════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ name       ║ value                                                                                               ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ args       ║ [{"help":"Delay shutdown by N seconds","long":"delay","name":"delay","required":false,"short":"d"}] ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ cmd_result ║ 0                                                                                                   ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ prop_name  ║ "New Value"                                                                                         ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ label      ║ "/org/inexor/commands/core/shutdown"                                                                ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ delay      ║ 0                                                                                                   ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ command    ║ "shutdown"                                                                                          ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ trigger    ║ false                                                                                               ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ namespace  ║ "core"                                                                                              ║
+╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ help       ║ "Shutdown the application"                                                                          ║
+╚════════════╩═════════════════════════════════════════════════════════════════════════════════════════════════════╝
+</code></pre>
+<h3 id="output-format-json"><a class="header" href="#output-format-json">Output Format JSON</a></h3>
+<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7 --output-format=json
+[
+  {
+    "name": "help",
+    "value": "Shutdown the application"
+  },
+  {
+    "name": "label",
+    "value": "/org/inexor/commands/core/shutdown"
+  },
+  {
+    "name": "trigger",
+    "value": false
+  },
+  {
+    "name": "cmd_result",
+    "value": 0
+  },
+  {
+    "name": "prop_name",
+    "value": "New Value"
+  },
+  {
+    "name": "args",
+    "value": [
+      {
+        "help": "Delay shutdown by N seconds",
+        "long": "delay",
+        "name": "delay",
+        "required": false,
+        "short": "d"
+      }
+    ]
+  },
+  {
+    "name": "delay",
+    "value": 0
+  },
+  {
+    "name": "namespace",
+    "value": "core"
+  },
+  {
+    "name": "command",
+    "value": "shutdown"
+  }
+]
+</code></pre>
+<p>This allows to use the Reactive Graph CLI as tool for exporting types and instances. Also, it allows to use the CLI
+as stdin for other CLI programs by using shell pipes. For example:</p>
+<pre><code class="language-shell">reactive-graph client entity-type get UUID --output-format=JSON | less
+</code></pre>
+<hr />
+<h2 id="replacing-openssl-with-rustls"><a class="header" href="#replacing-openssl-with-rustls">Replacing OpenSSL with <span class="token rg-component">rustls</span></a></h2>
 <ul>
 <li>Started work on replacing OpenSSL with rustls</li>
 <li>Actix Web now supports rustls</li>
 <li>Patched the gql-client crate for rustls support</li>
-<li>Waiting for a PR in aws-lc-rs to be merged (https://github.com/aws/aws-lc-rs/pull/491) since aws-lc-rs requires NASM</li>
+<li>Waiting for a PR in aws-lc-rs to be merged (https://github.com/aws/aws-lc-rs/pull/491) since aws-lc-rs requires NASM on windows and this breaks the CI</li>
 </ul>
+<hr />
 <h2 id="continuous-modernization"><a class="header" href="#continuous-modernization">Continuous Modernization</a></h2>
 <ul>
-<li>Fixed a bunch of new clippy lints</li>
-<li>Upgraded to builds to latest nightly</li>
-<li>Replaced old GitHub Actions (actions-rs) with modern GitHub Actions</li>
-<li>We are not quite happy that windows builds needs more than an hour and mac builds more than three hours, so we added another layer of cache to speed up the CI</li>
-<li>Pinned the nightly version in order to make caching in the CI more effective</li>
+<li>Fixed a bunch of <span class="token rg-component">clippy lints</span></li>
+<li>Upgraded builds to use the <span class="token rg-component">latest nightly rust compiler</span></li>
+<li>Replaced old GitHub Actions (actions-rs) with <span class="token rg-component">modern GitHub Actions</span></li>
+<li>We are not quite happy that windows builds needs more than an hour and mac builds more than three hours, so we <span class="token rg-component">added another layer of cache</span> to speed up the CI</li>
+<li><span class="token rg-component">Pinned the nightly version</span> in order to make caching in the CI more effective</li>
 </ul>
-<h2 id="java-graphql-client"><a class="header" href="#java-graphql-client">Java GraphQL Client</a></h2>
+<hr />
+<h2 id="java-graphql-client"><a class="header" href="#java-graphql-client"><span class="token rg-component">Java</span> GraphQL Client</a></h2>
 <ul>
-<li>The goal was to show that it's possible to manage the Reactive Graph from a programming language other than Rust</li>
-<li>A gradle plugin generate POJOs and interfaces from the GraphQL schema (schema first approach)</li>
-<li>It's even possible to implement Spring Data alike repositories</li>
-<li>The status of this client is only POC</li>
-<li>In the future, the Java GraphQL Client shall be on feature parity with the Rust GraphQL Client</li>
+<li>The goal was to show that it's possible to manage the Reactive Graph <span class="token rg-component">from a programming language other than Rust</span></li>
+<li>A gradle plugin <span class="token rg-component">generates</span> POJOs and interfaces from the GraphQL schema (<span class="token rg-component">schema first approach</span>). It's even possible to implement Spring Data alike repositories</li>
+<li>The status of the Java GraphQL Client is only a proof of concept. In the future, the Java GraphQL Client shall be on <span class="token rg-component">feature parity with the Rust GraphQL Client</span></li>
 </ul>
+<p>The following diagram shows how the GraphQL Client APIs are used by applications:</p>
+<pre class="mermaid">flowchart TD
+
+    subgraph Runtime
+        G[GraphQL API]
+        A[Reactive Graph]
+
+        G --&gt; A
+    end
+
+    subgraph Client
+        CLI[Command Line Interface]
+        RC1[Rust Client]
+
+        CLI --&gt; RC1
+        RC1 --&gt; G
+    end
+
+    subgraph Rust Application
+        RA[Rust Application]
+        RC2[Rust Client]
+
+        RA --&gt; RC2
+        RC2 --&gt; G
+    end
+
+    subgraph Java Application
+        JA[Java Application]
+        JC[Java Client]
+
+        JA --&gt; JC
+        JC --&gt; G
+    end
+</pre>
+<p>As you can see, thanks to the <span class="token rg-component">GraphQL API</span> it is possible to build applications
+in different programming languages.</p>
+<hr />
 <h2 id="poc-wasm--wasi"><a class="header" href="#poc-wasm--wasi">POC WASM / WASI</a></h2>
-<ul>
-<li>We implemented a POC to check the current status of WASM: https://github.com/reactive-graph/poc-wasm-wasi-preview-2-plugin-system</li>
-<li>WASM will be an important part of the Reactive Graph,</li>
-<li>One use case is that the Reactive Graph could use WASM to load plugins written in "any" language that compiles to WASM</li>
-<li>Another use case is that the Reactive Graph could use WASM to load behaviours for reactive entities or reactive relations</li>
-<li>The POC showed that it now possible to interop with more complex data than primitive data types like integers</li>
-</ul>
+<p>We implemented a <a href="https://github.com/reactive-graph/poc-wasm-wasi-preview-2-plugin-system">POC</a> to check the current status of WASM. WASM will be an important
+part of the Reactive Graph. One use case is that the Reactive Graph could use WASM to load plugins written in "any" language that compiles to WASM. Another use
+case is that the Reactive Graph could use WASM to load behaviours for reactive entities or reactive relations. The POC showed that it now possible to interop
+with more complex data than primitive data types like integers.</p>
+<hr />
+<h2 id="identity-and-permission-system"><a class="header" href="#identity-and-permission-system">Identity and Permission System</a></h2>
+<p>Currently, Reactive Graph lacks an <span class="token rg-component">Identity and Permission System</span>. One of the next steps will be to implement it. We decided to not use an existing framework.
+The type system has to be threatened a bit different from the instance system. Also, the permission system is more complex for the instance system. In a first
+step we <span class="token rg-component">specified the requirements and the data model</span> of the upcoming identity management and the permission system
+(https://github.com/reactive-graph/reactive-graph/issues/26).</p>
+<hr />
 <h2 id="goals-for-september-2024"><a class="header" href="#goals-for-september-2024">Goals for September 2024</a></h2>
 <p>(highest priority on top)</p>
-<ul>
+<ol>
 <li>Finish work on the rust GraphQL client and the Command Line Interface</li>
 <li>Finish replacing OpenSSL with rustls</li>
-<li>Start work on the Type System Persistence</li>
 <li>Start work on the Identity and Permission System</li>
-</ul>
+<li>Specify the Type System Persistence (<span class="token rg-component">Graph Relational Mapper</span>)</li>
+</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="2024-09-30-this-month-in-reactive-graph.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="2024.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -286,7 +435,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="2024-09-30-this-month-in-reactive-graph.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="2024.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
