@@ -1,0 +1,187 @@
+:root {
+  --body-font-family: var(--font-sans);
+  --block-font-family: var(--font-serif);
+  --code-font-family: var(--font-code);
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+code {
+  font-family: var(--font-code);
+}
+
+pre {
+  font-family: var(--font-mono);
+}
+
+.Header {
+  background-color: var(--surface-1);
+  color: var(--mexican-pink);
+}
+
+button.Header-button {
+  background-color: var(--surface-1);
+  border-color: rgba(var(--celestial-blue), 0.25);
+  color: rgba(var(--celestial-blue), 0.25);
+}
+
+.Header-title {
+  color: var(--text-1);
+
+  &:visited,
+  &:link {
+    color: var(--text-1);
+  }
+}
+
+.Frame-inner {
+  background-color: var(--surface-1);
+}
+
+.Frame-panel--main.is-loading {
+  background-color: var(--surface-2);
+}
+
+.Frame-panel--sidebar {
+  background-color: var(--surface-1);
+  color: var(--text-2);
+}
+
+.Tree-title {
+  color: var(--text-1);
+}
+
+.Tree-collectionLabel {
+  color: var(--text-1);
+}
+
+.Pen {
+  background-color: var(--surface-2);
+}
+
+.Pen-header .Pen-preview-size {
+  color: var(--text-1);
+}
+
+a.Pen-previewLink {
+  color: var(--text-2);
+
+  &:visited,
+  &:link {
+    color: var(--text-2);
+  }
+}
+
+.Preview {
+  background-color: var(--surface-2);
+  border: 1px solid var(--surface-1);
+}
+
+.Preview-resizer {
+  background-color: var(--surface-2);
+  border: 1px solid var(--surface-1);
+}
+
+.Browser-tab {
+  background-color: var(--surface-1);
+}
+
+.Browser-tab.is-active {
+  background-color: var(--surface-2);
+}
+
+.Browser-tab a {
+  color: var(--text-1);
+
+  &:link {
+    color: var(--text-1);
+  }
+}
+
+.Browser-panel {
+  background-color: var(--surface-3);
+  color: var(--text-1);
+}
+
+.Browser-isEmptyNote {
+  color: var(--text-1);
+}
+
+.Meta-key {
+  color: var(--text-2);
+}
+
+.hljs.Code {
+  background: var(--surface-3);
+  color: var(--text-2);
+  font-family: var(--font-code);
+}
+
+.Code pre {
+  font-family: var(--font-code);
+}
+
+.Document {
+  background: var(--surface-1);
+}
+
+.Document-title {
+  max-inline-size: unset;
+}
+
+.Prose {
+  font-size: unset;
+  line-height: unset;
+  max-width: unset;
+  width: unset;
+  font-feature-settings: unset;
+
+  & table {
+    margin: unset;
+    border-collapse: unset;
+    font-size: unset;
+    font-feature-settings: unset;
+    color: var(--text-2);
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    color: var(--text-1);
+    margin-bottom: unset;
+  }
+
+  & p {
+    color: var(--text-2);
+  }
+
+  & th {
+    background-color: unset;
+    border-bottom: unset;
+  }
+
+  & td {
+    text-align: unset;
+  }
+
+  & ul > li {
+    list-style-type: unset;
+  }
+
+  & li {
+    margin-bottom: unset;
+  }
+
+}
+
+.Status .Status-label {
+  color: var(--text-1--dark);
+  font-family: var(--font-serif);
+  font-weight: bold;
+  font-size: var(--font-size-2);
+}

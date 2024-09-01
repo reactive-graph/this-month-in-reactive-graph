@@ -1,0 +1,77 @@
+name: Design
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "components/**/*"
+      - "docs/**/*"
+      - "public/**/*"
+      - ".github/workflows/design.yml"
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "components/**/*"
+      - "docs/**/*"
+      - "public/**/*"
+      - ".github/workflows/design.yml"
+
+jobs:
+  design:
+    name: Design
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - uses: jetli/trunk-action@v0.5.0
+
+      - name: Setup Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build web components
+        run: trunk build
+
+      - name: Copy WASM module into public dir
+        run: cp webcomponents/reactive-graph-design-*_bg.wasm public/reactive-graph-design_bg.wasm
+
+      - name: Copy WASM glue into public dir
+        run: cp webcomponents/reactive-graph-design-*.js public/reactive-graph-design.js
+
+      - name: Fractal Build
+        run: pnpm run fractal:build
+
+      - name: Create CNAME
+        run: echo "design.reactive-graph.io" > build/CNAME
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          # destination_dir: docs
+          # keep_files: true

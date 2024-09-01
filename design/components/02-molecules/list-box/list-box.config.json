@@ -1,0 +1,86 @@
+{
+  "title": "List Box",
+  "status": "wip",
+  "variants": [
+    {
+      "name": "default",
+      "context": {
+        "modifier": "default",
+        "color": "default"
+      }
+    },
+    {
+      "name": "no-border",
+      "context": {
+        "modifier": "no-border",
+        "color": "default"
+      }
+    },
+    {
+      "name": "circle--malachite",
+      "context": {
+        "modifier": "circle",
+        "color": "malachite"
+      }
+    },
+    {
+      "name": "circle-arrow-right--selective-yellow",
+      "context": {
+        "modifier": "circle-arrow-right",
+        "color": "selective-yellow"
+      }
+    },
+    {
+      "name": "arrow-big-right--celestial-blue",
+      "context": {
+        "modifier": "arrow-big-right",
+        "color": "celestial-blue"
+      }
+    },
+    {
+      "name": "grain--mexican-pink",
+      "context": {
+        "modifier": "grain",
+        "color": "mexican-pink"
+      }
+    },
+    {
+      "name": "circle-minus--chartreuse",
+      "context": {
+        "modifier": "circle-minus",
+        "color": "chartreuse"
+      }
+    },
+    {
+      "name": "circle-plus--malachite",
+      "context": {
+        "modifier": "circle-plus",
+        "color": "malachite"
+      }
+    },
+    {
+      "name": "circle-check--selective-yellow",
+      "context": {
+        "modifier": "circle-check",
+        "color": "selective-yellow"
+      }
+    },
+    {
+      "name": "circle-dashed--celestial-blue",
+      "context": {
+        "modifier": "circle-dashed",
+        "color": "celestial-blue"
+      }
+    },
+    {
+      "name": "circle-dotted--mexican-pink",
+      "context": {
+        "modifier": "circle-dotted",
+        "color": "mexican-pink"
+      }
+    }
+  ],
+  "context": {
+    "color": "default"
+  }
+}

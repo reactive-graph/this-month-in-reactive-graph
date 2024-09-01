@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon/favicon.png">
+  <link rel="stylesheet" href="/css/reactive-graph.css">
+
+  <title>Reactive Graph - Design - Web Components</title>
+
+  <style>
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      place-content: center;
+      padding: var(--size-7);
+      gap: var(--size-7);
+    }
+  </style>
+
+</head>
+<body>
+<header>
+  <h1>Reactive Graph - Design - Web Components</h1>
+</header>
+<main>
+  <details open>
+    <summary>Tags</summary>
+    <rg-tag ty="component">Component</rg-tag>
+    <rg-tag ty="entity-type">Entity Type</rg-tag>
+    <rg-tag ty="relation-type">Relation Type</rg-tag>
+    <rg-tag ty="entity-instance">Entity Instance</rg-tag>
+    <rg-tag ty="relation-instance">Relation Instance</rg-tag>
+    <br/>
+  </details>
+  <details open>
+    <summary>Tokens</summary>
+    <rg-token ty="component">Component</rg-token>
+    <rg-token ty="entity-type">Entity Type</rg-token>
+    <rg-token ty="relation-type">Relation Type</rg-token>
+    <rg-token ty="entity-instance">Entity Instance</rg-token>
+    <rg-token ty="relation-instance">Relation Instance</rg-token>
+    <br/>
+  </details>
+</main>
+</body>
+</html>

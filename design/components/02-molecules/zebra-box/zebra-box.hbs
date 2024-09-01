@@ -1,0 +1,7 @@
+<section class="rg-zebra-box{{#if color}} {{color}}{{/if}}">
+  <h3>{{ title }}</h3>
+  {{#each paragraphs}}
+  <p>{{ this }}</p>
+  {{/each}}
+  {{ yield }}
+</section>

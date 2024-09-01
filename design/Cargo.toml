@@ -1,0 +1,35 @@
+[package]
+name = "reactive-graph-design"
+version = "0.1.0"
+edition = "2021"
+license = "./LICENSE.md"
+readme = "./README.md"
+repository = "https://github.com/reactive-graph/design"
+authors = ["Andreas Schaeffer"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+js-sys = "0.3"
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"
+rs_web_component = "0.1.7"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    'console',
+    'Window',
+    'Document',
+    'DocumentFragment',
+    'Node',
+    'Element',
+    'HtmlElement',
+    'HtmlSlotElement',
+    'HtmlTemplateElement',
+    'CustomElementRegistry',
+    'ShadowRoot',
+    'ShadowRootInit',
+    'ShadowRootMode',
+]

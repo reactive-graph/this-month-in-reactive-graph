@@ -1,0 +1,21 @@
+[build]
+dist = "webcomponents"
+
+[serve]
+port = 8084
+
+[[proxy]]
+rewrite = "/css/"
+backend = "http://localhost:3000/css/"
+
+[[proxy]]
+rewrite = "/favicon/"
+backend = "http://localhost:3000/favicon/"
+
+[[proxy]]
+rewrite = "/fonts/"
+backend = "http://localhost:3000/fonts/"
+
+[[proxy]]
+rewrite = "/logo/"
+backend = "http://localhost:3000/logo/"

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="{{ path '/favicon/favicon.svg' }}">
+  <link rel="icon" type="image/png" href="{{ path '/favicon/favicon.png' }}">
+  <link rel="stylesheet" href="{{ path '/css/reactive-graph.css' }}">
+  <title>Preview</title>
+  <link rel="preload" href="{{ path '/reactive-graph-design_bg.wasm' }}" crossorigin="anonymous" as="fetch"
+        type="application/wasm">
+  <link rel="modulepreload" href="{{ path '/reactive-graph-design.js' }}" crossorigin="anonymous">
+</head>
+<body>
+<main>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;p&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <p>This is a {{{ yield }}} tag</p>
+  </details>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;h6&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <h6>This is a {{{ yield }}} tag</h6>
+  </details>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;h5&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <h5>This is a {{{ yield }}} tag</h5>
+  </details>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;h4&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <h4>This is a {{{ yield }}} tag</h4>
+  </details>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;h3&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <h3>This is a {{{ yield }}} tag</h3>
+  </details>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;h2&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <h2>This is a {{{ yield }}} tag</h2>
+  </details>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;h1&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <h1>This is a {{{ yield }}} tag</h1>
+  </details>
+  <details open>
+    <summary>
+      <span class="font-black">&lt;blockquote&gt; &lt;p&gt;
+        {{#if _target.context.renderAsCss}}CSS Styled{{/if}}
+        {{#if _target.context.renderAsWebComponents}}Web Components{{/if}}
+      </span>
+    </summary>
+    <blockquote>
+      <p>This is a {{{ yield }}} tag</p>
+    </blockquote>
+  </details>
+</main>
+<script type="module">
+  import init, * as bindings from "{{ path '/reactive-graph-design.js' }}";
+
+  init("{{ path '/reactive-graph-design_bg.wasm' }}");
+  window.wasmBindings = bindings;
+</script>
+</body>
+</html>

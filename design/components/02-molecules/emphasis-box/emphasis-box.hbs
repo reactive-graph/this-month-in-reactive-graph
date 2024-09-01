@@ -1,0 +1,8 @@
+<section class="rg-emphasis-box{{#if color}} {{color}}{{/if}}">
+  <h3>{{ title }}</h3>
+  {{#if intro}}<p class="intro">{{intro}}</p>{{/if}}
+  {{#each paragraphs}}
+  <p>{{ this }}</p>
+  {{/each}}
+  {{ yield }}
+</section>

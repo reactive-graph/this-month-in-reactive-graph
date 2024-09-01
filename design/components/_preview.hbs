@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="{{ path '/favicon/favicon.svg' }}">
+  <link rel="icon" type="image/png" href="{{ path '/favicon/favicon.png' }}">
+  <link rel="stylesheet" href="{{ path '/css/reactive-graph.css' }}">
+  <title>Preview</title>
+  <link rel="preload" href="{{ path '/reactive-graph-design_bg.wasm' }}" crossorigin="anonymous" as="fetch" type="application/wasm">
+  <link rel="modulepreload" href="{{ path '/reactive-graph-design.js' }}" crossorigin="anonymous">
+</head>
+<body>
+<main>
+  {{{ yield }}}
+</main>
+<script type="module">
+  import init, * as bindings from "{{ path '/reactive-graph-design.js' }}";
+  init("{{ path '/reactive-graph-design_bg.wasm' }}");
+  window.wasmBindings = bindings;
+</script>
+</body>
+</html>

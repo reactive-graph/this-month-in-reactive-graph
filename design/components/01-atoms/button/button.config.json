@@ -1,0 +1,52 @@
+{
+  "title": "Button",
+  "status": "prototype",
+  "variants": [
+    {
+      "name": "icon-start",
+      "context": {
+        "type": "button",
+        "iconStart": "ti ti-alert-triangle"
+      }
+    },
+    {
+      "name": "icon-end",
+      "context": {
+        "type": "button",
+        "iconEnd": "ti ti-alert-triangle"
+      }
+    },
+    {
+      "name": "large",
+      "context": {
+        "class": "btn-custom btn-large"
+      }
+    },
+    {
+      "name": "disabled",
+      "context": {
+        "disabled": true
+      }
+    },
+    {
+      "name": "reset",
+      "context": {
+        "type": "reset"
+      }
+    },
+    {
+      "name": "default",
+      "context": {
+        "type": "button"
+      }
+    }
+  ],
+  "context": {
+    "class": "",
+    "type": "button",
+    "disabled": false,
+    "iconStart": null,
+    "iconEnd": null,
+    "label": "Button Text"
+  }
+}

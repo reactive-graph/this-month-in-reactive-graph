@@ -1,0 +1,31 @@
+{
+  "title": "Surface",
+  "status": "prototype",
+  "variants": [
+    {
+      "name": "surface-1",
+      "context": {
+        "type": "surface-1"
+      }
+    }, {
+      "name": "surface-2",
+      "context": {
+        "type": "surface-2"
+      }
+    }, {
+      "name": "surface-3",
+      "context": {
+        "type": "surface-3"
+      }
+    }, {
+      "name": "surface-4",
+      "context": {
+        "type": "surface-4"
+      }
+    }
+  ],
+  "context": {
+    "type": "surface-1",
+    "light": ""
+  }
+}

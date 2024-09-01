@@ -1,0 +1,51 @@
+{
+  "title": "Alert",
+  "status": "wip",
+  "variants": [
+    {
+      "name": "error",
+      "context": {
+        "modifier": "error",
+        "title": "Error!",
+        "icon": "ti ti-alert-octagon-filled"
+      }
+    },
+    {
+      "name": "warning",
+      "context": {
+        "modifier": "warning",
+        "title": "Warning!",
+        "icon": "ti ti-alert-triangle"
+      }
+    },
+    {
+      "name": "success",
+      "context": {
+        "modifier": "success",
+        "title": "Success!",
+        "icon": " ti ti-checks"
+      }
+    },
+    {
+      "name": "info",
+      "context": {
+        "modifier": "info",
+        "title": "Info!",
+        "icon": "ti ti-info-circle"
+      }
+    },
+    {
+      "name": "default",
+      "context": {
+        "modifier": "notice",
+        "title": "Notice!",
+        "icon": " ti ti-bulb"
+      }
+    }
+  ],
+  "context": {
+    "title": "Alert!",
+    "icon": "ti ti-alert-triangle",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+  }
+}

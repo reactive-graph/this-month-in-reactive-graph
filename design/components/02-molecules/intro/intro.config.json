@@ -1,0 +1,46 @@
+{
+  "title": "Introduction",
+  "status": "wip",
+  "variants": [
+    {
+      "name": "default",
+      "context": {
+        "modifier": "default"
+      }
+    },
+    {
+      "name": "malachite",
+      "context": {
+        "modifier": "malachite"
+      }
+    },
+    {
+      "name": "selective-yellow",
+      "context": {
+        "modifier": "selective-yellow"
+      }
+    },
+    {
+      "name": "celestial-blue",
+      "context": {
+        "modifier": "celestial-blue"
+      }
+    },
+    {
+      "name": "mexican-pink",
+      "context": {
+        "modifier": "mexican-pink"
+      }
+    },
+    {
+      "name": "chartreuse",
+      "context": {
+        "modifier": "chartreuse"
+      }
+    }
+  ],
+  "context": {
+    "title": "Title Title",
+    "subtitle": "Subtitle Subtitle"
+  }
+}

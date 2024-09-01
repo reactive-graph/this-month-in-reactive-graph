@@ -1,0 +1,49 @@
+{
+  "title": "Zebra Box",
+  "status": "prototype",
+  "variants": [
+    {
+      "name": "malachite",
+      "context": {
+        "color": "malachite"
+      }
+    },
+    {
+      "name": "selective-yellow",
+      "context": {
+        "color": "selective-yellow"
+      }
+    },
+    {
+      "name": "celestial-blue",
+      "context": {
+        "color": "celestial-blue"
+      }
+    },
+    {
+      "name": "mexican-pink",
+      "context": {
+        "color": "mexican-pink"
+      }
+    },
+    {
+      "name": "chartreuse",
+      "context": {
+        "color": "chartreuse"
+      }
+    },
+    {
+      "name": "default",
+      "context": {
+        "color": null
+      }
+    }
+  ],
+  "context": {
+    "title": "We’re building a better Application!",
+    "paragraphs": [
+      "Our mission is to ensure the Internet is a global public resource, open and accessible to all. An Internet that truly puts people first, where individuals can shape their own experience and are empowered, safe and independent.",
+      "At Mozilla, we’re a global community of technologists, thinkers and builders working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our collective future."
+    ]
+  }
+}

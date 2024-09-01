@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="{{ path '/favicon/favicon.svg' }}">
+  <link rel="icon" type="image/png" href="{{ path '/favicon/favicon.png' }}">
+  <link rel="stylesheet" href="{{ path '/css/reactive-graph.css' }}">
+  <title>Surface Preview</title>
+  <style>
+    .surface-samples {
+      display: grid;
+      --size: var(--size-content-1);
+      grid-template-columns: var(--size) var(--size);
+      grid-auto-rows: var(--size);
+      gap: var(--size-5);
+      margin-block-start: var(--size-6);
+      margin-block-end: var(--size-6);
+    }
+
+    @media (width <= 480px) {
+      .surface-samples {
+        --size: 40vw;
+      }
+    }
+
+    .surface-samples > * {
+      border-radius: var(--radius-3);
+      display: grid;
+      place-content: center;
+      font-size: var(--font-size-3);
+      font-weight: var(--font-weight-4);
+      box-shadow: var(--shadow-6);
+    }
+
+    .surface-samples-4 {
+      grid-template-columns: var(--size) var(--size) var(--size) var(--size);
+    }
+
+    .surface-samples-5 {
+      grid-template-columns: var(--size) var(--size) var(--size) var(--size) var(--size);
+    }
+
+    .surface-samples-8 {
+      grid-template-columns: var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>{{ _target.label }}</h1>
+  <div class="surface-samples surface-samples-8">
+    {{{yield}}}
+  </div>
+</main>
+</body>
+</html>

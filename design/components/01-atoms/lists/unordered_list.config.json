@@ -1,0 +1,80 @@
+{
+  "title": "Unordered List",
+  "status": "wip",
+  "variants": [
+    {
+      "name": "default",
+      "context": {
+        "modifier": "default",
+        "color": "default"
+      }
+    },
+    {
+      "name": "circle",
+      "context": {
+        "modifier": "circle",
+        "color": "malachite"
+      }
+    },
+    {
+      "name": "circle-arrow-right",
+      "context": {
+        "modifier": "circle-arrow-right",
+        "color": "selective-yellow"
+      }
+    },
+    {
+      "name": "arrow-big-right",
+      "context": {
+        "modifier": "arrow-big-right",
+        "color": "celestial-blue"
+      }
+    },
+    {
+      "name": "grain",
+      "context": {
+        "modifier": "grain",
+        "color": "mexican-pink"
+      }
+    },
+    {
+      "name": "circle-plus",
+      "context": {
+        "modifier": "circle-plus",
+        "color": "chartreuse"
+      }
+    },
+    {
+      "name": "circle-minus",
+      "context": {
+        "modifier": "circle-minus",
+        "color": "malachite"
+      }
+    },
+    {
+      "name": "circle-check",
+      "context": {
+        "modifier": "circle-check",
+        "color": "selective-yellow"
+      }
+    },
+    {
+      "name": "circle-dashed",
+      "context": {
+        "modifier": "circle-dashed",
+        "color": "celestial-blue"
+      }
+    },
+    {
+      "name": "circle-dotted",
+      "context": {
+        "modifier": "circle-dotted",
+        "color": "mexican-pink"
+      }
+    }
+  ],
+  "context": {
+    "modifier": "default",
+    "color": null
+  }
+}

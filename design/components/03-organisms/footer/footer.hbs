@@ -1,0 +1,25 @@
+<footer class="rg-footer">
+  <nav class="rg-footer-content">
+    <section class="rg-footer-section rg-footer-primary-logo">
+      <h4 class="rg-footer-heading">
+        <a href="https://reactive-graph.io/">
+          <img src="{{ path '/logo/full/reactive-graph-full-black-white.svg' }}" alt="Reactive Graph"/>
+        </a>
+      </h4>
+    </section>
+    {{#each topics}}
+      <section class="rg-footer-section">
+        <h5 class="rg-footer-heading">
+          {{this.topic}}
+        </h5>
+        <ul class="rg-footer-list">
+          {{#each this.links}}
+            <li>
+              <a href="{{this.url}}">{{this.title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/each}}
+  </nav>
+</footer>

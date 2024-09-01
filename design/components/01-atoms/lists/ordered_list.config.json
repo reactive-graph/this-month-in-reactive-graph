@@ -1,0 +1,52 @@
+{
+  "title": "Ordered List",
+  "status": "wip",
+  "variants": [
+    {
+      "name": "default",
+      "context": {
+        "modifier": "circle",
+        "color": "default"
+      }
+    },
+    {
+      "name": "malachite",
+      "context": {
+        "modifier": "circle",
+        "color": "malachite"
+      }
+    },
+    {
+      "name": "selective-yellow",
+      "context": {
+        "modifier": "circle",
+        "color": "selective-yellow"
+      }
+    },
+    {
+      "name": "celestial-blue",
+      "context": {
+        "modifier": "circle",
+        "color": "celestial-blue"
+      }
+    },
+    {
+      "name": "mexican-pink",
+      "context": {
+        "modifier": "circle",
+        "color": "mexican-pink"
+      }
+    },
+    {
+      "name": "chartreuse",
+      "context": {
+        "modifier": "circle",
+        "color": "chartreuse"
+      }
+    }
+  ],
+  "context": {
+    "modifier": "default",
+    "color": null
+  }
+}

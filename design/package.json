@@ -1,0 +1,51 @@
+{
+  "name": "@reactive-graph/design",
+  "description": "Design System for Reactive Graph",
+  "version": "0.1.4",
+  "license": "MIT",
+  "author": "The reactive graph contributors",
+  "homepage": "https://design.reactive-graph.io/",
+  "keywords": [
+    "reactive-programming",
+    "graph-database"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reactive-graph/design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reactive-graph/design/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.0.6",
+  "dependencies": {
+    "@frctl/fractal": "^1.5.15",
+    "@frctl/handlebars": "^1.2.15",
+    "@frctl/mandelbrot": "^1.10.3",
+    "json5": "^2.2.3"
+  },
+  "devDependencies": {
+    "fractal-cli": "^0.0.2",
+    "postcss-cli": "^11.0.0"
+  },
+  "scripts": {
+    "build": "trunk build && cp webcomponents/reactive-graph-design-*_bg.wasm public/reactive-graph-design_bg.wasm && cp webcomponents/reactive-graph-design-*.js public/reactive-graph-design.js && pnpm run fractal:build",
+    "dev": "trunk build && cp webcomponents/reactive-graph-design-*_bg.wasm public/reactive-graph-design_bg.wasm && cp webcomponents/reactive-graph-design-*.js public/reactive-graph-design.js && pnpm run fractal:start",
+    "fractal:start": "trunk build && fractal start --sync",
+    "fractal:build": "fractal build",
+    "trunk:serve": "trunk serve",
+    "trunk:build": "trunk build"
+  },
+  "main": "fractal.config.js",
+  "files": [
+    "build/css/**",
+    "build/favicon/**",
+    "build/fonts/**",
+    "build/logo/**",
+    "build/reactive-graph-design.js",
+    "build/reactive-graph-design_bg.wasm",
+    "build/load.js"
+  ]
+}

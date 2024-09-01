@@ -1,0 +1,77 @@
+{
+  "title": "Footer",
+  "status": "prototype",
+  "context": {
+    "topics": [
+      {
+        "topic": "Reactive Graph",
+        "links": [
+          {
+            "title": "reactive-graph.io",
+            "url": "https://reactive-graph.io/"
+          },
+          {
+            "title": "Download",
+            "url": "https://reactive-graph.io/releases/"
+          }
+        ]
+      },
+      {
+        "topic": "Development",
+        "links": [
+          {
+            "title": "GitHub",
+            "url": "https://github.com/reactive-graph/reactive-graph"
+          },
+          {
+            "title": "API Documentation",
+            "url": "https://docs.reactive-graph.io/"
+          },
+          {
+            "title": "Reference Documentation",
+            "url": "https://docs.reactive-graph.io/"
+          }
+        ]
+      },
+      {
+        "topic": "Inexor Game",
+        "links": [
+          {
+            "title": "inexor.org",
+            "url": "https://inexor.org"
+          },
+          {
+            "title": "Inexor Game on GitHub",
+            "url": "https://github.com/inexorgame/inexor-rgf-plugins-game"
+          }
+        ]
+      },
+      {
+        "topic": "Graph CMS",
+        "links": [
+          {
+            "title": "graph-cms.io",
+            "url": "https://graph-cms.io/"
+          },
+          {
+            "title": "Graph CMS on GitHub",
+            "url": "https://github.com/graph-cms/graph-cms"
+          }
+        ]
+      },
+      {
+        "topic": "Smearor",
+        "links": [
+          {
+            "title": "smearor.io",
+            "url": "https://smearor.io/"
+          },
+          {
+            "title": "Smearor onGitHub",
+            "url": "https://github.com/smearor/smearor"
+          }
+        ]
+      }
+    ]
+  }
+}

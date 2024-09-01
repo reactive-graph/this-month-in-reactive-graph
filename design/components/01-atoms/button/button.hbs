@@ -1,0 +1,9 @@
+<button
+  class="rg-button{{#if class}} {{class}}{{/if}}"
+  type="{{#if type}}{{type}}{{else}}button{{/if}}"
+  {{#if disabled}}disabled{{/if}}
+>
+  {{#if iconStart}}<i class="{{iconStart}}"></i>{{/if}}
+  {{ label }}
+  {{#if iconEnd}}<i class="{{iconEnd}}"></i>{{/if}}
+</button>

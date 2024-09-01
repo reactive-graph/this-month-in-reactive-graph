@@ -1,0 +1,11 @@
+<div class="alert{{#if modifier}} alert--{{modifier}}{{/if}}">
+    {{#if title}}
+        <h3>
+            {{#if icon}}<i class="{{icon}}"></i>{{/if}}
+            {{title}}
+        </h3>
+        <p>{{ text }}</p>
+    {{else}}
+        <p>{{#if icon}}<i class="{{icon}}"></i>{{/if}} {{ text }}</p>
+    {{/if}}
+</div>
