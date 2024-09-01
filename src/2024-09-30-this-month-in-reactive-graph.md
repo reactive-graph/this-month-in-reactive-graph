@@ -1,5 +1,9 @@
 # This Month in Reactive Graph (2024-09-30)
 
+```admonish warn "Work in Progress"
+This is not the final version of This Month in Reactive Graph
+```
+
 ## Reactive Graph - Graph Model
 
 * Non-Reactive EntityInstance and RelationInstance now contains the applied components
