@@ -21,7 +21,12 @@ title = "This Month in Reactive Graph"
 [output]
 
 [output.html]
-#additional-js = ["mermaid.min.js", "mermaid-init.js", "graphql-playground-react-middleware.js", "graphql-playground.js"]
+additional-js = [
+    "mermaid.min.js",
+    "mermaid-init.js",
+    "graphql-playground-react-middleware.js",
+    "graphql-playground.js"
+]
 additional-css = [
     "././book.css",
     "././mdbook-admonish.css",
