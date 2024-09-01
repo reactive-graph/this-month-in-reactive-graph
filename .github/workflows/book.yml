@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install rust toolchain
-        uses: dtolnay/rust-toolchain@master
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
