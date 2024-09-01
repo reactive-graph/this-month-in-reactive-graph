@@ -1,8 +1,13 @@
-# This Month in Reactive Graph (2024-09-30)
+<div class="alert alert--error">
+    <h3><i class="ti ti-alert-triangle"></i> Work in progress!</h3>
+    <p class="rg-alert-body">This issue of This Month in Reactive Graph is still work in progress.</p>
+</div>
 
-```admonish warn "Work in Progress"
-This is not the final version of This Month in Reactive Graph
-```
+<section class="rg-emphasis-box">
+    <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">September 2024</span></h3>
+    <p class="intro">Hello and welcome to another issue of This Month in Reactive Graph! Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
+    <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
+</section>
 
 ## Reactive Graph - Graph Model
 
