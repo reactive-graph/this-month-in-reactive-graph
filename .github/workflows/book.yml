@@ -27,7 +27,7 @@ jobs:
       - name: VCS Checkout
         uses: actions/checkout@v4
         with:
-          # TODO: submodules: true (link design system)
+          submodules: true
           fetch-depth: 0
 
       - name: Install rust toolchain
