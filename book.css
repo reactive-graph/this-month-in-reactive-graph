@@ -1,14 +1,94 @@
-.float-left {
-    float: left;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    line-height: var(--font-lineheight-4);
+}
+
+a {
+    color: var(--link);
+
+    &:hover {
+        color: var(--link-hover);
+    }
+
+    &:visited {
+        color: var(--link-visited);
+    }
+}
+
+h1 {
+    color: var(--brand);
+}
+
+h2, h3 {
+    margin-block-start: var(--size-6);
+}
+
+code {
+    font-family: var(--font-code);
+}
+
+.container {
+    width: min(100% - 2rem, 50rem);
+    margin-inline: auto;
+}
+
+.content ul {
+    line-height: var(--font-lineheight-4);
 }
 
 .sidebar {
     background: url("design/public/logo/full/reactive-graph-full-mexican-pink-black_512.png") var(--sidebar-bg) no-repeat;
-    background-size: 250px;
+    background-size: 450px;
     background-position-x: center;
+    background-position-y: 50px;
 }
 
 .sidebar .chapter {
     margin-top: 300px;
     background-color: var(--sidebar-bg);
+}
+
+.rg-alert-body {
+    margin-top: var(--size-3);
+    font-size: var(--font-size-5);
+    line-height: var(--font-lineheight-4);
+    /*color: var(--text-2--inverse);*/
+    font-weight: var(--font-weight-6);
+}
+
+#search-wrapper {
+    margin-top: var(--size-8);
+    margin-bottom: var(--size-8);
+}
+
+section.rg-emphasis-box {
+    & p {
+        &.intro {
+            font-size: var(--font-size-fluid-2);
+        }
+        font-size: var(--font-size-5);
+    }
+}
+
+:where(h1) {
+    max-inline-size: none;
+}
+
+:where(h2) {
+    font-size: var(--font-size-6);
+    max-inline-size: var(--size-header-3);
+}
+
+:where(li, dd, figcaption) {
+    max-inline-size: var(--size-content-3);
+}
+
+:where(p, ul, ol, dl, h6) {
+    font-size: var(--font-size-4);
 }
