@@ -3,7 +3,7 @@
 }
 
 .sidebar {
-    background: url("https://raw.githubusercontent.com/reactive-graph/design/main/logo/full/reactive-graph-full-mexican-pink-black_512.png") var(--sidebar-bg) no-repeat;
+    background: url("design/public/logo/full/reactive-graph-full-mexican-pink-black_512.png") var(--sidebar-bg) no-repeat;
     background-size: 250px;
     background-position-x: center;
 }
