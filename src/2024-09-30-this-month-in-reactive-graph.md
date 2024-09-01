@@ -36,3 +36,7 @@
 
 * Start work on the Type System Persistence
 * Start work on the Identity and Permission System
+
+```admonish tip "Homepage"
+https://this-month-in.reactive-graph.io/
+```
