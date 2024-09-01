@@ -1,0 +1,65 @@
+name: This-Month-In-Reactive-Graph
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "src/**"
+      - "book.css"
+      - "book.toml"
+      - ".github/workflows/book.yml"
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "src/**"
+      - "book.css"
+      - "book.toml"
+      - ".github/workflows/book.yml"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  book:
+    name: Book
+    runs-on: ubuntu-latest
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install rust toolchain
+        uses: dtolnay/rust-toolchain@master
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - name: Install preprocessor mdbook-admonish
+        uses: dtolnay/install@master
+        with:
+          crate: mdbook-admonish
+
+      - name: Install preprocessor mdbook-mermaid
+        uses: dtolnay/install@master
+        with:
+          crate: mdbook-mermaid
+
+      - name: Install preprocessor mdbook-preprocessor-graphql-playground
+        uses: dtolnay/install@master
+        with:
+          crate: mdbook-preprocessor-graphql-playground
+
+      - name: Build Book
+        working-directory: .
+        run: mdbook build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
+          # destination_dir: book

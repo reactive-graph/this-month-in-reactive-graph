@@ -3,7 +3,7 @@
 ## Extended the Rust GraphQL Client
 
 * This step is important to make Reactive Graph more useful and accessible, since it allows to access the Reactive Graph programmatically from an independent rust process by simply using the rust GraphQL client crate
-* Also the rust GraphQL client is the foundation for the command line interface (see below)
+* Also, the rust GraphQL client is the foundation for the command line interface (see below)
 * Refactored reusable parts before implementing the rest of the rust GraphQL client
 * Finished the implementation of managing the type system - components, entity types and relation types can be managed now via the rust GraphQL client
 * There might be some more 
@@ -21,7 +21,7 @@
 
 * Reactive Graph lacks an identity and permission system
 * Decided to not use an existing framework because it doesn't fit well
-* The type system has to be treaten a bit different from the instance system and the permission system is more complex for the instance system
+* The type system has to be threatened a bit different from the instance system and the permission system is more complex for the instance system
 * Specified how to implement the identity management and the permission system (https://github.com/reactive-graph/reactive-graph/issues/26)
 
 ## Replacing OpenSSL with rustls
@@ -31,7 +31,7 @@
 * Patched the gql-client crate for rustls support
 * Waiting for a PR in aws-lc-rs to be merged (https://github.com/aws/aws-lc-rs/pull/491) since aws-lc-rs requires NASM
 
-## Continous Modernization
+## Continuous Modernization
 
 * Fixed a bunch of new clippy lints
 * Upgraded to builds to latest nightly
@@ -45,7 +45,7 @@
 * A gradle plugin generate POJOs and interfaces from the GraphQL schema (schema first approach)
 * It's even possible to implement Spring Data alike repositories
 * The status of this client is only POC
-* In future, the Java GraphQL Client shall be on feature parity with the Rust GraphQL Client
+* In the future, the Java GraphQL Client shall be on feature parity with the Rust GraphQL Client
 
 ## POC WASM / WASI
 

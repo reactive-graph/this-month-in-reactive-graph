@@ -1,0 +1,25 @@
+[book]
+authors = [
+    "Andreas Schaeffer"
+]
+language = "en"
+multilingual = false
+src = "src"
+title = "This Month in Reactive Graph"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
+[preprocessor.graphql-playground]
+command = "mdbook-graphql-playground"
+renderer = ["html"]
+
+[output]
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js", "graphql-playground-react-middleware.js", "graphql-playground.js"]
+additional-css = ["././book.css", "././mdbook-admonish.css", "graphql-playground.css", "./mdbook-admonish.css"]
