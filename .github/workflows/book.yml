@@ -62,5 +62,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
-          cname: this-week-in.reactive-graph.io
+          cname: this-month-in.reactive-graph.io
           # destination_dir: book
