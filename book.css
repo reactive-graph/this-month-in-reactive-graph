@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: var(--font-sans);
+}
+
 body {
     margin: 0;
     line-height: var(--font-lineheight-4);
@@ -26,6 +30,7 @@ h1 {
 }
 
 h2, h3 {
+    font-family: var(--font-sans-light);
     margin-block-start: var(--size-6);
 }
 
@@ -33,8 +38,17 @@ ul, h2, h3 {
     margin-block-end: var(--size-3);
 }
 
+p {
+    font-family: var(--font-sans);
+}
+
 code {
-    font-family: var(--font-code);
+    font-family: var(--font-code) !important;
+    font-size: var(--font-size-3) !important;
+}
+
+.rg-ti {
+    font-family: "tabler-icons" !important;
 }
 
 .container {
