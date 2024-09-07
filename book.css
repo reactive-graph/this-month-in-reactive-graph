@@ -47,6 +47,17 @@ code {
     font-size: var(--font-size-3) !important;
 }
 
+main ul li::marker {
+    color: var(--celestial-blue);
+    list-style-type: none;
+    font-family: "tabler-icons";
+    content: "\eddc";
+}
+
+main ol li::marker {
+    color: var(--celestial-blue);
+}
+
 .rg-ti {
     font-family: "tabler-icons" !important;
 }
