@@ -67,3 +67,10 @@ additional-css = [
     "././mdbook-admonish.css",
     "././graphql-playground.css",
 ]
+theme = "theme"
+default-theme = "theme"
+preferred-dark-theme = "theme"
+git-repository-url = "https://github.com/reactive-graph/this-month-in-reactive-graph"
+edit-url-template = "https://github.com/reactive-graph/this-month-in-reactive-graph/edit/main/{path}"
+site-url = "https://this-month-in.reactive-graph.io/"
+cname = "this-month-in.reactive-graph.io"

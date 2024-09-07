@@ -10,14 +10,12 @@
 
 :root {
     /* Browser default font-size is 16px, this way 1 rem = 10px */
-    /*font-size: 62.5%;*/
     color-scheme: var(--color-scheme);
 }
 
 html {
     font-family: var(--font-sans);
     color: var(--text-1);
-    /*background-color: var(--text-1--inverse);*/
     text-size-adjust: none;
     -webkit-text-size-adjust: none;
 }
@@ -25,7 +23,6 @@ html {
 body {
     margin: 0;
     line-height: var(--font-lineheight-4);
-    /*font-size: 1.6rem;*/
     overflow-x: hidden;
 }
 
@@ -102,9 +99,6 @@ h3 {
 .hide-boring .boring { display: none; }
 .hidden { display: none !important; }
 
-/*h2, h3 { margin-block-start: 2.5em; }*/
-/*h4, h5 { margin-block-start: 2em; }*/
-
 .header + .header h3,
 .header + .header h4,
 .header + .header h5 {
@@ -167,8 +161,6 @@ h6:target::before {
 .content ul {
     line-height: var(--font-lineheight-4);
 }
-/*.content a { text-decoration: none; }*/
-/*.content a:hover { text-decoration: underline; }*/
 .content img, .content video { max-width: 100%; }
 .content .header:link,
 .content .header:visited {
@@ -182,42 +174,6 @@ h6:target::before {
 table {
     width: 100%;
 }
-
-/*table {*/
-/*    margin: 0 auto;*/
-/*    border-collapse: collapse;*/
-/*}*/
-/*table td {*/
-/*    padding: 3px 20px;*/
-/*    border: 1px var(--table-border-color) solid;*/
-/*}*/
-/*table thead {*/
-/*    background: var(--table-header-bg);*/
-/*}*/
-/*table thead td {*/
-/*    font-weight: 700;*/
-/*    border: none;*/
-/*}*/
-/*table thead th {*/
-/*    padding: 3px 20px;*/
-/*}*/
-/*table thead tr {*/
-/*    border: 1px var(--table-header-bg) solid;*/
-/*}*/
-/*!* Alternate background colors for rows *!*/
-/*table tbody tr:nth-child(2n) {*/
-/*    background: var(--table-alternate-bg);*/
-/*}*/
-
-
-/*blockquote {*/
-/*    margin: 20px 0;*/
-/*    padding: 0 20px;*/
-/*    color: var(--fg);*/
-/*    background-color: var(--quote-bg);*/
-/*    border-block-start: .1em solid var(--quote-border);*/
-/*    border-block-end: .1em solid var(--quote-border);*/
-/*}*/
 
 .warning {
     margin: 20px;
@@ -306,25 +262,21 @@ kbd {
 
 :where(h2) {
     font-size: var(--font-size-6);
-    /*max-inline-size: none;*/
-    /*max-inline-size: var(--size-header-3);*/
 }
 
 :where(li, dd, figcaption) {
     max-inline-size: none !important;
-    /*max-inline-size: var(--size-content-3);*/
 }
-
-/*:where(p, ul, ol, dl, h6) {*/
-/*    font-size: var(--font-size-4);*/
-/*}*/
 
 :where(p) {
     max-inline-size: none !important;
-    /*max-inline-size: var(--size-content-4);*/
     margin-bottom: var(--size-8);
 }
 
-/*:where(svg) {*/
-/*    block-size: revert-layer;*/
-/*}*/
+:where(pre) {
+    max-inline-size: none !important;
+}
+
+:where(pre, svg) {
+    max-inline-size: none !important;
+}

@@ -1,37 +1,10 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html {
-    font-family: var(--font-sans);
-}
-
-body {
-    margin: 0;
-    line-height: var(--font-lineheight-4);
-}
-
-a {
-    color: var(--link);
-
-    &:hover {
-        color: var(--link-hover);
-    }
-
-    &:visited {
-        color: var(--link-visited);
-    }
-}
-
 h1 {
     color: var(--brand);
 }
 
 h2, h3 {
     font-family: var(--font-sans-light);
-    margin-block-start: var(--size-6);
+    /*margin-block-start: var(--size-6);*/
 }
 
 ul, h2, h3 {
@@ -40,22 +13,6 @@ ul, h2, h3 {
 
 p {
     font-family: var(--font-sans);
-}
-
-code {
-    font-family: var(--font-code) !important;
-    font-size: var(--font-size-3) !important;
-}
-
-main ul li::marker {
-    color: var(--celestial-blue);
-    list-style-type: none;
-    font-family: "tabler-icons";
-    content: "\eddc";
-}
-
-main ol li::marker {
-    color: var(--celestial-blue);
 }
 
 .rg-ti {
@@ -67,27 +24,15 @@ main ol li::marker {
     margin-inline: auto;
 }
 
-.content ul {
-    line-height: var(--font-lineheight-4);
-}
-
-.sidebar {
-    background: url("design/public/logo/full/reactive-graph-full-mexican-pink-black_512.png") var(--sidebar-bg) no-repeat;
-    background-size: 450px;
-    background-position-x: center;
-    background-position-y: 50px;
-}
-
-.sidebar .chapter {
-    margin-top: 300px;
-    background-color: var(--sidebar-bg);
+.sidebar-logo {
+    width: 100%;
+    vertical-align: middle;
 }
 
 .rg-alert-body {
     margin-top: var(--size-3);
     font-size: var(--font-size-5);
     line-height: var(--font-lineheight-4);
-    /*color: var(--text-2--inverse);*/
     font-weight: var(--font-weight-6);
 }
 
@@ -97,11 +42,11 @@ main ol li::marker {
     justify-content: space-around;
     gap: var(--size-1);
     padding: var(--size-1);
+    align-items: center;
 }
 
 .rg-icon-grid-1 {
     display: grid;
-    /*grid-template-rows: 1fr 8fr 1fr;*/
     grid-template-columns: 1fr 8fr 1fr;
     align-items: center;
     justify-content: space-around;
@@ -111,8 +56,8 @@ main ol li::marker {
 }
 
 .rg-icon-grid img {
-    width: var(--size-12);
-    height: var(--size-12);
+    width: 100%;
+    height: var(--size-8);
 }
 
 img.rg-icon-logo {
@@ -123,53 +68,4 @@ img.rg-icon-logo {
 #search-wrapper {
     margin-top: var(--size-8);
     margin-bottom: var(--size-8);
-}
-
-section.rg-emphasis-box {
-    & p {
-        &.intro {
-            font-size: var(--font-size-fluid-2);
-        }
-        font-size: var(--font-size-5);
-    }
-}
-
-footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    place-content: center;
-    justify-content: space-around;
-    gap: var(--size-3);
-    padding: var(--size-3);
-}
-
-:where(h1) {
-    max-inline-size: none;
-}
-
-:where(h2) {
-    font-size: var(--font-size-6);
-    max-inline-size: var(--size-header-3);
-}
-
-:where(li, dd, figcaption) {
-    max-inline-size: var(--size-content-3);
-}
-
-:where(p, ul, ol, dl, h6) {
-    font-size: var(--font-size-4);
-}
-
-:where(p) {
-    max-inline-size: var(--size-content-4);
-    margin-bottom: var(--size-8);
-}
-
-:where(svg) {
-    block-size: revert-layer;
-}
-
-:root {
-    --content-max-width: 1024px;
-    --size-content-4: 120ch;
 }
