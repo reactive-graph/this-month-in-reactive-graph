@@ -1,5 +1,26 @@
 {% macro print(issue_date_previous="", issue_date_next="") %}
----
+
+<hr class="surface-2">
+
+<div class="surface-2 rad-shadow rg-icon-grid">
+    <div>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Creative Commons Attribution-ShareAlike 4.0">
+            <img src="images/creative-commons.svg" alt="Creative Commons Attribution-ShareAlike 4.0">
+        </a>
+    </div>
+    <div>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Creative Commons Attribution-ShareAlike 4.0">
+            <img src="images/creative-commons-by.svg" alt="Creative Commons Attribution-ShareAlike 4.0">
+        </a>
+    </div>
+    <div>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Creative Commons Attribution-ShareAlike 4.0">
+            <img src="images/creative-commons-sa.svg" alt="Creative Commons Attribution-ShareAlike 4.0">
+        </a>
+    </div>
+</div>
+
+<hr class="surface-2">
 
 <footer>
     <div class="card card--default">

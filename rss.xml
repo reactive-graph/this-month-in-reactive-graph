@@ -2,13 +2,13 @@
 
 <p>{{ header::print(year=&quot;2024&quot;,month=&quot;August&quot;) }}</p>
 
-<h2 id=''></h2>
+<p>&lt;hr class=&quot;surface-2&quot;&gt;</p>
 
 <h2 id='table_of_contents'>Table of Contents</h2>
 
 <p>&lt;!-- toc --&gt;</p>
 
-<h2 id=''></h2>
+<p>&lt;hr class=&quot;surface-2&quot;&gt;</p>
 
 <h2 id='extended_the_<span_class="token_rg-component">rust_graphql_client</span>'>Extended the &lt;span class=&quot;token rg-component&quot;&gt;Rust GraphQL Client&lt;/span&gt;</h2>
 
@@ -45,7 +45,7 @@ end</code></pre>
 
 <p>&lt;/pre&gt;</p>
 
-<h2 id=''></h2>
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
 
 <h2 id='extended_the_<span_class="token_rg-component">command_line_interface</span>'>Extended the &lt;span class=&quot;token rg-component&quot;&gt;Command Line Interface&lt;/span&gt;</h2>
 
@@ -53,8 +53,11 @@ end</code></pre>
 
 <h3 id='manage_type_system_via_cli'>Manage Type System via CLI</h3>
 
-<pre><code class="language-shell">➜  reactive-graph client entity-types get string title_case                                                        
-╔════════════════════════╦════════════════════════╦══════════════════════════════════╦══════════════════════════════════════╦══════════════════════════════════════════════════════════════════════════════╦════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+<pre><code class="language-shell">➜ reactive-graph client entity-types get string title_case                                                        </code></pre>
+
+<p>&lt;details&gt; &lt;summary&gt;Command Output&lt;/summary&gt;</p>
+
+<pre><code class="language-shell">╔════════════════════════╦════════════════════════╦══════════════════════════════════╦══════════════════════════════════════╦══════════════════════════════════════════════════════════════════════════════╦════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║ namespace              ║ name                   ║ description                      ║ components                           ║ properties                                                                   ║ extensions                                                                                                         ║
 ╠════════════════════════╬════════════════════════╬══════════════════════════════════╬══════════════════════════════════════╬══════════════════════════════════════════════════════════════════════════════╬════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║ string                 ║ title_case             ║ Converts the input to title case ║  namespace       │ name              ║  name                                │ data_type │ socket_type │ mutability  ║  namespace              │ name                   │ description │ extension                                         ║
@@ -68,12 +71,23 @@ end</code></pre>
 ║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │ }                                                 ║
 ╚════════════════════════╩════════════════════════╩══════════════════════════════════╩══════════════════════════════════════╩══════════════════════════════════════════════════════════════════════════════╩════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝</code></pre>
 
-<p>With the new parameter <code>--output-format</code> it is possible to output the data in table format (default), or as JSON or as TOML:</p>
+<p>&lt;/details&gt;</p>
 
 <h3 id='output_format_table'>Output Format Table</h3>
 
-<pre><code class="language-shell">➜  reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7
-╔════════════╦═════════════════════════════════════════════════════════════════════════════════════════════════════╗
+<p>With the new parameter <code>--output-format</code> it is possible to output the data in table format (default), or as JSON or as TOML.</p>
+
+<p>You can explicitly define the output format is table:</p>
+
+<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7 --output-format=table</code></pre>
+
+<p>Or you can just omit the option, because table is the default output format:</p>
+
+<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7</code></pre>
+
+<p>&lt;details&gt; &lt;summary&gt;Command Output&lt;/summary&gt;</p>
+
+<pre><code class="language-shell">╔════════════╦═════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║ name       ║ value                                                                                               ║
 ╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║ args       ║ [{&quot;help&quot;:&quot;Delay shutdown by N seconds&quot;,&quot;long&quot;:&quot;delay&quot;,&quot;name&quot;:&quot;delay&quot;,&quot;required&quot;:false,&quot;short&quot;:&quot;d&quot;}] ║
@@ -95,10 +109,17 @@ end</code></pre>
 ║ help       ║ &quot;Shutdown the application&quot;                                                                          ║
 ╚════════════╩═════════════════════════════════════════════════════════════════════════════════════════════════════╝</code></pre>
 
+<p>&lt;/details&gt;</p>
+
 <h3 id='output_format_json'>Output Format JSON</h3>
 
-<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7 --output-format=json
-[
+<p>Additionally to the output format table, two new output formats have been implemented <code>json</code> and <code>toml</code>. This allows to use the Reactive Graph CLI as tool for exporting types and instances.</p>
+
+<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7 --output-format=json</code></pre>
+
+<p>&lt;details&gt; &lt;summary&gt;Command Output&lt;/summary&gt;</p>
+
+<pre><code class="language-shell">[
   {
     &quot;name&quot;: &quot;help&quot;,
     &quot;value&quot;: &quot;Shutdown the application&quot;
@@ -145,11 +166,13 @@ end</code></pre>
   }
 ]</code></pre>
 
-<p>This allows to use the Reactive Graph CLI as tool for exporting types and instances. Also, it allows to use the CLI as stdin for other CLI programs by using shell pipes. For example:</p>
+<p>&lt;/details&gt;</p>
 
-<pre><code class="language-shell">reactive-graph client entity-type get UUID --output-format=JSON | less</code></pre>
+<p>Also, it allows to use the CLI as stdin for other CLI programs by using shell pipes. For example:</p>
 
-<h2 id=''></h2>
+<pre><code class="language-shell">reactive-graph client entity-type get namespace type_name --output-format=JSON | less</code></pre>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
 
 <h2 id='replacing_openssl_with_<span_class="token_rg-component">rustls</span>'>Replacing OpenSSL with &lt;span class=&quot;token rg-component&quot;&gt;rustls&lt;/span&gt;</h2>
 
@@ -163,7 +186,9 @@ end</code></pre>
 <li>Waiting for a PR in aws-lc-rs to be merged (https://github.com/aws/aws-lc-rs/pull/491) since aws-lc-rs requires NASM on windows and this breaks the CI</li>
 </ul>
 
-<hr><h2 id='continuous_modernization'>Continuous Modernization</h2>
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h2 id='continuous_modernization'>Continuous Modernization</h2>
 
 <ul>
 <li>Fixed a bunch of &lt;span class=&quot;token rg-component&quot;&gt;clippy lints&lt;/span&gt;</li>
@@ -177,7 +202,9 @@ end</code></pre>
 <li>&lt;span class=&quot;token rg-component&quot;&gt;Pinned the nightly version&lt;/span&gt; in order to make caching in the CI more effective</li>
 </ul>
 
-<hr><h2 id='<span_class="token_rg-component">java</span>_graphql_client'>&lt;span class=&quot;token rg-component&quot;&gt;Java&lt;/span&gt; GraphQL Client</h2>
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h2 id='<span_class="token_rg-component">java</span>_graphql_client'>&lt;span class=&quot;token rg-component&quot;&gt;Java&lt;/span&gt; GraphQL Client</h2>
 
 <ul>
 <li>The goal was to show that it&#8217;s possible to manage the Reactive Graph &lt;span class=&quot;token rg-component&quot;&gt;from a programming language other than Rust&lt;/span&gt;</li>
@@ -226,19 +253,19 @@ end</code></pre>
 
 <p>As you can see, thanks to the &lt;span class=&quot;token rg-component&quot;&gt;GraphQL API&lt;/span&gt; it is possible to build applications in different programming languages.</p>
 
-<h2 id=''></h2>
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
 
 <h2 id='poc_wasm_/_wasi'>POC WASM / WASI</h2>
 
 <p>We implemented a <a href='https://github.com/reactive-graph/poc-wasm-wasi-preview-2-plugin-system'>POC</a> to check the current status of WASM. WASM will be an important part of the Reactive Graph. One use case is that the Reactive Graph could use WASM to load plugins written in &quot;any&quot; language that compiles to WASM. Another use case is that the Reactive Graph could use WASM to load behaviours for reactive entities or reactive relations. The POC showed that it now possible to interop with more complex data than primitive data types like integers.</p>
 
-<h2 id=''></h2>
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
 
 <h2 id='identity_and_permission_system'>Identity and Permission System</h2>
 
 <p>Currently, Reactive Graph lacks an &lt;span class=&quot;token rg-component&quot;&gt;Identity and Permission System&lt;/span&gt;. One of the next steps will be to implement it. We decided to not use an existing framework. The type system has to be threatened a bit different from the instance system. Also, the permission system is more complex for the instance system. In a first step we &lt;span class=&quot;token rg-component&quot;&gt;specified the requirements and the data model&lt;/span&gt; of the upcoming identity management and the permission system (https://github.com/reactive-graph/reactive-graph/issues/26).</p>
 
-<h2 id=''></h2>
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
 
 <h2 id='goals_for_september_2024'>Goals for September 2024</h2>
 

@@ -1,0 +1,69 @@
+{
+  "title": "HR",
+  "status": "prototype",
+  "variants": [
+    {
+      "name": "default",
+      "context": {
+        "modifier": ""
+      }
+    },
+    {
+      "name": "malachite",
+      "context": {
+        "modifier": "malachite"
+      }
+    },
+    {
+      "name": "selective-yellow",
+      "context": {
+        "modifier": "selective-yellow"
+      }
+    },
+    {
+      "name": "celestial-blue",
+      "context": {
+        "modifier": "celestial-blue"
+      }
+    },
+    {
+      "name": "mexican-pink",
+      "context": {
+        "modifier": "mexican-pink"
+      }
+    },
+    {
+      "name": "chartreuse",
+      "context": {
+        "modifier": "chartreuse"
+      }
+    },
+    {
+      "name": "pattern-3",
+      "context": {
+        "modifier": "pattern-3"
+      }
+    },
+    {
+      "name": "pattern-4--celestial-blue--mexican-pink--fill",
+      "context": {
+        "modifier": "pattern-4--celestial-blue--mexican-pink--fill"
+      }
+    },
+    {
+      "name": "pattern-4--malachite--selective-yellow--fill",
+      "context": {
+        "modifier": "pattern-4--malachite--selective-yellow--fill"
+      }
+    },
+    {
+      "name": "pattern-4--selective-yellow--mexican-pink--fill",
+      "context": {
+        "modifier": "pattern-4--selective-yellow--mexican-pink--fill"
+      }
+    }
+  ],
+  "context": {
+    "modifier": ""
+  }
+}
