@@ -22,6 +22,11 @@ assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 command = "mdbook-graphql-playground"
 renderer = ["html"]
 
+[preprocessor.rss]
+command = "mdbook-rss"
+files-glob = "*-this-month-in-reactive-graph.md"
+url-base = "https://this-month-in.reactive-graph.io/"
+
 [output]
 
 [output.html]
