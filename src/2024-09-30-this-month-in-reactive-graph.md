@@ -1,3 +1,13 @@
+---
+pub_date: Mon, 30 Sep 2024 00:00:00 GMT
+description: "The 'September 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Manage the type system via the command line interface, Java GraphQL Client POC and the specification of the Identity and Permission System"
+---
+
+{% import "header.tera" as header %}
+{% import "footer.tera" as footer %}
+
+{{ header::print(year="2024",month="September") }}
+
 <div class="alert alert--error">
     <h3><i class="ti ti-alert-triangle"></i> Work in progress!</h3>
     <p class="rg-alert-body">This issue of This Month in Reactive Graph is still work in progress.</p>
@@ -46,6 +56,4 @@
 * Start work on the Type System Persistence
 * Start work on the Identity and Permission System
 
-```admonish tip "Homepage"
-https://this-month-in.reactive-graph.io/
-```
+{{ footer::print(issue_date_previous="2024-08-31", issue_date_next="") }}
