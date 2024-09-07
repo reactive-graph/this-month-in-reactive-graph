@@ -10,6 +10,12 @@ description: "The 'August 2024' issue of 'This Month in Reactive Graph' summariz
 
 ---
 
+## Table of Contents
+
+<!-- toc -->
+
+---
+
 ## Extended the <span class="token rg-component">Rust GraphQL Client</span>
 
 The Rust GraphQL Client is important to make Reactive Graph more useful and accessible. It allows to access the Reactive Graph programmatically by simply
