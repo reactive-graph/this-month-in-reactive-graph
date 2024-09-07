@@ -43,22 +43,22 @@ jobs:
         with:
           mdbook-version: 'latest'
 
-      - name: Install preprocessor mdbook-admonish
+      - name: Install mdbook-admonish
         uses: taiki-e/cache-cargo-install-action@v2
         with:
           tool: mdbook-admonish
 
-      - name: Install preprocessor mdbook-mermaid
+      - name: Install mdbook-mermaid
         uses: taiki-e/cache-cargo-install-action@v2
         with:
           tool: mdbook-mermaid
 
-      - name: Install preprocessor mdbook-preprocessor-graphql-playground
+      - name: Install mdbook-tera
         uses: taiki-e/cache-cargo-install-action@v2
         with:
           tool: mdbook-tera
 
-      - name: Install preprocessor mdbook-preprocessor-graphql-playground
+      - name: Install mdbook-preprocessor-graphql-playground
         uses: taiki-e/cache-cargo-install-action@v2
         with:
           tool: mdbook-preprocessor-graphql-playground
