@@ -80,6 +80,15 @@ section.rg-emphasis-box {
     }
 }
 
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    place-content: center;
+    justify-content: space-around;
+    gap: var(--size-3);
+    padding: var(--size-3);
+}
+
 :where(h1) {
     max-inline-size: none;
 }
