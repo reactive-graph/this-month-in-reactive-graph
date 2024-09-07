@@ -1,7 +1,7 @@
 ---
 name: Monthly Issue
 about: Create a new issue every month.
-title: "Monthly Issue: {{ date | date('Do YYYY') }}
+title: "Monthly Issue: {{ date | date('Do YYYY') }}"
 labels:
   - "Monthly Issue"
 ---
