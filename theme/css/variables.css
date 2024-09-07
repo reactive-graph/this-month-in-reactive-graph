@@ -6,10 +6,11 @@
     --sidebar-resize-indicator-width: 8px;
     --sidebar-resize-indicator-space: 2px;
     --page-padding: 15px;
-    --content-max-width: 750px;
+    --content-max-width: 1024px;
     --menu-bar-height: 50px;
-    --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
-    --code-font-size: 0.875em /* please adjust the ace font size accordingly in editor.js */
+    --mono-font: var(--font-mono);
+    --code-font-size: var(--font-size-0);
+    --size-content-4: 120ch;
 }
 
 /* Themes */
@@ -47,7 +48,7 @@
     --table-alternate-bg: hsl(210, 25%, 11%);
 
     --searchbar-border-color: #848484;
-    --searchbar-bg: #424242;
+    --searchbar-bg: var(--surface--celestial-blue-7);
     --searchbar-fg: #fff;
     --searchbar-shadow-color: #d4c89f;
     --searchresults-header-fg: #666;
@@ -178,10 +179,10 @@
     --table-header-bg: hsl(226, 23%, 31%);
     --table-alternate-bg: hsl(226, 23%, 14%);
 
-    --searchbar-border-color: #aaa;
-    --searchbar-bg: #aeaec6;
-    --searchbar-fg: #000;
-    --searchbar-shadow-color: #aaa;
+    --searchbar-border-color: var(--celestial-blue-3--adaptive);
+    --searchbar-bg: var(--celestial-blue-7--adaptive);
+    --searchbar-fg: var(--text-1--inverse);
+    --searchbar-shadow-color: var(--text-1--inverse);
     --searchresults-header-fg: #5f5f71;
     --searchresults-border-color: #5c5c68;
     --searchresults-li-bg: #242430;
