@@ -43,20 +43,31 @@ jobs:
         with:
           mdbook-version: 'latest'
 
-      - name: Install mdbook-admonish
+      - name: Install mdbook-tera
         uses: taiki-e/cache-cargo-install-action@v2
         with:
-          tool: mdbook-admonish
+          tool: mdbook-tera
+          locked: false
 
       - name: Install mdbook-mermaid
         uses: taiki-e/cache-cargo-install-action@v2
         with:
           tool: mdbook-mermaid
 
-      - name: Install mdbook-tera
+      - name: Install mdbook-admonish
         uses: taiki-e/cache-cargo-install-action@v2
         with:
-          tool: mdbook-tera
+          tool: mdbook-admonish
+
+      - name: Install mdbook-preprocessor-graphql-playground
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: mdbook-preprocessor-graphql-playground
+
+      - name: Install mdbook-toc
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: mdbook-toc
           locked: false
 
       - name: Install mdbook-rss
@@ -64,11 +75,6 @@ jobs:
         with:
           tool: mdbook-rss
           locked: false
-
-      - name: Install mdbook-preprocessor-graphql-playground
-        uses: taiki-e/cache-cargo-install-action@v2
-        with:
-          tool: mdbook-preprocessor-graphql-playground
 
       - name: Build Book
         working-directory: .
