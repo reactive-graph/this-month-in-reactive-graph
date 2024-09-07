@@ -4,6 +4,12 @@
 
 <h2 id=''></h2>
 
+<h2 id='table_of_contents'>Table of Contents</h2>
+
+<p>&lt;!-- toc --&gt;</p>
+
+<h2 id=''></h2>
+
 <h2 id='extended_the_<span_class="token_rg-component">rust_graphql_client</span>'>Extended the &lt;span class=&quot;token rg-component&quot;&gt;Rust GraphQL Client&lt;/span&gt;</h2>
 
 <p>The Rust GraphQL Client is important to make Reactive Graph more useful and accessible. It allows to access the Reactive Graph programmatically by simply using the crate <code>reactive-graph-client</code>. The client crate is the foundation for the command line interface and for rust applications.</p>
