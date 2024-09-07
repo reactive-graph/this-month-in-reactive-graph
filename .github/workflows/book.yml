@@ -59,6 +59,11 @@ jobs:
           tool: mdbook-tera
           locked: false
 
+      - name: Install mdbook-rss
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: mdbook-rss
+
       - name: Install mdbook-preprocessor-graphql-playground
         uses: taiki-e/cache-cargo-install-action@v2
         with:
