@@ -6,6 +6,10 @@ language = "en"
 multilingual = false
 src = "src"
 title = "This Month in Reactive Graph"
+description = "This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at https://this-month-in.reactive-graph.io"
+
+[preprocessor.tera]
+command = "mdbook-tera"
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"

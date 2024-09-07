@@ -1,8 +1,12 @@
-<section class="rg-emphasis-box">
-    <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">August 2024</span></h3>
-    <p class="intro">Hello and welcome to another issue of This Month in Reactive Graph! Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
-    <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
-</section>
+---
+pub_date: Sat, 31 Aug 2024 00:00:00 GMT
+description: "The 'August 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Manage the type system via the command line interface, Java GraphQL Client POC and the specification of the Identity and Permission System"
+---
+
+{% import "header.tera" as header %}
+{% import "footer.tera" as footer %}
+
+{{ header::print(year="2024",month="August") }}
 
 ---
 
@@ -253,3 +257,5 @@ step we <span class="token rg-component">specified the requirements and the data
 2. Finish replacing OpenSSL with rustls
 3. Start work on the Identity and Permission System
 4. Specify the Type System Persistence (<span class="token rg-component">Graph Relational Mapper</span>)
+
+{{ footer::print(issue_date_previous="", issue_date_next="2024-09-30") }}
