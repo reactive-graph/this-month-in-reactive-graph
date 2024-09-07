@@ -14,5 +14,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/ISSUE_TEMPLATE/meeting-notes.md
+          filename: .github/ISSUE_TEMPLATE/monthly-issue.md
           assignees: aschaeffer
