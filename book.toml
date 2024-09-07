@@ -52,6 +52,7 @@ additional-css = [
     "./src/design/public/css/variables/text.css",
     "./src/design/public/css/variables/brand.css",
     "./src/design/public/css/atoms/blockquote.css",
+    "./src/design/public/css/atoms/hr.css",
     "./src/design/public/css/atoms/lists.css",
     "./src/design/public/css/atoms/subtitle.css",
     "./src/design/public/css/atoms/surface.css",
