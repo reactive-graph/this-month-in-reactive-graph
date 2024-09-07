@@ -80,6 +80,35 @@ code {
     font-weight: var(--font-weight-6);
 }
 
+.rg-icon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+    gap: var(--size-1);
+    padding: var(--size-1);
+}
+
+.rg-icon-grid-1 {
+    display: grid;
+    /*grid-template-rows: 1fr 8fr 1fr;*/
+    grid-template-columns: 1fr 8fr 1fr;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--size-1);
+    padding: var(--size-1);
+    height: 100%;
+}
+
+.rg-icon-grid img {
+    width: var(--size-12);
+    height: var(--size-12);
+}
+
+img.rg-icon-logo {
+    width: 100%;
+    vertical-align: middle;
+}
+
 #search-wrapper {
     margin-top: var(--size-8);
     margin-bottom: var(--size-8);
