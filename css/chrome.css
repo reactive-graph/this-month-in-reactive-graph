@@ -1,5 +1,7 @@
 /* CSS for UI elements (a.k.a. chrome) */
 
+@import 'variables.css';
+
 html {
     scrollbar-color: var(--scrollbar) var(--bg);
 }
@@ -98,7 +100,8 @@ a > .hljs {
 .menu-title {
     display: inline-block;
     font-weight: 200;
-    font-size: 2.4rem;
+    /*font-size: 2.4rem;*/
+    font-size: var(--font-size-5);
     line-height: var(--menu-bar-height);
     text-align: center;
     margin: 0;
@@ -218,9 +221,9 @@ a:hover > .hljs {
     text-decoration: underline;
 }
 
-pre {
-    position: relative;
-}
+/*pre {*/
+/*    position: relative;*/
+/*}*/
 pre > .buttons {
     position: absolute;
     z-index: 100;
@@ -241,7 +244,7 @@ pre:hover > .buttons {
 }
 pre > .buttons :hover {
     color: var(--sidebar-active);
-    border-color: var(--icons-hover);
+    /*border-color: var(--icons-hover);*/
     background-color: var(--theme-hover);
 }
 pre > .buttons i {
@@ -396,10 +399,40 @@ ul#searchresults span.teaser em {
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
-    background-color: var(--sidebar-bg);
+    background-color: var(--surface--celestial-blue-1);
+    background-position-x: center;
+    background-position-y: 50px;
     color: var(--sidebar-fg);
+    box-shadow: 5px 0 5px var(--celestial-blue-1--adaptive);
 }
 [dir=rtl] .sidebar { left: unset; right: 0; }
+.sidebar-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--size-1);
+    padding: var(--size-3);
+}
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--size-1);
+    padding: var(--size-3);
+    background-color: var(--surface--malachite-1);
+    box-shadow: 5px 0 5px var(--malachite-1--adaptive);
+}
+.sidebar-logo {
+    width: 100%;
+    vertical-align: middle;
+}
 .sidebar-resizing {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -416,8 +449,8 @@ ul#searchresults span.teaser em {
 .sidebar .sidebar-scrollbox {
     overflow-y: auto;
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 350px;
+    bottom: 250px;
     left: 0;
     right: 0;
     padding: 10px 10px;
@@ -481,6 +514,7 @@ ul#searchresults span.teaser em {
 }
 
 .chapter {
+    margin-bottom: 50px;
     list-style: none outside none;
     padding-inline-start: 0;
     line-height: 2.2em;
@@ -498,15 +532,19 @@ ul#searchresults span.teaser em {
     display: block;
     padding: 0;
     text-decoration: none;
-    color: var(--sidebar-fg);
+    color: var(--text-1--dark);
+    font-family: var(--font-sans);
 }
 
 .chapter li a:hover {
-    color: var(--sidebar-active);
+    color: var(--text-1--dark);
+    text-shadow: 0 0 10px var(--text-1), 0 0 25px var(--malachite-1--adaptive);
 }
 
 .chapter li a.active {
-    color: var(--sidebar-active);
+    color: black;
+    font-family: var(--font-sans);
+    text-shadow: 0 0 5px var(--text-1), 0 0 10px var(--malachite-1--adaptive);
 }
 
 .chapter li > a.toggle {
@@ -535,6 +573,7 @@ ul#searchresults span.teaser em {
 .chapter li.expanded > a.toggle div {
     transform: rotate(90deg);
 }
+
 
 .spacer {
     width: 100%;
