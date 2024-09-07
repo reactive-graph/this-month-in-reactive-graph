@@ -57,6 +57,7 @@ jobs:
         uses: taiki-e/cache-cargo-install-action@v2
         with:
           tool: mdbook-tera
+          locked: false
 
       - name: Install mdbook-preprocessor-graphql-playground
         uses: taiki-e/cache-cargo-install-action@v2
