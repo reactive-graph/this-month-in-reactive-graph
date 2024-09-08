@@ -36,8 +36,8 @@ a > .hljs {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background-color: var(--bg);
-    border-block-end-color: var(--bg);
+    background-color: var(--surface-2);
+    border-block-end-color: var(--surface-3);
     border-block-end-width: 1px;
     border-block-end-style: solid;
 }
@@ -83,24 +83,39 @@ a > .hljs {
 }
 
 .right-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+    gap: var(--size-3);
+    padding: var(--size-3);
+    align-items: center;
     margin: 0 15px;
 }
 .right-buttons a {
     text-decoration: none;
 }
+.right-buttons-logo {
+    width: 24px;
+    height: 24px;
+}
 
 .left-buttons {
-    display: flex;
-    margin: 0 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+    gap: var(--size-3);
+    padding: var(--size-3);
+    align-items: center;
+    margin: 0 15px;
 }
+
 .no-js .left-buttons button {
     display: none;
 }
 
 .menu-title {
     display: inline-block;
-    font-weight: 200;
-    /*font-size: 2.4rem;*/
+    font-weight: var(--font-weight-2);
     font-size: var(--font-size-5);
     line-height: var(--menu-bar-height);
     text-align: center;
