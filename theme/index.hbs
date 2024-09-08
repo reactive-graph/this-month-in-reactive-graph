@@ -194,41 +194,31 @@
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                            <img src="images/menu-2.svg" alt="Search" style="filter: invert(1);">
                         </label>
-<!--                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">-->
-<!--                            <i class="fa fa-paint-brush"></i>-->
-<!--                        </button>-->
-<!--                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">-->
-<!--                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>-->
-<!--                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>-->
-<!--                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>-->
-<!--                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>-->
-<!--                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>-->
-<!--                        </ul>-->
                         {{#if search_enabled}}
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                            <img src="images/search.svg" alt="Search" style="filter: invert(1);">
                         </button>
                         {{/if}}
                     </div>
 
-                    <h1 class="menu-title">{{ book_title }}</h1>
+                    <h1 class="menu-title">
+                        {{ book_title }}
+                    </h1>
 
                     <div class="right-buttons">
-                        {{#if print_enable}}
-                        <a href="{{ path_to_root }}print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                        <a href="https://www.reactive-graph.io/" title="www.reactive-graph.io" aria-label="www.reactive-graph.io">
+                            <img src="design/public/logo/circle/reactive-graph-circle-white.svg" alt="www.reactive-graph.io" class="right-buttons-logo">
                         </a>
-                        {{/if}}
                         {{#if git_repository_url}}
                         <a href="{{git_repository_url}}" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa {{git_repository_icon}}"></i>
+                            <img src="images/brand-github.svg" alt="Search" style="filter: invert(1);">
                         </a>
                         {{/if}}
                         {{#if git_repository_edit_url}}
                         <a href="{{git_repository_edit_url}}" title="Suggest an edit" aria-label="Suggest an edit">
-                            <i id="git-edit-button" class="fa fa-edit"></i>
+                            <img src="images/pencil.svg" alt="Search" style="filter: invert(1);">
                         </a>
                         {{/if}}
 
