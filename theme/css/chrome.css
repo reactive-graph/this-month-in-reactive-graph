@@ -84,7 +84,7 @@ a > .hljs {
 
 .right-buttons {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: space-around;
     gap: var(--size-3);
     padding: var(--size-3);
@@ -434,15 +434,15 @@ ul#searchresults span.teaser em {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 220px;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: space-around;
-    gap: var(--size-1);
-    padding: var(--size-3);
-    background-color: var(--surface--malachite-1);
-    box-shadow: 5px 0 5px var(--malachite-1--adaptive);
+    gap: var(--size-2);
+    padding: var(--size-4);
+    background-color: var(--surface--malachite-6);
+    box-shadow: 5px 0 5px var(--surface-4);
 }
 .sidebar-logo {
     width: 100%;
