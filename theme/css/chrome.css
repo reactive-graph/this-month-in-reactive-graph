@@ -414,11 +414,11 @@ ul#searchresults span.teaser em {
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
-    background-color: var(--surface--celestial-blue-1);
+    background-color: var(--surface-3);
     background-position-x: center;
     background-position-y: 50px;
     color: var(--sidebar-fg);
-    box-shadow: 5px 0 5px var(--celestial-blue-1--adaptive);
+    box-shadow: 5px 0 5px var(--surface-4);
 }
 [dir=rtl] .sidebar { left: unset; right: 0; }
 .sidebar-header {
