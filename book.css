@@ -4,15 +4,38 @@ h1 {
 
 h2, h3 {
     font-family: var(--font-sans-light);
-    /*margin-block-start: var(--size-6);*/
+    margin-block-start: var(--size-1);
+    margin-block-end: var(--size-3);
 }
 
-ul, h2, h3 {
+h4, h5, h6 {
+    font-family: var(--font-sans-light);
+    margin-block-start: var(--size-1);
+    margin-block-end: var(--size-2);
+}
+
+ul {
+    margin-block-start: var(--size-1);
     margin-block-end: var(--size-3);
 }
 
 p {
     font-family: var(--font-sans);
+    margin-block-end: var(--size-3);
+}
+
+details {
+    margin-block-start: var(--size-1);
+    margin-block-end: var(--size-3);
+}
+
+code {
+    margin-block-end: var(--size-3);
+}
+
+main img {
+    margin-block-start: var(--size-1);
+    margin-block-end: var(--size-3);
 }
 
 .rg-ti {
