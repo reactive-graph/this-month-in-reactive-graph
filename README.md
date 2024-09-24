@@ -2,7 +2,7 @@
   <a href="https://this-month-in.reactive-graph.io/"><img src="https://raw.githubusercontent.com/reactive-graph/design/main/public/logo/rendered/selective-yellow/reactive-graph-400x400.png" alt="This Month in Reactive Graph"></a>
 </div>
 
-<h1 align="center" style="text-align: center;">Reactive Graph</h1>
+<h1 align="center" style="text-align: center;">This Month in Reactive Graph</h1>
 
 
 <div style="background-color: #333333; padding: 10px 50px; font-size: 12pt;">
