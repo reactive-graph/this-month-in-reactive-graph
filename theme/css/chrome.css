@@ -5,12 +5,6 @@
 html {
     scrollbar-color: var(--scrollbar) var(--bg);
 }
-#searchresults a,
-.content a:link,
-a:visited,
-a > .hljs {
-    color: var(--links);
-}
 
 /*
     body-container is necessary because mobile browsers don't seem to like
