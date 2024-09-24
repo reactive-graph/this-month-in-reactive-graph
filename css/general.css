@@ -163,10 +163,6 @@ h6:target::before {
 }
 .content img, .content video { max-width: 100%; }
 .content .header:link,
-.content .header:visited {
-    color: var(--fg);
-}
-.content .header:link,
 .content .header:visited:hover {
     text-decoration: none;
 }

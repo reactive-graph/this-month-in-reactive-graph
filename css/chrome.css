@@ -5,12 +5,6 @@
 html {
     scrollbar-color: var(--scrollbar) var(--bg);
 }
-#searchresults a,
-.content a:link,
-a:visited,
-a > .hljs {
-    color: var(--links);
-}
 
 /*
     body-container is necessary because mobile browsers don't seem to like
@@ -95,8 +89,8 @@ a > .hljs {
     text-decoration: none;
 }
 .right-buttons-logo {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
 }
 
 .left-buttons {
@@ -119,7 +113,7 @@ a > .hljs {
     font-size: var(--font-size-5);
     line-height: var(--menu-bar-height);
     text-align: center;
-    margin: 0;
+    margin: var(--size-2) 0 0;
     flex: 1;
     white-space: nowrap;
     overflow: hidden;
@@ -441,8 +435,6 @@ ul#searchresults span.teaser em {
     justify-content: space-around;
     gap: var(--size-2);
     padding: var(--size-4);
-    background-color: var(--surface--malachite-6);
-    box-shadow: 5px 0 5px var(--surface-4);
 }
 .sidebar-logo {
     width: 100%;
@@ -553,13 +545,13 @@ ul#searchresults span.teaser em {
 
 .chapter li a:hover {
     color: var(--text-1--dark);
-    text-shadow: 0 0 10px var(--text-1), 0 0 25px var(--malachite-1--adaptive);
+    text-shadow: 0 0 10px var(--text-1), 0 0 25px var(--mexican-pink-1--adaptive);
 }
 
 .chapter li a.active {
     color: black;
     font-family: var(--font-sans);
-    text-shadow: 0 0 5px var(--text-1), 0 0 10px var(--malachite-1--adaptive);
+    text-shadow: 0 0 5px var(--text-1), 0 0 10px var(--mexican-pink-1--adaptive);
 }
 
 .chapter li > a.toggle {
