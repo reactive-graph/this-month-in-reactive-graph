@@ -92,3 +92,9 @@ img.rg-icon-logo {
     margin-top: var(--size-8);
     margin-bottom: var(--size-8);
 }
+
+@media (prefers-color-scheme: dark) {
+    .rg-header-icons {
+        filter: invert(1);
+    }
+}
