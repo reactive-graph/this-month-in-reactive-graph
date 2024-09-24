@@ -119,7 +119,7 @@ a > .hljs {
     font-size: var(--font-size-5);
     line-height: var(--menu-bar-height);
     text-align: center;
-    margin: 0;
+    margin: var(--size-2) 0 0;
     flex: 1;
     white-space: nowrap;
     overflow: hidden;
