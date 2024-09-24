@@ -441,8 +441,6 @@ ul#searchresults span.teaser em {
     justify-content: space-around;
     gap: var(--size-2);
     padding: var(--size-4);
-    background-color: var(--surface--malachite-6);
-    box-shadow: 5px 0 5px var(--surface-4);
 }
 .sidebar-logo {
     width: 100%;
