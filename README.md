@@ -1,7 +1,5 @@
 <div align="center">
-<a href="https://reactive-graph.io/">
-<img src="https://raw.githubusercontent.com/reactive-graph/design/main/public/logo/full/reactive-graph-full-selective-yellow.svg" style="width: 50%; height: 50%; margin-left: 25%; margin-right: 25%;" alt="Reactive Graph" />
-</a>
+  <a href="https://this-month-in.reactive-graph.io/"><img src="https://raw.githubusercontent.com/reactive-graph/design/main/public/logo/rendered/selective-yellow/reactive-graph-400x400.png" alt="This Month in Reactive Graph"></a>
 </div>
 
 <h1 align="center" style="text-align: center;">Reactive Graph</h1>
