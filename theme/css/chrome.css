@@ -230,8 +230,17 @@ a:hover > .hljs {
     text-decoration: underline;
 }
 
-.theme .hljs,
-.navy .hljs {
+.theme :not(pre) > .hljs {
+    background: var(--surface-1);
+}
+
+.theme pre > .hljs {
+    color: var(--text-1);
+    background: var(--surface-2);
+}
+
+.theme details pre > .hljs {
+    color: var(--text-1);
     background: var(--surface-1);
 }
 
