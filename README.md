@@ -14,6 +14,7 @@ This Month in Reactive Graph is openly developed on GitHub and archives can be v
 
 <h1 align="center" style="text-align: center;">Issues</h1>
 
-| Date       | Link                                                                                 |
-|------------|--------------------------------------------------------------------------------------|
-| 2024-08-31 | https://this-month-in.reactive-graph.io/2024-08-31-this-month-in-reactive-graph.html |
+| Date           | Link                                                                              |
+|----------------|-----------------------------------------------------------------------------------|
+| September 2024 | https://this-month-in.reactive-graph.io/2024-09-this-month-in-reactive-graph.html |
+| August 2024    | https://this-month-in.reactive-graph.io/2024-08-this-month-in-reactive-graph.html |

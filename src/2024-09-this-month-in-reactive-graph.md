@@ -16,27 +16,15 @@ description: "The 'September 2024' issue of 'This Month in Reactive Graph' summa
 
 <hr class="surface-2">
 
-<div class="alert alert--error">
-    <h3><i class="ti ti-alert-triangle"></i> Work in progress!</h3>
-    <p class="rg-alert-body">This issue of This Month in Reactive Graph is still work in progress.</p>
-</div>
+## Build
 
-<hr class="surface-2">
-
-## This Month in Reactive Graph
-
-<span class="token rg-component">This Month in Reactive Graph</span> is a monthly summary of Reactive Graph's progress and community. We setup the
-mdbook. We added multiple mdbook plugins that help to generate and maintain This Month in Reactive Graph: Templating engine, TOC, Mermaid Diagrams,
-[GraphQL Playground](https://github.com/aschaeffer/mdbook-preprocessor-graphql-playground) and RSS-Feed-Generation. We setup the continuous
-integration in order to generate and publish the book. Also, we styled the book using our [Design System](https;//design.reactive-graph.io/). We
-hope you like it.
-
-<hr class="celestial-blue">
-
-## Stable Rust
+### Stable Rust
 
 The biggest news this month is that we got managed to [compile](https://github.com/reactive-graph/reactive-graph/pull/148) Reactive Graph
 with [Stable Rust](https://github.com/reactive-graph/reactive-graph/issues/102).
+
+<details>
+<summary>What has changed?</summary>
 
 * Implemented `DashMap` as container for subscribers of `Stream` and removed usage of the unstable feature `unsized_tuple_coercion`
 * Inlined implementation of feature `path_file_prefix` which will be stabilized soon, so that this is not a blocker
@@ -44,24 +32,27 @@ with [Stable Rust](https://github.com/reactive-graph/reactive-graph/issues/102).
 * Removed usage of the unstable feature `register_tool` and make tarpaulin work again without this feature
 * Detect if the compiler is nightly and only if so, make use of the unstable features `unboxed_closures` and `fn_traits`
 
-## Benchmarking with Criterion
+</details>
 
-Now the benchmark tests are run with [criterion](https://crates.io/crates/criterion) (which doesn't need Nightly Rust). Furthermore, the benchmarks has been
-moved into its own `benches/` folders.
+<hr class="celestial-blue">
 
-## Support for <span class="token rg-component">musl</span> builds
+### Support for <span class="token rg-component">musl</span> builds
 
 We [introduced](https://github.com/reactive-graph/reactive-graph/pull/155) support [MUSL](https://musl.libc.org/) builds.
 
-> <span class="token rg-component">musl</span> is an implementation of the C standard library built on top of the Linux system call API, including interfaces
-> defined in the base language standard, POSIX, and widely agreed-upon extensions. musl is lightweight, fast, simple, free, and strives to be correct in the
-> sense of standards-conformance and safety.
-> 
-> [https://musl.libc.org/](https://musl.libc.org/)
+<details>
+<summary>What is musl?</summary>
 
-```
-$ rustup target install x
-```
+<span class="token rg-component">musl</span> is an implementation of the C standard library built on top of the Linux system call API, including interfaces
+defined in the base language standard, POSIX, and widely agreed-upon extensions. musl is lightweight, fast, simple, free, and strives to be correct in the
+sense of standards-conformance and safety.
+
+[https://musl.libc.org/](https://musl.libc.org/)
+
+</details>
+
+<details>
+<summary>Setup and Compile using musl</summary>
 
 In order to successfully compile, you also have to install the package `musl-tools`. For example for Debian / Ubuntu, you can install it like so:
 
@@ -69,58 +60,66 @@ In order to successfully compile, you also have to install the package `musl-too
 $ apt install musl-tools
 ```
 
-## rustls
+Next you have to add the musl target using `rustup`:
 
-We've finished work on replacing OpenSSL with rustls. OpenSSL is no more needed to build reactive graph.
+```
+$ rustup target add x86_64-unknown-linux-musl
+```
+
+Finally you can compile reactive-graph for the target `x86_64-unknown-linux-musl`:
+
+```
+$ cargo build --target x86_64-unknown-linux-musl
+```
+
+</details>
+
+<hr class="celestial-blue">
+
+### rustls
+
+We've [finished](https://github.com/reactive-graph/reactive-graph/pull/121) work on replacing
+[OpenSSL with rustls](https://github.com/reactive-graph/reactive-graph/issues/107). OpenSSL is no more needed to build Reactive Graph.
+
+<hr class="celestial-blue">
+
+### Benchmarking with Criterion
+
+Now the benchmark tests are run with [criterion](https://crates.io/crates/criterion) (which doesn't need Nightly Rust). Furthermore, the benchmarks has been
+moved into its own `benches/` folders.
+
+<details>
+<summary>Features of Criterion</summary>
+
+* Statistics: Statistical analysis detects if, and by how much, performance has changed since the last benchmark run
+* Charts: Uses gnuplot to generate detailed graphs of benchmark results
+* Stable-compatible: Benchmark your code without installing nightly Rust
+
+</details>
+
+A future task would be to write more benchmark tests and to execute benchmarking in the CI.
 
 <hr class="celestial-blue">
 
 ## Continuous Integration
 
-We upgraded the workflow actions to recent versions. Furthermore, we made some changes to <span class="token rg-component">speed up</span> the CI. We've merge
-workflow files and made build jobs and test jobs dependent on the formatting check job and linting jobs. With this change, no build time is wasted if linting
-and formatting doesn't meet the requirements. Furthermore, we're run linting and test suite on Linux GNU and Linux <span class="token rg-component">musl</span>
-for Rust <span class="token rg-component">stable</span> and Rust <span class="token rg-component">nightly</span>. But we don't run the complete test suite on
-Windows and macOS anymore. This is because running the test suite on Windows is 2x slower and on macOS is 6x slower compared to running on Linux. At a later
-point we may reintroduce a smaller subset of the test suite to run on Windows and macOS.
+### Upgrade Workflows and Improve CI performance
+
+We've [upgraded the workflow actions](https://github.com/reactive-graph/reactive-graph/pull/145) to recent versions. Furthermore, we made some changes
+to <span class="token rg-component">speed up</span> the CI. We've merge workflow files and made build jobs and test jobs dependent on the formatting check job
+and linting jobs. With this change, no build time is wasted if linting and formatting doesn't meet the requirements. Furthermore, we're run linting and test
+suite on Linux GNU and Linux <span class="token rg-component">musl</span> for Rust <span class="token rg-component">stable</span> and
+Rust <span class="token rg-component">nightly</span>. But we don't run the complete test suite on Windows and macOS anymore. This is because running the test
+suite on Windows is 2x slower and on macOS is 6x slower compared to running on Linux. At a later point we may reintroduce a smaller subset of the test suite to
+run on Windows and macOS.
 
 <hr class="celestial-blue">
 
-## Daemonize
+### New Checks
 
-On Linux, it's now possible to start the process and run it in the background. Because the daemon has no stdout and stderr, a file can be given as output. 
-Also, the process can drop privileges to a given user+group. Optionally, a PID and name can be specified.
-
-<details>
-<summary><code>$ reactive-graph --help</code></summary>
-
-```
-  -D, --daemon
-          If true, the process will run as daemon [env: REACTIVE_GRAPH_DAEMON=]
-      --daemon-name <DAEMON_NAME>
-          Sets the name of the daemon [env: REACTIVE_GRAPH_DAEMON_NAME=]
-      --daemon-pid <DAEMON_PID>
-          The location of the daemon PID file. By default, no PID file will be created [env: REACTIVE_GRAPH_DAEMON_PID=]
-      --daemon-working-directory <DAEMON_WORKING_DIRECTORY>
-          The working directory of the daemon [env: REACTIVE_GRAPH_DAEMON_WORKING_DIRECTORY=]
-      --daemon-stdout <DAEMON_STDOUT>
-          Stdout will be written into this file [env: REACTIVE_GRAPH_DAEMON_STDOUT=]
-      --daemon-stderr <DAEMON_STDERR>
-          Stderr will be written into this file [env: REACTIVE_GRAPH_DAEMON_STDERR=]
-      --daemon-user <DAEMON_USER>
-          If set will drop privileges to the specified user. Note: Both must be given: user and group [env: REACTIVE_GRAPH_DAEMON_USER=]
-      --daemon-group <DAEMON_GROUP>
-          If set will drop privileges to the specified group. Note: Both must be given: user and group [env: REACTIVE_GRAPH_DAEMON_GROUP=]
-```
-
-
-</details>
-
-In order to start Reactive Graph as a daemon, you have to pass the parameter `-D` or set the environment variable `REACTIVE_GRAPH_DAEMON=true`:
-
-```
-$ reactive-graph --daemon
-```
+* Minimal Supported Rust Version (MSRV)
+* Dependabot now checks for outdated dependencies
+* Checks that the CHANGELOG was edited
 
 <hr class="celestial-blue">
 
@@ -128,8 +127,8 @@ $ reactive-graph --daemon
 
 ### Managing the Instance System
 
-We finished the implementation of managing the instance system via CLI (entity instances and relation instances). Furthermore, the CLI lists the applied
-components of the reactive instances.
+We finished the implementation of managing the instance system via CLI ([entity instances](https://github.com/reactive-graph/reactive-graph/pull/134) and
+[relation instances](https://github.com/reactive-graph/reactive-graph/pull/135)). Furthermore, the CLI lists the applied components of the reactive instances.
 
 ### Documented Command Line Interface
 
@@ -148,8 +147,8 @@ TODO: Insert output here
 
 ### Output Format Count
 
-We've added a new output format that simply prints the count instead of a table with the results. The purpose of the new feature is similar to `count(*)` in
-SQL and is also useful for shell automation.
+We've [added a new output format](https://github.com/reactive-graph/reactive-graph/pull/135) that simply prints the count instead of a table with the results.
+The purpose of the new feature is similar to `count(*)` in SQL and is also useful for shell automation.
 
 ```
 $ reactive-graph client components list --output-format count
@@ -159,30 +158,29 @@ $ reactive-graph client entity-instances list --output-format count
 $ reactive-graph client relation-instances list --output-format count
 ```
 
-#### Example: Print the count of components
-
 <details>
-<summary><code>$ reactive-graph client components list --output-format count</code></summary>
+<summary>Examples</summary>
 
+**Print the count of components**
+
+```
+$ reactive-graph client components list --output-format count
 34 result(s)
+```
 
-</details>
+**Example: Print the count of entity-instances**
 
-#### Example: Print the count of entity-instances
-
-<details>
-<summary><code>$ reactive-graph client entity-instances list --output-format count</code></summary>
-
+```
+$ reactive-graph client entity-instances list --output-format count
 1554 result(s)
+```
 
-</details>
+**Example: Print the count of entity-instances that having the component `core__action`**
 
-#### Example: Print the count of entity-instances that having the component `core__action`
-
-<details>
-<summary><code>$ reactive-graph client entity-instances list --components core__action --output-format count</code></summary>
-
+```
+$ reactive-graph client entity-instances list --components core__action --output-format count
 2 result(s)
+```
 
 </details>
 
@@ -527,6 +525,231 @@ $ reactive-graph client relation-instances get <namespace> <type_name> --output-
 
 </details>
 
+<hr class="celestial-blue">
+
+### Shell Completions
+
+In order to further improve the user experience with the command line interface we've implemented the feature to generate shell completions.
+
+<details>
+<summary>List of Supported Shells</summary>
+
+* bash
+* elvish
+* fish
+* powershell
+* zsh
+
+</details>
+
+On linux it's possible to install the shell completions for the given shell by executing:
+
+```    
+$ reactive-graph --install-shell-completions bash|fish|zsh
+```
+
+Then you have to restart the shell, for example:
+
+```
+$ zsh
+```
+
+Profit!
+
+<details>
+<summary><code>$ reactive-graph --</code> <span class="token rg-entity-type">Press TAB</span></summary>
+
+```
+--daemon-group               -- If set will drop privileges to the specified group. Note: Both must be given: user and group
+--daemon                     -- If true, the process will run as daemon
+--daemon-name                -- Sets the name of the daemon
+--daemon-pid                 -- The location of the daemon PID file. By default, no PID file will be created
+--daemon-stderr              -- Stderr will be written into this file
+--daemon-stdout              -- Stdout will be written into this file
+--daemon-user                -- If set will drop privileges to the specified user. Note: Both must be given: user and group
+--daemon-working-directory   -- The working directory of the daemon
+--default-context-path       -- The default context path which redirects the root context to a web resource provider
+--disable-all-plugins        -- If true, all plugins will be disabled
+--disabled-plugins           -- The list of plugins to disable
+--disable-hot-deploy         -- If true, hot deployment will be disabled
+--enabled-plugins            -- The list of plugins to enable
+--graphql-config             -- The GraphQL config location
+--help                       -- Print help
+--hostname                   -- The hostname to bind the GraphQL HTTP server
+--hot-deploy-location        -- The folder which is watched for hot deployment
+--install-location           -- The folder which plugins are installed permanently
+--install-man-pages          -- If true, installs man pages
+--install-shell-completions  -- If true, installs shell completions
+--instance-config            -- The instance config location
+--instance-description       -- The description of the instance
+--instance-name              -- The name of the instance
+--logging-config             -- The logging config location
+--markdown-help              -- If true, generates command line documentation
+--plugins-config             -- The plugins config location
+--port                       -- The port to bind the GraphQL HTTP server
+--print-man-pages            -- If true, generates man pages
+--print-shell-completions    -- If true, prints shell completions
+--quiet                      -- If true, logging is disabled completely
+--secure                     -- If true, HTTPS is enabled
+--shutdown-timeout           -- Timeout for graceful workers shutdown in seconds. After receiving a stop signal, workers have this much time to finish serving requests. Workers still alive after the timeout are force dropped. By default, shutdown timeout sets to 30 seconds
+--ssl-certificate-path       -- The location of the certificate
+--ssl-private-key-path       -- The location of the private key
+--stop-immediately           -- If true, the runtime does not wait before exiting
+--version                    -- Print version
+--workers                    -- The number of workers to start. The default worker count is the number of physical CPU cores available
+```
+
+</details>
+
+<hr class="celestial-blue">
+
+### Man Pages (Linux only)
+
+Similarly to shell completions, the command line interface can generate, print and install man pages.
+
+<details>
+<summary>What is a man page?</summary>
+
+A man page (short for manual page) is a form of software documentation usually found on a Unix or Unix-like operating system. Topics covered include computer
+programs (including library and system calls), formal standards and conventions, and even abstract concepts. A user may invoke a man page by issuing the man
+command.
+
+[Wikipedia](https://en.wikipedia.org/wiki/Man_page)
+
+</details>
+
+First, you can install man pages:
+
+```
+$ reactive-graph --install-man-pages
+```
+
+Then you can use the `man` command:
+
+<details>
+<summary><code>$ man reactive-graph</code></summary>
+
+```
+reactive-graph(1)                                                                                                                                          General Commands Manual                                                                                                                                          reactive-graph(1)
+
+NAME
+       reactive-graph - Reactive Graph is a reactive runtime based on a graph database, empowering everyone to build reliable and efficient software.
+
+SYNOPSIS
+       reactive-graph  [--logging-config] [--instance-config] [--graphql-config] [--plugins-config] [-n|--instance-name] [-d|--instance-description] [--hostname] [--port] [--secure] [--ssl-certificate-path] [--ssl-private-key-path] [--shutdown-timeout] [-w|--workers] [-c|--default-context-path] [-x|--disable-all-plugins] [-p|--dis‐
+       abled-plugins] [-P|--enabled-plugins] [--disable-hot-deploy] [--hot-deploy-location] [--install-location] [--stop-immediately] [-q|--quiet] [--print-man-pages] [--install-man-pages] [--print-shell-completions] [--install-shell-completions]  [-D|--daemon]  [--daemon-name]  [--daemon-pid]  [--daemon-working-directory]  [--dae‐
+       mon-stdout] [--daemon-stderr] [--daemon-user] [--daemon-group] [-h|--help] [-V|--version] [subcommands]
+
+DESCRIPTION
+       Reactive Graph is a reactive runtime based on a graph database, empowering everyone to build reliable and efficient software.
+
+OPTIONS
+       --logging-config=LOGGING_CONFIG
+              The logging config location
+              May also be specified with the REACTIVE_GRAPH_LOGGING_CONFIG environment variable.
+
+       --instance-config=INSTANCE_CONFIG
+              The instance config location
+              May also be specified with the REACTIVE_GRAPH_INSTANCE_CONFIG environment variable.
+
+...
+```
+
+</details>
+
+<hr class="celestial-blue">
+
+### Dedicated client binary
+
+We follow the approach to have one binary for all use cases (server & client).
+
+Additionally, we
+[now provide a second binary that only contains the client](https://github.com/reactive-graph/reactive-graph/pull/135).
+
+<details>
+<summary><code>$ ls -lah target/debug/reactive-graph*</code></summary>
+
+```
+-rwxrwxr-x 2 rust rust 81M reactive-graph
+-rwxrwxr-x 2 rust rust 29M reactive-graph-client
+```
+
+</details>
+
+<details>
+<summary><code>$ reactive-graph-client relation-instances list --output-format count</code></summary>
+
+```
+9366 result(s)
+```
+
+</details>
+
+<hr class="celestial-blue">
+
+### Daemonize
+
+On Linux, it's [now possible to start the process and run it in the background](https://github.com/reactive-graph/reactive-graph/pull/153). Because the daemon
+has no stdout and stderr, a file can be given as output. Also, the process can drop privileges to a given user+group. Optionally, a PID and name can be
+specified.
+
+<details>
+<summary><code>$ reactive-graph --help</code></summary>
+
+```
+  -D, --daemon
+          If true, the process will run as daemon [env: REACTIVE_GRAPH_DAEMON=]
+      --daemon-name <DAEMON_NAME>
+          Sets the name of the daemon [env: REACTIVE_GRAPH_DAEMON_NAME=]
+      --daemon-pid <DAEMON_PID>
+          The location of the daemon PID file. By default, no PID file will be created [env: REACTIVE_GRAPH_DAEMON_PID=]
+      --daemon-working-directory <DAEMON_WORKING_DIRECTORY>
+          The working directory of the daemon [env: REACTIVE_GRAPH_DAEMON_WORKING_DIRECTORY=]
+      --daemon-stdout <DAEMON_STDOUT>
+          Stdout will be written into this file [env: REACTIVE_GRAPH_DAEMON_STDOUT=]
+      --daemon-stderr <DAEMON_STDERR>
+          Stderr will be written into this file [env: REACTIVE_GRAPH_DAEMON_STDERR=]
+      --daemon-user <DAEMON_USER>
+          If set will drop privileges to the specified user. Note: Both must be given: user and group [env: REACTIVE_GRAPH_DAEMON_USER=]
+      --daemon-group <DAEMON_GROUP>
+          If set will drop privileges to the specified group. Note: Both must be given: user and group [env: REACTIVE_GRAPH_DAEMON_GROUP=]
+```
+
+
+</details>
+
+In order to start Reactive Graph as a daemon, you have to pass the parameter `-D` or set the environment variable `REACTIVE_GRAPH_DAEMON=true`:
+
+```
+$ reactive-graph --daemon
+```
+
+<hr class="celestial-blue">
+
+## Refactoring
+
+### Extracted table model
+
+The table model has been [refactored into its own crate](https://github.com/reactive-graph/reactive-graph/pull/135). This allows to print tables in other
+command line applications.
+
+The examples are now using the table model. The printed tables look better than before. Thanks to the table model, it is no more necessary to render tables
+manually.
+
+<hr class="celestial-blue">
+
+### GraphQL Schema
+
+There are some changes to the GraphQL schema:
+
+<details>
+<summary>List of Changes</summary>
+
+* edgeKey has been renamed to relationInstanceId for consistency
+* EdgeKeyDefinition has been renamed to RelationInstanceIdDefinition for consistency
+* Extended mutation `instances -> relations -> update()` with the new parameters addProperties and removeProperties in order to add or remove one or multiple properties
+
+</details>
 
 <hr class="celestial-blue">
 
@@ -571,29 +794,28 @@ We added a [new set of logos](https://design.reactive-graph.io/docs/fundamentals
     </tr>
 </table>
 
+<hr class="celestial-blue">
+
 ### Horizontal Rules
 
 Nothing special, but useful: [horizontal rules](https://design.reactive-graph.io/components/detail/hr--default.html)
 
 <hr class="celestial-blue">
 
-## Social Media
+## Project Maintenance
+
+### Social Media
 
 We created a [YouTube channel](https://www.youtube.com/@reactive-graph), a [facebook profile](https://www.facebook.com/reactive.graph) and a
 [mastodon account](https://floss.social/@reactive_graph). We will start social media activities in near future.
 
 <hr class="celestial-blue">
 
-## Sponsoring
+### Contribution Guidelines & Security Policy
 
-We created an account on [Open Collective](https://opencollective.com/reactive-graph). Your support will help us to pay for our infrastructural costs.
+We've extended the [Contribution Guidelines](https://github.com/reactive-graph/reactive-graph/blob/main/CONTRIBUTING.md) and added a
+[Security Policy](https://github.com/reactive-graph/reactive-graph/blob/main/SECURITY.md).
 
 <hr class="celestial-blue">
-
-## Goals for October 2024
-
-(highest priority on top)
-
-* Work on the Type System Persistence
 
 {{ footer::print(issue_date_previous="2024-08-31", issue_date_next="") }}
