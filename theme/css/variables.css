@@ -168,7 +168,7 @@
 
     --theme-popup-bg: #161923;
     --theme-popup-border: #737480;
-    --theme-hover: #282e40;
+    --theme-hover: var(--surface--celestial-blue-7);
 
     --quote-bg: hsl(226, 15%, 17%);
     --quote-border: hsl(226, 15%, 22%);
