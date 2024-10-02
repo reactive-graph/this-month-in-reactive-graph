@@ -44,7 +44,6 @@ additional-css = [
     "./src/design/public/css/open-props.min.css",
     "./src/design/public/css/open-props-buttons.min.css",
     "./src/design/public/css/open-props-normalize.min.css",
-    "./src/design/public/fonts/fonts.css",
     "./src/design/public/css/variables/palette.css",
     "./src/design/public/css/variables/gradients.css",
     "./src/design/public/css/variables/surface.css",

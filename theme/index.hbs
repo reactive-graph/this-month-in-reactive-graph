@@ -39,7 +39,8 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="{{ path_to_root }}FontAwesome/css/font-awesome.css">
         {{#if copy_fonts}}
-        <link rel="stylesheet" href="{{ path_to_root }}fonts/fonts.css">
+          <link rel="stylesheet" href="{{ path_to_root }}fonts/fonts.css">
+          <link rel="stylesheet" href="{{ path_to_root }}fonts/tabler-icons.css">
         {{/if}}
 
         <!-- Highlight.js Stylesheets -->
@@ -276,13 +277,13 @@
                         <!-- Mobile navigation buttons -->
                         {{#previous}}
                             <a rel="prev" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <i class="ti ti-arrow-left"></i>
                             </a>
                         {{/previous}}
 
                         {{#next}}
                             <a rel="next prefetch" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <i class="ti ti-arrow-right"></i>
                             </a>
                         {{/next}}
 
@@ -294,13 +295,13 @@
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 {{#previous}}
                     <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <i class="ti ti-arrow-left"></i>
                     </a>
                 {{/previous}}
 
                 {{#next}}
                     <a rel="next prefetch" href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <i class="ti ti-arrow-right"></i>
                     </a>
                 {{/next}}
             </nav>
