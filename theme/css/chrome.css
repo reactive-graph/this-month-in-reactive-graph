@@ -230,6 +230,12 @@ a:hover > .hljs {
     text-decoration: underline;
 }
 
+.theme .hljs,
+.navy .hljs {
+    background: var(--surface-1);
+}
+
+
 /*pre {*/
 /*    position: relative;*/
 /*}*/
