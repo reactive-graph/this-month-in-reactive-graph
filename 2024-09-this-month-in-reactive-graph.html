@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>This Month in Reactive Graph</title>
-        <meta name="robots" content="noindex">
+        <title>September 2024 in Reactive Graph - This Month in Reactive Graph</title>
 
 
         <!-- Custom HTML head -->
@@ -169,10 +168,15 @@
                             <img src="images/rss.svg" alt="RSS Feed">
                         </a>
                     </div>
+                    <div>
+                        <a href="https://github.com/reactive-graph/this-month-in-reactive-graph/edit/main/src/2024-09-this-month-in-reactive-graph.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <img src="images/pencil.svg" alt="Git repository">
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="2024.html"><strong aria-hidden="true">1.</strong> 2024</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2024-09-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.1.</strong> September 2024 in Reactive Graph</a></li><li class="chapter-item expanded "><a href="2024-08-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.2.</strong> August 2024 in Reactive Graph</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="2024.html"><strong aria-hidden="true">1.</strong> 2024</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2024-09-this-month-in-reactive-graph.html" class="active"><strong aria-hidden="true">1.1.</strong> September 2024 in Reactive Graph</a></li><li class="chapter-item expanded "><a href="2024-08-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.2.</strong> August 2024 in Reactive Graph</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -235,6 +239,9 @@
                         <a href="https://floss.social/@reactive_graph" title="Mastodon" aria-label="Mastodon">
                             <img src="images/brand-mastodon.svg" alt="Mastodon" class="rg-header-icons">
                         </a>
+                        <a href="https://github.com/reactive-graph/this-month-in-reactive-graph/edit/main/src/2024-09-this-month-in-reactive-graph.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <img src="images/pencil.svg" alt="Search" class="rg-header-icons">
+                        </a>
 
                     </div>
                 </div>
@@ -262,16 +269,6 @@
                 <div id="content" class="content">
                     <main>
                         <section class="rg-emphasis-box">
-    <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">2024</span></h3>
-    <p class="intro">Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
-    <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
-</section>
-<h2 id="topics"><a class="header" href="#topics">Topics</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Issue</th><th>Topics</th></tr></thead><tbody>
-<tr><td><a href="https://this-month-in.reactive-graph.io/2024-09-this-month-in-reactive-graph.html">September 2024</a></td><td>Stable rust, Improved CI, Improved CLI, Project Maintenance</td></tr>
-<tr><td><a href="./2024-08-this-month-in-reactive-graph.html">August 2024</a></td><td>Manage Type System via Command Line Interface, Java GraphQL Client POC, Specification of the Identity and Permission System</td></tr>
-</tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><section class="rg-emphasis-box">
     <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">September 2024</span></h3>
     <p class="intro">Hello and welcome to another issue of This Month in Reactive Graph! Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
     <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
@@ -279,63 +276,63 @@
 <hr class="surface-2">
 <h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#build">Build</a>
+<li><a href="#build">Build</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#stable-rust">Stable Rust</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#support-for-musl-builds">Support for musl builds</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#rustls">rustls</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#benchmarking-with-criterion">Benchmarking with Criterion</a></li>
+<li><a href="#stable-rust">Stable Rust</a></li>
+<li><a href="#support-for-musl-builds">Support for musl builds</a></li>
+<li><a href="#rustls">rustls</a></li>
+<li><a href="#benchmarking-with-criterion">Benchmarking with Criterion</a></li>
 </ul>
 </li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#continuous-integration">Continuous Integration</a>
+<li><a href="#continuous-integration">Continuous Integration</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#upgrade-workflows-and-improve-ci-performance">Upgrade Workflows and Improve CI performance</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#new-checks">New Checks</a></li>
+<li><a href="#upgrade-workflows-and-improve-ci-performance">Upgrade Workflows and Improve CI performance</a></li>
+<li><a href="#new-checks">New Checks</a></li>
 </ul>
 </li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#command-line-interface">Command Line Interface</a>
+<li><a href="#command-line-interface">Command Line Interface</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#managing-the-instance-system">Managing the Instance System</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#documented-command-line-interface">Documented Command Line Interface</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#output-format-count">Output Format Count</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#output-format-html">Output Format HTML</a>
+<li><a href="#managing-the-instance-system">Managing the Instance System</a></li>
+<li><a href="#documented-command-line-interface">Documented Command Line Interface</a></li>
+<li><a href="#output-format-count">Output Format Count</a></li>
+<li><a href="#output-format-html">Output Format HTML</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#list-types-and-instances-as-html-table">List types and instances as HTML table</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#list-all-components-as-html-table">List all components as HTML table</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#output-a-single-type-or-a-single-instance-as-html-table">Output a single type or a single instance as HTML table</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#output-a-single-component-as-html-table">Output a single component as HTML table</a></li>
+<li><a href="#list-types-and-instances-as-html-table">List types and instances as HTML table</a></li>
+<li><a href="#list-all-components-as-html-table">List all components as HTML table</a></li>
+<li><a href="#output-a-single-type-or-a-single-instance-as-html-table">Output a single type or a single instance as HTML table</a></li>
+<li><a href="#output-a-single-component-as-html-table">Output a single component as HTML table</a></li>
 </ul>
 </li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#output-format-markdown">Output Format Markdown</a>
+<li><a href="#output-format-markdown">Output Format Markdown</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#list-types-and-instances-as-markdown-table">List types and instances as Markdown table</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#list-all-components-as-markdown-table">List all components as Markdown table</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#output-a-single-type-or-a-single-instance-as-markdown-table">Output a single type or a single instance as Markdown table</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#output-a-single-component-as-markdown-table">Output a single component as Markdown table</a></li>
+<li><a href="#list-types-and-instances-as-markdown-table">List types and instances as Markdown table</a></li>
+<li><a href="#list-all-components-as-markdown-table">List all components as Markdown table</a></li>
+<li><a href="#output-a-single-type-or-a-single-instance-as-markdown-table">Output a single type or a single instance as Markdown table</a></li>
+<li><a href="#output-a-single-component-as-markdown-table">Output a single component as Markdown table</a></li>
 </ul>
 </li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#shell-completions">Shell Completions</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#man-pages-linux-only">Man Pages (Linux only)</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#dedicated-client-binary">Dedicated client binary</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#daemonize">Daemonize</a></li>
+<li><a href="#shell-completions">Shell Completions</a></li>
+<li><a href="#man-pages-linux-only">Man Pages (Linux only)</a></li>
+<li><a href="#dedicated-client-binary">Dedicated client binary</a></li>
+<li><a href="#daemonize">Daemonize</a></li>
 </ul>
 </li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#refactoring">Refactoring</a>
+<li><a href="#refactoring">Refactoring</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#extracted-table-model">Extracted table model</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#graphql-schema">GraphQL Schema</a></li>
+<li><a href="#extracted-table-model">Extracted table model</a></li>
+<li><a href="#graphql-schema">GraphQL Schema</a></li>
 </ul>
 </li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#design-system-enhancements">Design System Enhancements</a>
+<li><a href="#design-system-enhancements">Design System Enhancements</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#circle-logos">Circle Logos</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#horizontal-rules">Horizontal Rules</a></li>
+<li><a href="#circle-logos">Circle Logos</a></li>
+<li><a href="#horizontal-rules">Horizontal Rules</a></li>
 </ul>
 </li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#project-maintenance">Project Maintenance</a>
+<li><a href="#project-maintenance">Project Maintenance</a>
 <ul>
-<li><a href="2024-09-this-month-in-reactive-graph.html#social-media">Social Media</a></li>
-<li><a href="2024-09-this-month-in-reactive-graph.html#contribution-guidelines--security-policy">Contribution Guidelines &amp; Security Policy</a></li>
+<li><a href="#social-media">Social Media</a></li>
+<li><a href="#contribution-guidelines--security-policy">Contribution Guidelines &amp; Security Policy</a></li>
 </ul>
 </li>
 </ul>
@@ -973,266 +970,18 @@ manually.</p>
 <hr class="celestial-blue">
 <hr class="mexican-pink">
 <hr class="celestial-blue">
-<div style="break-before: page; page-break-before: always;"></div><section class="rg-emphasis-box">
-    <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">August 2024</span></h3>
-    <p class="intro">Hello and welcome to another issue of This Month in Reactive Graph! Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
-    <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
-</section>
-<hr class="surface-2">
-<h2 id="table-of-contents-1"><a class="header" href="#table-of-contents-1">Table of Contents</a></h2>
-<ul>
-<li><a href="2024-08-this-month-in-reactive-graph.html#extended-the-rust-graphql-client">Extended the Rust GraphQL Client</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#extended-the-command-line-interface">Extended the Command Line Interface</a>
-<ul>
-<li><a href="2024-08-this-month-in-reactive-graph.html#manage-type-system-via-cli">Manage Type System via CLI</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#output-format-table">Output Format Table</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#output-format-json">Output Format JSON</a></li>
-</ul>
-</li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#replacing-openssl-with-rustls">Replacing OpenSSL with rustls</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#continuous-modernization">Continuous Modernization</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#java-graphql-client">Java GraphQL Client</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#poc-wasm--wasi">POC WASM / WASI</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#identity-and-permission-system">Identity and Permission System</a></li>
-<li><a href="2024-08-this-month-in-reactive-graph.html#goals-for-september-2024">Goals for September 2024</a></li>
-</ul>
-<hr class="surface-2">
-<h2 id="extended-the-rust-graphql-client"><a class="header" href="#extended-the-rust-graphql-client">Extended the <span class="token rg-component">Rust GraphQL Client</span></a></h2>
-<p>The Rust GraphQL Client is important to make Reactive Graph more useful and accessible. It allows to access the Reactive Graph programmatically by simply
-using the crate <code>reactive-graph-client</code>. The client crate is the foundation for the command line interface and for rust applications.</p>
-<p>The Rust GraphQL Client is now capable to <span class="token rg-component">manage the type system</span>. This means you can query or alter components, entity
-types and relation types. Furthermore, we started with the implementation of <span class="token rg-component">managing the instance system</span>. This means
-you can query and alter entity instances and relation instances. Last but not least, we decided to defer work on the flow types and flow instances till instance
-system has been fully implemented.</p>
-<p>The following diagram shows the importance of the Rust GraphQL Client:</p>
-<pre class="mermaid">flowchart TD
-
-    subgraph Runtime
-        G[GraphQL API]
-        A[Reactive Graph]
-
-        G --&gt; A
-    end
-
-    subgraph Client
-        CLI[Command Line Interface]
-        RC1[Rust Client]
-
-        CLI --&gt; RC1
-        RC1 --&gt; G
-    end
-
-    subgraph Rust Application
-        RA[Rust Application]
-        RC2[Rust Client]
-
-        RA --&gt; RC2
-        RC2 --&gt; G
-    end
-</pre>
-<hr class="celestial-blue">
-<h2 id="extended-the-command-line-interface"><a class="header" href="#extended-the-command-line-interface">Extended the <span class="token rg-component">Command Line Interface</span></a></h2>
-<p>The command line interface made big progress.</p>
-<h3 id="manage-type-system-via-cli"><a class="header" href="#manage-type-system-via-cli">Manage Type System via CLI</a></h3>
-<pre><code class="language-shell">➜ reactive-graph client entity-types get string title_case                                                        
-</code></pre>
-<details>
-<summary>Command Output</summary>
-<pre><code class="language-shell">╔════════════════════════╦════════════════════════╦══════════════════════════════════╦══════════════════════════════════════╦══════════════════════════════════════════════════════════════════════════════╦════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ namespace              ║ name                   ║ description                      ║ components                           ║ properties                                                                   ║ extensions                                                                                                         ║
-╠════════════════════════╬════════════════════════╬══════════════════════════════════╬══════════════════════════════════════╬══════════════════════════════════════════════════════════════════════════════╬════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ string                 ║ title_case             ║ Converts the input to title case ║  namespace       │ name              ║  name                                │ data_type │ socket_type │ mutability  ║  namespace              │ name                   │ description │ extension                                         ║
-║                        ║                        ║                                  ║ ─────────────────┼────────────────── ║ ─────────────────────────────────────┼───────────┼─────────────┼──────────── ║ ────────────────────────┼────────────────────────┼─────────────┼────────────────────────────────────────────────── ║
-║                        ║                        ║                                  ║  string          │ string_operation  ║  result                              │ String    │ Output      │ Immutable   ║  core                   │ divergent              │             │ []                                                ║
-║                        ║                        ║                                  ║                                      ║ ─────────────────────────────────────┼───────────┼─────────────┼──────────── ║ ────────────────────────┼────────────────────────┼─────────────┼────────────────────────────────────────────────── ║
-║                        ║                        ║                                  ║                                      ║  lhs                                 │ String    │ Input       │ Mutable     ║  metadata               │ dublin-core            │             │ {                                                 ║
-║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │   "creator": "Hanack",                            ║
-║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │   "subject": "Converts the input to title case",  ║
-║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │   "title": "Title Case"                           ║
-║                        ║                        ║                                  ║                                      ║                                                                              ║                         │                        │             │ }                                                 ║
-╚════════════════════════╩════════════════════════╩══════════════════════════════════╩══════════════════════════════════════╩══════════════════════════════════════════════════════════════════════════════╩════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-</code></pre>
-</details>
-<h3 id="output-format-table"><a class="header" href="#output-format-table">Output Format Table</a></h3>
-<p>With the new parameter <code>--output-format</code> it is possible to output the data in table format (default), or as JSON or as TOML.</p>
-<p>You can explicitly define the output format is table:</p>
-<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7 --output-format=table
-</code></pre>
-<p>Or you can just omit the option, because table is the default output format:</p>
-<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7
-</code></pre>
-<details>
-<summary>Command Output</summary>
-<pre><code class="language-shell">╔════════════╦═════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ name       ║ value                                                                                               ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ args       ║ [{"help":"Delay shutdown by N seconds","long":"delay","name":"delay","required":false,"short":"d"}] ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ cmd_result ║ 0                                                                                                   ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ prop_name  ║ "New Value"                                                                                         ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ label      ║ "/org/inexor/commands/core/shutdown"                                                                ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ delay      ║ 0                                                                                                   ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ command    ║ "shutdown"                                                                                          ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ trigger    ║ false                                                                                               ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ namespace  ║ "core"                                                                                              ║
-╠════════════╬═════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ help       ║ "Shutdown the application"                                                                          ║
-╚════════════╩═════════════════════════════════════════════════════════════════════════════════════════════════════╝
-</code></pre>
-</details>
-<h3 id="output-format-json"><a class="header" href="#output-format-json">Output Format JSON</a></h3>
-<p>Additionally to the output format table, two new output formats have been implemented <code>json</code> and <code>toml</code>. This allows
-to use the Reactive Graph CLI as tool for exporting types and instances.</p>
-<pre><code class="language-shell">➜ reactive-graph client entity-instances list-properties 6ba7b810-9e15-11d1-50b4-00c04fd530c7 --output-format=json
-</code></pre>
-<details>
-<summary>Command Output</summary>
-<pre><code class="language-shell">[
-  {
-    "name": "help",
-    "value": "Shutdown the application"
-  },
-  {
-    "name": "label",
-    "value": "/org/inexor/commands/core/shutdown"
-  },
-  {
-    "name": "trigger",
-    "value": false
-  },
-  {
-    "name": "cmd_result",
-    "value": 0
-  },
-  {
-    "name": "prop_name",
-    "value": "New Value"
-  },
-  {
-    "name": "args",
-    "value": [
-      {
-        "help": "Delay shutdown by N seconds",
-        "long": "delay",
-        "name": "delay",
-        "required": false,
-        "short": "d"
-      }
-    ]
-  },
-  {
-    "name": "delay",
-    "value": 0
-  },
-  {
-    "name": "namespace",
-    "value": "core"
-  },
-  {
-    "name": "command",
-    "value": "shutdown"
-  }
-]
-</code></pre>
-</details>
-<p>Also, it allows to use the CLI as stdin for other CLI programs by using shell pipes. For example:</p>
-<pre><code class="language-shell">reactive-graph client entity-type get namespace type_name --output-format=JSON | less
-</code></pre>
-<hr class="celestial-blue">
-<h2 id="replacing-openssl-with-rustls"><a class="header" href="#replacing-openssl-with-rustls">Replacing OpenSSL with <span class="token rg-component">rustls</span></a></h2>
-<ul>
-<li>Started work on replacing OpenSSL with rustls</li>
-<li>Actix Web now supports rustls</li>
-<li>Patched the gql-client crate for rustls support</li>
-<li>Waiting for a PR in aws-lc-rs to be merged (https://github.com/aws/aws-lc-rs/pull/491) since aws-lc-rs requires NASM on windows and this breaks the CI</li>
-</ul>
-<hr class="celestial-blue">
-<h2 id="continuous-modernization"><a class="header" href="#continuous-modernization">Continuous Modernization</a></h2>
-<ul>
-<li>Fixed a bunch of <span class="token rg-component">clippy lints</span></li>
-<li>Upgraded builds to use the <span class="token rg-component">latest nightly rust compiler</span></li>
-<li>Replaced old GitHub Actions (actions-rs) with <span class="token rg-component">modern GitHub Actions</span></li>
-<li>We are not quite happy that windows builds needs more than an hour and mac builds more than three hours, so we <span class="token rg-component">added another layer of cache</span> to speed up the CI</li>
-<li><span class="token rg-component">Pinned the nightly version</span> in order to make caching in the CI more effective</li>
-</ul>
-<hr class="celestial-blue">
-<h2 id="java-graphql-client"><a class="header" href="#java-graphql-client"><span class="token rg-component">Java</span> GraphQL Client</a></h2>
-<ul>
-<li>The goal was to show that it's possible to manage the Reactive Graph <span class="token rg-component">from a programming language other than Rust</span></li>
-<li>A gradle plugin <span class="token rg-component">generates</span> POJOs and interfaces from the GraphQL schema (<span class="token rg-component">schema first approach</span>). It's even possible to implement Spring Data alike repositories</li>
-<li>The status of the Java GraphQL Client is only a proof of concept. In the future, the Java GraphQL Client shall be on <span class="token rg-component">feature parity with the Rust GraphQL Client</span></li>
-</ul>
-<p>The following diagram shows how the GraphQL Client APIs are used by applications:</p>
-<pre class="mermaid">flowchart TD
-
-    subgraph Runtime
-        G[GraphQL API]
-        A[Reactive Graph]
-
-        G --&gt; A
-    end
-
-    subgraph Client
-        CLI[Command Line Interface]
-        RC1[Rust Client]
-
-        CLI --&gt; RC1
-        RC1 --&gt; G
-    end
-
-    subgraph Rust Application
-        RA[Rust Application]
-        RC2[Rust Client]
-
-        RA --&gt; RC2
-        RC2 --&gt; G
-    end
-
-    subgraph Java Application
-        JA[Java Application]
-        JC[Java Client]
-
-        JA --&gt; JC
-        JC --&gt; G
-    end
-</pre>
-<p>As you can see, thanks to the <span class="token rg-component">GraphQL API</span> it is possible to build applications
-in different programming languages.</p>
-<hr class="celestial-blue">
-<h2 id="poc-wasm--wasi"><a class="header" href="#poc-wasm--wasi">POC WASM / WASI</a></h2>
-<p>We implemented a <a href="https://github.com/reactive-graph/poc-wasm-wasi-preview-2-plugin-system">POC</a> to check the current status of WASM. WASM will be an important
-part of the Reactive Graph. One use case is that the Reactive Graph could use WASM to load plugins written in "any" language that compiles to WASM. Another use
-case is that the Reactive Graph could use WASM to load behaviours for reactive entities or reactive relations. The POC showed that it now possible to interop
-with more complex data than primitive data types like integers.</p>
-<hr class="celestial-blue">
-<h2 id="identity-and-permission-system"><a class="header" href="#identity-and-permission-system">Identity and Permission System</a></h2>
-<p>Currently, Reactive Graph lacks an <span class="token rg-component">Identity and Permission System</span>. One of the next steps will be to implement it. We decided to not use an existing framework.
-The type system has to be threatened a bit different from the instance system. Also, the permission system is more complex for the instance system. In a first
-step we <span class="token rg-component">specified the requirements and the data model</span> of the upcoming identity management and the permission system
-(https://github.com/reactive-graph/reactive-graph/issues/26).</p>
-<hr class="celestial-blue">
-<h2 id="goals-for-september-2024"><a class="header" href="#goals-for-september-2024">Goals for September 2024</a></h2>
-<p>(highest priority on top)</p>
-<ol>
-<li>Finish work on the rust GraphQL client and the Command Line Interface</li>
-<li>Finish replacing OpenSSL with rustls</li>
-<li>Start work on the Identity and Permission System</li>
-<li>Specify the Type System Persistence (<span class="token rg-component">Graph Relational Mapper</span>)</li>
-</ol>
-<hr class="mexican-pink">
-<hr class="celestial-blue">
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="2024.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="ti ti-arrow-left"></i>
+                            </a>
 
+                            <a rel="next prefetch" href="2024-08-this-month-in-reactive-graph.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="ti ti-arrow-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -1240,7 +989,13 @@ step we <span class="token rg-component">specified the requirements and the data
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="2024.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="ti ti-arrow-left"></i>
+                    </a>
 
+                    <a rel="next prefetch" href="2024-08-this-month-in-reactive-graph.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="ti ti-arrow-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -1267,11 +1022,6 @@ step we <span class="token rg-component">specified the requirements and the data
         <script src="graphql-playground-react-middleware.js"></script>
         <script src="graphql-playground.js"></script>
 
-        <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </div>
     </body>

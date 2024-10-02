@@ -78,7 +78,7 @@ html {
 
 .right-buttons {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: space-around;
     gap: var(--size-3);
     padding: var(--size-3);

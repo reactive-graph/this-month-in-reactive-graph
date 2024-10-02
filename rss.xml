@@ -1,4 +1,753 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>This Month in Reactive Graph</title><link></link><description>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at https://this-month-in.reactive-graph.io</description><generator>mdbook-rss 0.1.0</generator><item><title>August 2024 in Reactive Graph</title><link>https://this-month-in.reactive-graph.io/2024-08-31-this-month-in-reactive-graph.html</link><description><![CDATA[The 'August 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Manage the type system via the command line interface, Java GraphQL Client POC and the specification of the Identity and Permission System]]></description><author>Andreas Schaeffer</author><pubDate>Sat, 31 Aug 2024 00:00:00 GMT</pubDate><content:encoded><![CDATA[<p>{% import &quot;header.tera&quot; as header %} {% import &quot;footer.tera&quot; as footer %}</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>This Month in Reactive Graph</title><link></link><description>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at https://this-month-in.reactive-graph.io</description><generator>mdbook-rss 0.1.0</generator><item><title>September 2024 in Reactive Graph</title><link>https://this-month-in.reactive-graph.io/2024-09-this-month-in-reactive-graph.html</link><description><![CDATA[The 'September 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Manage the type system via the command line interface, Java GraphQL Client POC and the specification of the Identity and Permission System]]></description><author>Andreas Schaeffer</author><pubDate>Mon, 30 Sep 2024 00:00:00 GMT</pubDate><content:encoded><![CDATA[<p>{% import &quot;header.tera&quot; as header %} {% import &quot;footer.tera&quot; as footer %}</p>
+
+<p>{{ header::print(year=&quot;2024&quot;,month=&quot;September&quot;) }}</p>
+
+<p>&lt;hr class=&quot;surface-2&quot;&gt;</p>
+
+<h2 id='table_of_contents'>Table of Contents</h2>
+
+<p>&lt;!-- toc --&gt;</p>
+
+<p>&lt;hr class=&quot;surface-2&quot;&gt;</p>
+
+<h2 id='build'>Build</h2>
+
+<h3 id='stable_rust'>Stable Rust</h3>
+
+<p>The biggest news this month is that we got managed to <a href='https://github.com/reactive-graph/reactive-graph/pull/148'>compile</a> Reactive Graph with <a href='https://github.com/reactive-graph/reactive-graph/issues/102'>Stable Rust</a>.</p>
+
+<p>&lt;details&gt; &lt;summary&gt;What has changed?&lt;/summary&gt;</p>
+
+<ul>
+<li>Implemented <code>DashMap</code> as container for subscribers of <code>Stream</code> and removed usage of the unstable feature <code>unsized_tuple_coercion</code></li>
+
+<li>Inlined implementation of feature <code>path_file_prefix</code> which will be stabilized soon, so that this is not a blocker</li>
+
+<li>Removed usage of the unstable feature <code>test</code> and migrated to criterion (see Benchmarking with Criterion)</li>
+
+<li>Removed usage of the unstable feature <code>register_tool</code> and make tarpaulin work again without this feature</li>
+
+<li>Detect if the compiler is nightly and only if so, make use of the unstable features <code>unboxed_closures</code> and <code>fn_traits</code></li>
+</ul>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='support_for_<span_class="token_rg-component">musl</span>_builds'>Support for &lt;span class=&quot;token rg-component&quot;&gt;musl&lt;/span&gt; builds</h3>
+
+<p>We <a href='https://github.com/reactive-graph/reactive-graph/pull/155'>introduced</a> support <a href='https://musl.libc.org/'>MUSL</a> builds.</p>
+
+<p>&lt;details&gt; &lt;summary&gt;What is musl?&lt;/summary&gt;</p>
+
+<p>&lt;span class=&quot;token rg-component&quot;&gt;musl&lt;/span&gt; is an implementation of the C standard library built on top of the Linux system call API, including interfaces defined in the base language standard, POSIX, and widely agreed-upon extensions. musl is lightweight, fast, simple, free, and strives to be correct in the sense of standards-conformance and safety.</p>
+
+<p><a href='https://musl.libc.org/'>https://musl.libc.org/</a></p>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;details&gt; &lt;summary&gt;Setup and Compile using musl&lt;/summary&gt;</p>
+
+<p>In order to successfully compile, you also have to install the package <code>musl-tools</code>. For example for Debian / Ubuntu, you can install it like so:</p>
+
+<pre><code>$ apt install musl-tools</code></pre>
+
+<p>Next you have to add the musl target using <code>rustup</code>:</p>
+
+<pre><code>$ rustup target add x86_64-unknown-linux-musl</code></pre>
+
+<p>Finally you can compile reactive-graph for the target <code>x86_64-unknown-linux-musl</code>:</p>
+
+<pre><code>$ cargo build --target x86_64-unknown-linux-musl</code></pre>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='rustls'>rustls</h3>
+
+<p>We&#8217;ve <a href='https://github.com/reactive-graph/reactive-graph/pull/121'>finished</a> work on replacing <a href='https://github.com/reactive-graph/reactive-graph/issues/107'>OpenSSL with rustls</a>. OpenSSL is no more needed to build Reactive Graph.</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='benchmarking_with_criterion'>Benchmarking with Criterion</h3>
+
+<p>Now the benchmark tests are run with <a href='https://crates.io/crates/criterion'>criterion</a> (which doesn&#8217;t need Nightly Rust). Furthermore, the benchmarks has been moved into its own <code>benches/</code> folders.</p>
+
+<p>&lt;details&gt; &lt;summary&gt;Features of Criterion&lt;/summary&gt;</p>
+
+<ul>
+<li>Statistics: Statistical analysis detects if, and by how much, performance has changed since the last benchmark run</li>
+
+<li>Charts: Uses gnuplot to generate detailed graphs of benchmark results</li>
+
+<li>Stable-compatible: Benchmark your code without installing nightly Rust</li>
+</ul>
+
+<p>&lt;/details&gt;</p>
+
+<p>A future task would be to write more benchmark tests and to execute benchmarking in the CI.</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h2 id='continuous_integration'>Continuous Integration</h2>
+
+<h3 id='upgrade_workflows_and_improve_ci_performance'>Upgrade Workflows and Improve CI performance</h3>
+
+<p>We&#8217;ve <a href='https://github.com/reactive-graph/reactive-graph/pull/145'>upgraded the workflow actions</a> to recent versions. Furthermore, we made some changes to &lt;span class=&quot;token rg-component&quot;&gt;speed up&lt;/span&gt; the CI. We&#8217;ve merge workflow files and made build jobs and test jobs dependent on the formatting check job and linting jobs. With this change, no build time is wasted if linting and formatting doesn&#8217;t meet the requirements. Furthermore, we&#8217;re run linting and test suite on Linux GNU and Linux &lt;span class=&quot;token rg-component&quot;&gt;musl&lt;/span&gt; for Rust &lt;span class=&quot;token rg-component&quot;&gt;stable&lt;/span&gt; and Rust &lt;span class=&quot;token rg-component&quot;&gt;nightly&lt;/span&gt;. But we don&#8217;t run the complete test suite on Windows and macOS anymore. This is because running the test suite on Windows is 2x slower and on macOS is 6x slower compared to running on Linux. At a later point we may reintroduce a smaller subset of the test suite to run on Windows and macOS.</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='new_checks'>New Checks</h3>
+
+<ul>
+<li>Minimal Supported Rust Version (MSRV)</li>
+
+<li>Dependabot now checks for outdated dependencies</li>
+
+<li>Checks that the CHANGELOG was edited</li>
+</ul>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h2 id='command_line_interface'>Command Line Interface</h2>
+
+<h3 id='managing_the_instance_system'>Managing the Instance System</h3>
+
+<p>We finished the implementation of managing the instance system via CLI (<a href='https://github.com/reactive-graph/reactive-graph/pull/134'>entity instances</a> and <a href='https://github.com/reactive-graph/reactive-graph/pull/135'>relation instances</a>). Furthermore, the CLI lists the applied components of the reactive instances.</p>
+
+<h3 id='documented_command_line_interface'>Documented Command Line Interface</h3>
+
+<p>The <a href='https://docs.reactive-graph.io/book/'>book</a> now contains a section about the <a href='https://docs.reactive-graph.io/book/CLI_Usage.html'>Command Line Interface</a>. We&#8217;ve added a section about the <a href='https://docs.reactive-graph.io/book/CLI_REPL.html'>interactive mode</a> and a section about the <a href='https://docs.reactive-graph.io/book/CLI_Reference.html'>command reference</a>. For the command reference we make use of a new option to automatically generate the help in Markdown format:</p>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph --markdown-help&lt;/code&gt;&lt;/summary&gt;</p>
+
+<p>TODO: Insert output here</p>
+
+<p>&lt;/details&gt;</p>
+
+<h3 id='output_format_count'>Output Format Count</h3>
+
+<p>We&#8217;ve <a href='https://github.com/reactive-graph/reactive-graph/pull/135'>added a new output format</a> that simply prints the count instead of a table with the results. The purpose of the new feature is similar to <code>count(*)</code> in SQL and is also useful for shell automation.</p>
+
+<pre><code>$ reactive-graph client components list --output-format count
+$ reactive-graph client entity-types list --output-format count
+$ reactive-graph client relation-types list --output-format count
+$ reactive-graph client entity-instances list --output-format count
+$ reactive-graph client relation-instances list --output-format count</code></pre>
+
+<p>&lt;details&gt; &lt;summary&gt;Examples&lt;/summary&gt;</p>
+
+<p><strong>Print the count of components</strong></p>
+
+<pre><code>$ reactive-graph client components list --output-format count
+34 result(s)</code></pre>
+
+<p><strong>Example: Print the count of entity-instances</strong></p>
+
+<pre><code>$ reactive-graph client entity-instances list --output-format count
+1554 result(s)</code></pre>
+
+<p><strong>Example: Print the count of entity-instances that having the component <code>core__action</code></strong></p>
+
+<pre><code>$ reactive-graph client entity-instances list --components core__action --output-format count
+2 result(s)</code></pre>
+
+<p>&lt;/details&gt;</p>
+
+<h3 id='output_format_html'>Output Format HTML</h3>
+
+<p>We have added a new option to output the result as HTML table. This applies to all type system and instance system operations.</p>
+
+<p><img src='images/2024-09-30/output-format-html.png' title='Output Format HTML' alt='Output Format HTML' /></p>
+
+<h4 id='list_types_and_instances_as_html_table'>List types and instances as HTML table</h4>
+
+<pre><code>$ reactive-graph client components list --output-format html-table
+$ reactive-graph client entity-types list --output-format html-table
+$ reactive-graph client relation-types list --output-format html-table
+$ reactive-graph client entity-instances list --output-format html-table
+$ reactive-graph client relation-instances list --output-format html-table</code></pre>
+
+<h4 id='list_all_components_as_html_table'>List all components as HTML table</h4>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph client components list --output-format html-table&lt;/code&gt;&lt;/summary&gt;</p>
+
+<p>&lt;pre&gt;&lt;code&gt; &lt;table&gt;</p>
+
+<pre><code>&lt;thead&gt;
+&lt;tr&gt;
+    &lt;th&gt;namespace&lt;/th&gt;
+    &lt;th&gt;name&lt;/th&gt;
+    &lt;th&gt;description&lt;/th&gt;
+    &lt;th&gt;properties&lt;/th&gt;
+    &lt;th&gt;extensions&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+    &lt;td&gt;state&lt;/td&gt;
+    &lt;td&gt;state_object&lt;/td&gt;
+    &lt;td&gt;State of type object&lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;name&lt;/th&gt;
+                &lt;th&gt;data_type&lt;/th&gt;
+                &lt;th&gt;socket_type&lt;/th&gt;
+                &lt;th&gt;mutability&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;state&lt;/td&gt;
+                &lt;td&gt;Object&lt;/td&gt;
+                &lt;td&gt;None&lt;/td&gt;
+                &lt;td&gt;Immutable&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;set_state&lt;/td&gt;
+                &lt;td&gt;Object&lt;/td&gt;
+                &lt;td&gt;Input&lt;/td&gt;
+                &lt;td&gt;Mutable&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;value&lt;/td&gt;
+    &lt;td&gt;value_debugger_trace&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;arithmetic&lt;/td&gt;
+    &lt;td&gt;arithmetic_operation&lt;/td&gt;
+    &lt;td&gt;Arithmetic operation with one input and one result&lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;name&lt;/th&gt;
+                &lt;th&gt;data_type&lt;/th&gt;
+                &lt;th&gt;socket_type&lt;/th&gt;
+                &lt;th&gt;mutability&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;result&lt;/td&gt;
+                &lt;td&gt;Number&lt;/td&gt;
+                &lt;td&gt;Output&lt;/td&gt;
+                &lt;td&gt;Immutable&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;lhs&lt;/td&gt;
+                &lt;td&gt;Number&lt;/td&gt;
+                &lt;td&gt;Input&lt;/td&gt;
+                &lt;td&gt;Mutable&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Namespace&lt;/th&gt;
+                &lt;th&gt;TypeName&lt;/th&gt;
+                &lt;th&gt;Description&lt;/th&gt;
+                &lt;th&gt;Extension&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;core&lt;/td&gt;
+                &lt;td&gt;component_category&lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&quot;math&quot;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;base&lt;/td&gt;
+    &lt;td&gt;named&lt;/td&gt;
+    &lt;td&gt;The entity or relation has a name.&lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;name&lt;/th&gt;
+                &lt;th&gt;data_type&lt;/th&gt;
+                &lt;th&gt;socket_type&lt;/th&gt;
+                &lt;th&gt;mutability&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;name&lt;/td&gt;
+                &lt;td&gt;String&lt;/td&gt;
+                &lt;td&gt;None&lt;/td&gt;
+                &lt;td&gt;Mutable&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Namespace&lt;/th&gt;
+                &lt;th&gt;TypeName&lt;/th&gt;
+                &lt;th&gt;Description&lt;/th&gt;
+                &lt;th&gt;Extension&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;core&lt;/td&gt;
+                &lt;td&gt;component_category&lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&quot;base&quot;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;value&lt;/td&gt;
+    &lt;td&gt;value_object&lt;/td&gt;
+    &lt;td&gt;Value of type object&lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;name&lt;/th&gt;
+                &lt;th&gt;data_type&lt;/th&gt;
+                &lt;th&gt;socket_type&lt;/th&gt;
+                &lt;th&gt;mutability&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;value&lt;/td&gt;
+                &lt;td&gt;Object&lt;/td&gt;
+                &lt;td&gt;Output&lt;/td&gt;
+                &lt;td&gt;Mutable&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;result&lt;/td&gt;
+    &lt;td&gt;result_boolean&lt;/td&gt;
+    &lt;td&gt;The entity returns a boolean&lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;name&lt;/th&gt;
+                &lt;th&gt;data_type&lt;/th&gt;
+                &lt;th&gt;socket_type&lt;/th&gt;
+                &lt;th&gt;mutability&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;result&lt;/td&gt;
+                &lt;td&gt;Bool&lt;/td&gt;
+                &lt;td&gt;Output&lt;/td&gt;
+                &lt;td&gt;Immutable&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Namespace&lt;/th&gt;
+                &lt;th&gt;TypeName&lt;/th&gt;
+                &lt;th&gt;Description&lt;/th&gt;
+                &lt;th&gt;Extension&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;core&lt;/td&gt;
+                &lt;td&gt;component_category&lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&quot;result&quot;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+
+<p>&lt;/table&gt; &lt;/code&gt;&lt;/pre&gt;</p>
+
+<p>&lt;/details&gt;</p>
+
+<h4 id='output_a_single_type_or_a_single_instance_as_html_table'>Output a single type or a single instance as HTML table</h4>
+
+<pre><code>$ reactive-graph client components get &lt;namespace&gt; &lt;type_name&gt; --output-format html-table
+$ reactive-graph client entity-types get &lt;namespace&gt; &lt;type_name&gt; --output-format html-table
+$ reactive-graph client relation-types get &lt;namespace&gt; &lt;type_name&gt; --output-format html-table
+$ reactive-graph client entity-instances get &lt;namespace&gt; &lt;type_name&gt; --output-format html-table
+$ reactive-graph client relation-instances get &lt;namespace&gt; &lt;type_name&gt; --output-format html-table</code></pre>
+
+<h4 id='output_a_single_component_as_html_table'>Output a single component as HTML table</h4>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph client components get value value_number --output-format html-table&lt;/code&gt;&lt;/summary&gt;</p>
+
+<p>&lt;table&gt;</p>
+
+<pre><code>&lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;namespace&lt;/th&gt;
+        &lt;th&gt;name&lt;/th&gt;
+        &lt;th&gt;description&lt;/th&gt;
+        &lt;th&gt;properties&lt;/th&gt;
+        &lt;th&gt;extensions&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;value&lt;/td&gt;
+        &lt;td&gt;value_number&lt;/td&gt;
+        &lt;td&gt;Value of type number&lt;/td&gt;
+        &lt;td&gt;
+            &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;data_type&lt;/th&gt;&lt;th&gt;socket_type&lt;/th&gt;&lt;th&gt;mutability&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;value&lt;/td&gt;&lt;td&gt;Number&lt;/td&gt;&lt;td&gt;Output&lt;/td&gt;&lt;td&gt;Mutable&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+
+<p>&lt;/table&gt;</p>
+
+<p>&lt;/details&gt;</p>
+
+<h3 id='output_format_markdown'>Output Format Markdown</h3>
+
+<p>Similar to the Output Format HTML, the Output Format Markdown prints the result as Markdown Table.</p>
+
+<p><img src='images/2024-09-30/output-format-markdown.png' title='Output Format Markdown' alt='Output Format Markdown' /></p>
+
+<h4 id='list_types_and_instances_as_markdown_table'>List types and instances as Markdown table</h4>
+
+<pre><code>$ reactive-graph client components list --output-format markdown-table
+$ reactive-graph client entity-types list --output-format markdown-table
+$ reactive-graph client relation-types list --output-format markdown-table
+$ reactive-graph client entity-instances list --output-format markdown-table
+$ reactive-graph client relation-instances list --output-format markdown-table</code></pre>
+
+<h4 id='list_all_components_as_markdown_table'>List all components as Markdown table</h4>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph client components list --output-format markdown-table&lt;/code&gt;&lt;/summary&gt;</p>
+
+<p>| namespace  | name                 | description                                                                                             | properties                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | extensions                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | |------------|----------------------|---------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | state      | state<em>object         | State of type object                                                                                    | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;name&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;data</em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;socket<em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;mutability&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;set</em>state&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Object&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Input&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Mutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;state&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Object&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;None&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Immutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | | value      | value<em>debugger</em>trace |                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | | arithmetic | arithmetic<em>operation | Arithmetic operation with one input and one result                                                      | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;name&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;data</em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;socket<em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;mutability&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;result&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Number&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Output&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Immutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;lhs&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Number&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Input&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Mutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                               | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Namespace&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;TypeName&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Description&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Extension&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;core&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;component</em>category&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;&quot;math&quot;&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                     | | base       | named                | The entity or relation has a name.                                                                      | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;name&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;data<em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;socket</em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;mutability&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;name&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;String&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;None&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Mutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Namespace&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;TypeName&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Description&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Extension&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;core&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;component_category&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;&quot;base&quot;&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                     | | value      | value<em>object         | Value of type object                                                                                    | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;name&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;data</em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;socket_type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;mutability&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;value&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Object&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Output&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Mutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | | result     | result<em>boolean       | The entity returns a boolean                                                                            | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;name&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;data</em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;socket<em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;mutability&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;result&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Bool&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Output&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Immutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Namespace&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;TypeName&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Description&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;Extension&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;core&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;component</em>category&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;&quot;result&quot;&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;                                                                                                                   |</p>
+
+<p>&lt;/details&gt;</p>
+
+<h4 id='output_a_single_type_or_a_single_instance_as_markdown_table'>Output a single type or a single instance as Markdown table</h4>
+
+<pre><code>$ reactive-graph client components get &lt;namespace&gt; &lt;type_name&gt; --output-format markdown-table
+$ reactive-graph client entity-types get &lt;namespace&gt; &lt;type_name&gt; --output-format markdown-table
+$ reactive-graph client relation-types get &lt;namespace&gt; &lt;type_name&gt; --output-format markdown-table
+$ reactive-graph client entity-instances get &lt;namespace&gt; &lt;type_name&gt; --output-format markdown-table
+$ reactive-graph client relation-instances get &lt;namespace&gt; &lt;type_name&gt; --output-format markdown-table</code></pre>
+
+<h4 id='output_a_single_component_as_markdown_table'>Output a single component as Markdown table</h4>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph client components get value value_number --output-format markdown-table&lt;/code&gt;&lt;/summary&gt;</p>
+
+<p>| namespace | name         | description          | properties                                                                                                                                                                                                                                                                                                                                        | extensions | |-----------|--------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------| | value     | value<em>number | Value of type number | &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;name&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;data</em>type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;socket_type&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;th&gt;&lt;div&gt;&lt;p&gt;mutability&lt;/p&gt;&lt;/div&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;value&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Number&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Output&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div&gt;&lt;p&gt;Mutable&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt; |            |</p>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='shell_completions'>Shell Completions</h3>
+
+<p>In order to further improve the user experience with the command line interface we&#8217;ve implemented the feature to generate shell completions.</p>
+
+<p>&lt;details&gt; &lt;summary&gt;List of Supported Shells&lt;/summary&gt;</p>
+
+<ul>
+<li>bash</li>
+
+<li>elvish</li>
+
+<li>fish</li>
+
+<li>powershell</li>
+
+<li>zsh</li>
+</ul>
+
+<p>&lt;/details&gt;</p>
+
+<p>On linux it&#8217;s possible to install the shell completions for the given shell by executing:</p>
+
+<pre><code class="language-    ">$ reactive-graph --install-shell-completions bash|fish|zsh</code></pre>
+
+<p>Then you have to restart the shell, for example:</p>
+
+<pre><code>$ zsh</code></pre>
+
+<p>Profit!</p>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph --&lt;/code&gt; &lt;span class=&quot;token rg-entity-type&quot;&gt;Press TAB&lt;/span&gt;&lt;/summary&gt;</p>
+
+<pre><code>--daemon-group               -- If set will drop privileges to the specified group. Note: Both must be given: user and group
+--daemon                     -- If true, the process will run as daemon
+--daemon-name                -- Sets the name of the daemon
+--daemon-pid                 -- The location of the daemon PID file. By default, no PID file will be created
+--daemon-stderr              -- Stderr will be written into this file
+--daemon-stdout              -- Stdout will be written into this file
+--daemon-user                -- If set will drop privileges to the specified user. Note: Both must be given: user and group
+--daemon-working-directory   -- The working directory of the daemon
+--default-context-path       -- The default context path which redirects the root context to a web resource provider
+--disable-all-plugins        -- If true, all plugins will be disabled
+--disabled-plugins           -- The list of plugins to disable
+--disable-hot-deploy         -- If true, hot deployment will be disabled
+--enabled-plugins            -- The list of plugins to enable
+--graphql-config             -- The GraphQL config location
+--help                       -- Print help
+--hostname                   -- The hostname to bind the GraphQL HTTP server
+--hot-deploy-location        -- The folder which is watched for hot deployment
+--install-location           -- The folder which plugins are installed permanently
+--install-man-pages          -- If true, installs man pages
+--install-shell-completions  -- If true, installs shell completions
+--instance-config            -- The instance config location
+--instance-description       -- The description of the instance
+--instance-name              -- The name of the instance
+--logging-config             -- The logging config location
+--markdown-help              -- If true, generates command line documentation
+--plugins-config             -- The plugins config location
+--port                       -- The port to bind the GraphQL HTTP server
+--print-man-pages            -- If true, generates man pages
+--print-shell-completions    -- If true, prints shell completions
+--quiet                      -- If true, logging is disabled completely
+--secure                     -- If true, HTTPS is enabled
+--shutdown-timeout           -- Timeout for graceful workers shutdown in seconds. After receiving a stop signal, workers have this much time to finish serving requests. Workers still alive after the timeout are force dropped. By default, shutdown timeout sets to 30 seconds
+--ssl-certificate-path       -- The location of the certificate
+--ssl-private-key-path       -- The location of the private key
+--stop-immediately           -- If true, the runtime does not wait before exiting
+--version                    -- Print version
+--workers                    -- The number of workers to start. The default worker count is the number of physical CPU cores available</code></pre>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='man_pages_(linux_only)'>Man Pages (Linux only)</h3>
+
+<p>Similarly to shell completions, the command line interface can generate, print and install man pages.</p>
+
+<p>&lt;details&gt; &lt;summary&gt;What is a man page?&lt;/summary&gt;</p>
+
+<p>A man page (short for manual page) is a form of software documentation usually found on a Unix or Unix-like operating system. Topics covered include computer programs (including library and system calls), formal standards and conventions, and even abstract concepts. A user may invoke a man page by issuing the man command.</p>
+
+<p><a href='https://en.wikipedia.org/wiki/Man_page'>Wikipedia</a></p>
+
+<p>&lt;/details&gt;</p>
+
+<p>First, you can install man pages:</p>
+
+<pre><code>$ reactive-graph --install-man-pages</code></pre>
+
+<p>Then you can use the <code>man</code> command:</p>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ man reactive-graph&lt;/code&gt;&lt;/summary&gt;</p>
+
+<pre><code>reactive-graph(1)                                                                                                                                          General Commands Manual                                                                                                                                          reactive-graph(1)
+
+NAME
+       reactive-graph - Reactive Graph is a reactive runtime based on a graph database, empowering everyone to build reliable and efficient software.
+
+SYNOPSIS
+       reactive-graph  [--logging-config] [--instance-config] [--graphql-config] [--plugins-config] [-n|--instance-name] [-d|--instance-description] [--hostname] [--port] [--secure] [--ssl-certificate-path] [--ssl-private-key-path] [--shutdown-timeout] [-w|--workers] [-c|--default-context-path] [-x|--disable-all-plugins] [-p|--dis‐
+       abled-plugins] [-P|--enabled-plugins] [--disable-hot-deploy] [--hot-deploy-location] [--install-location] [--stop-immediately] [-q|--quiet] [--print-man-pages] [--install-man-pages] [--print-shell-completions] [--install-shell-completions]  [-D|--daemon]  [--daemon-name]  [--daemon-pid]  [--daemon-working-directory]  [--dae‐
+       mon-stdout] [--daemon-stderr] [--daemon-user] [--daemon-group] [-h|--help] [-V|--version] [subcommands]
+
+DESCRIPTION
+       Reactive Graph is a reactive runtime based on a graph database, empowering everyone to build reliable and efficient software.
+
+OPTIONS
+       --logging-config=LOGGING_CONFIG
+              The logging config location
+              May also be specified with the REACTIVE_GRAPH_LOGGING_CONFIG environment variable.
+
+       --instance-config=INSTANCE_CONFIG
+              The instance config location
+              May also be specified with the REACTIVE_GRAPH_INSTANCE_CONFIG environment variable.
+
+...</code></pre>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='dedicated_client_binary'>Dedicated client binary</h3>
+
+<p>We follow the approach to have one binary for all use cases (server &amp; client).</p>
+
+<p>Additionally, we <a href='https://github.com/reactive-graph/reactive-graph/pull/135'>now provide a second binary that only contains the client</a>.</p>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ ls -lah target/debug/reactive-graph*&lt;/code&gt;&lt;/summary&gt;</p>
+
+<pre><code>-rwxrwxr-x 2 rust rust 81M reactive-graph
+-rwxrwxr-x 2 rust rust 29M reactive-graph-client</code></pre>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph-client relation-instances list --output-format count&lt;/code&gt;&lt;/summary&gt;</p>
+
+<pre><code>9366 result(s)</code></pre>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='daemonize'>Daemonize</h3>
+
+<p>On Linux, it&#8217;s <a href='https://github.com/reactive-graph/reactive-graph/pull/153'>now possible to start the process and run it in the background</a>. Because the daemon has no stdout and stderr, a file can be given as output. Also, the process can drop privileges to a given user+group. Optionally, a PID and name can be specified.</p>
+
+<p>&lt;details&gt; &lt;summary&gt;&lt;code&gt;$ reactive-graph --help&lt;/code&gt;&lt;/summary&gt;</p>
+
+<pre><code>  -D, --daemon
+          If true, the process will run as daemon [env: REACTIVE_GRAPH_DAEMON=]
+      --daemon-name &lt;DAEMON_NAME&gt;
+          Sets the name of the daemon [env: REACTIVE_GRAPH_DAEMON_NAME=]
+      --daemon-pid &lt;DAEMON_PID&gt;
+          The location of the daemon PID file. By default, no PID file will be created [env: REACTIVE_GRAPH_DAEMON_PID=]
+      --daemon-working-directory &lt;DAEMON_WORKING_DIRECTORY&gt;
+          The working directory of the daemon [env: REACTIVE_GRAPH_DAEMON_WORKING_DIRECTORY=]
+      --daemon-stdout &lt;DAEMON_STDOUT&gt;
+          Stdout will be written into this file [env: REACTIVE_GRAPH_DAEMON_STDOUT=]
+      --daemon-stderr &lt;DAEMON_STDERR&gt;
+          Stderr will be written into this file [env: REACTIVE_GRAPH_DAEMON_STDERR=]
+      --daemon-user &lt;DAEMON_USER&gt;
+          If set will drop privileges to the specified user. Note: Both must be given: user and group [env: REACTIVE_GRAPH_DAEMON_USER=]
+      --daemon-group &lt;DAEMON_GROUP&gt;
+          If set will drop privileges to the specified group. Note: Both must be given: user and group [env: REACTIVE_GRAPH_DAEMON_GROUP=]</code></pre>
+
+<p>&lt;/details&gt;</p>
+
+<p>In order to start Reactive Graph as a daemon, you have to pass the parameter <code>-D</code> or set the environment variable <code>REACTIVE_GRAPH_DAEMON=true</code>:</p>
+
+<pre><code>$ reactive-graph --daemon</code></pre>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h2 id='refactoring'>Refactoring</h2>
+
+<h3 id='extracted_table_model'>Extracted table model</h3>
+
+<p>The table model has been <a href='https://github.com/reactive-graph/reactive-graph/pull/135'>refactored into its own crate</a>. This allows to print tables in other command line applications.</p>
+
+<p>The examples are now using the table model. The printed tables look better than before. Thanks to the table model, it is no more necessary to render tables manually.</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='graphql_schema'>GraphQL Schema</h3>
+
+<p>There are some changes to the GraphQL schema:</p>
+
+<p>&lt;details&gt; &lt;summary&gt;List of Changes&lt;/summary&gt;</p>
+
+<ul>
+<li>edgeKey has been renamed to relationInstanceId for consistency</li>
+
+<li>EdgeKeyDefinition has been renamed to RelationInstanceIdDefinition for consistency</li>
+
+<li>Extended mutation <code>instances -&gt; relations -&gt; update()</code> with the new parameters addProperties and removeProperties in order to add or remove one or multiple properties</li>
+</ul>
+
+<p>&lt;/details&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h2 id='design_system_enhancements'>Design System Enhancements</h2>
+
+<h3 id='circle_logos'>Circle Logos</h3>
+
+<p>We added a <a href='https://design.reactive-graph.io/docs/fundamentals/logo.html'>new set of logos</a> with a circle around the inner graph symbol:</p>
+
+<p>&lt;table&gt;</p>
+
+<pre><code>&lt;tr&gt;
+    &lt;td&gt;Black/White&lt;/td&gt;
+    &lt;td&gt;Malachite&lt;/td&gt;
+    &lt;td&gt;Selective Yellow&lt;/td&gt;
+    &lt;td&gt;Celestial Blue&lt;/td&gt;
+    &lt;td&gt;Mexican Pink&lt;/td&gt;
+    &lt;td&gt;Chartreuse&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-malachite.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-selective-yellow.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-celestial-blue.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-mexican-pink.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-chartreuse.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-black.svg&quot; style=&quot;width:64px;height:64px;text-align:center;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-black-malachite.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-black-selective-yellow.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-black-celestial-blue.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-black-mexican-pink.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-black-chartreuse.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-white.svg&quot; style=&quot;width:64px;height:64px;text-align:center;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-white-malachite.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-white-selective-yellow.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-white-celestial-blue.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-white-mexican-pink.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;design/public/logo/circle/reactive-graph-circle-white-chartreuse.svg&quot; style=&quot;width:64px;height:64px;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+<p>&lt;/table&gt;</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='horizontal_rules'>Horizontal Rules</h3>
+
+<p>Nothing special, but useful: <a href='https://design.reactive-graph.io/components/detail/hr--default.html'>horizontal rules</a></p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h2 id='project_maintenance'>Project Maintenance</h2>
+
+<h3 id='social_media'>Social Media</h3>
+
+<p>We created a <a href='https://www.youtube.com/@reactive-graph'>YouTube channel</a>, a <a href='https://www.facebook.com/reactive.graph'>facebook profile</a> and a <a href='https://floss.social/@reactive_graph'>mastodon account</a>. We will start social media activities in near future.</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<h3 id='contribution_guidelines_&_security_policy'>Contribution Guidelines &amp; Security Policy</h3>
+
+<p>We&#8217;ve extended the <a href='https://github.com/reactive-graph/reactive-graph/blob/main/CONTRIBUTING.md'>Contribution Guidelines</a> and added a <a href='https://github.com/reactive-graph/reactive-graph/blob/main/SECURITY.md'>Security Policy</a>.</p>
+
+<p>&lt;hr class=&quot;celestial-blue&quot;&gt;</p>
+
+<p>{{ footer::print(issue<em>date</em>previous=&quot;2024-08-31&quot;, issue<em>date</em>next=&quot;&quot;) }}</p>
+]]></content:encoded></item><item><title>August 2024 in Reactive Graph</title><link>https://this-month-in.reactive-graph.io/2024-08-this-month-in-reactive-graph.html</link><description><![CDATA[The 'August 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Manage the type system via the command line interface, Java GraphQL Client POC and the specification of the Identity and Permission System]]></description><author>Andreas Schaeffer</author><pubDate>Sat, 31 Aug 2024 00:00:00 GMT</pubDate><content:encoded><![CDATA[<p>{% import &quot;header.tera&quot; as header %} {% import &quot;footer.tera&quot; as footer %}</p>
 
 <p>{{ header::print(year=&quot;2024&quot;,month=&quot;August&quot;) }}</p>
 
