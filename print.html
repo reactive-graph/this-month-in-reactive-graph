@@ -171,7 +171,7 @@
                 </div>
             </div>
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="2024.html"><strong aria-hidden="true">1.</strong> 2024</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2024-09-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.1.</strong> September 2024 in Reactive Graph</a></li><li class="chapter-item expanded "><a href="2024-08-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.2.</strong> August 2024 in Reactive Graph</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="2024.html"><strong aria-hidden="true">1.</strong> 2024</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2024-10-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.1.</strong> October 2024 in Reactive Graph</a></li><li class="chapter-item expanded "><a href="2024-09-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.2.</strong> September 2024 in Reactive Graph</a></li><li class="chapter-item expanded "><a href="2024-08-this-month-in-reactive-graph.html"><strong aria-hidden="true">1.3.</strong> August 2024 in Reactive Graph</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -278,16 +278,396 @@
 </section>
 <h2 id="topics"><a class="header" href="#topics">Topics</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Issue</th><th>Topics</th></tr></thead><tbody>
+<tr><td><a href="https://this-month-in.reactive-graph.io/2024-10-this-month-in-reactive-graph.html">October 2024</a></td><td>Self Updater, Release Process, Nightly Builds, Platform Support, Docker Images, Debian Packages, CLI Instance Management</td></tr>
 <tr><td><a href="https://this-month-in.reactive-graph.io/2024-09-this-month-in-reactive-graph.html">September 2024</a></td><td>Stable rust, Improved CI, Improved CLI, Project Maintenance</td></tr>
 <tr><td><a href="./2024-08-this-month-in-reactive-graph.html">August 2024</a></td><td>Manage Type System via Command Line Interface, Java GraphQL Client POC, Specification of the Identity and Permission System</td></tr>
 </tbody></table>
 </div><div style="break-before: page; page-break-before: always;"></div><section class="rg-emphasis-box">
-    <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">September 2024</span></h3>
+    <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">October 2024</span></h3>
     <p class="intro">Hello and welcome to another issue of This Month in Reactive Graph! Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
     <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
 </section>
 <hr class="surface-2">
 <h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="2024-10-this-month-in-reactive-graph.html#self-info">Self Info</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#self-updater">Self Updater</a>
+<ul>
+<li><a href="2024-10-this-month-in-reactive-graph.html#specify-the-version-to-update-to">Specify the version to update to</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#list-of-releases">List of releases</a></li>
+</ul>
+</li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#improved-release-process-and-distribution-channels">Improved Release Process and Distribution Channels</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#nightly-builds">Nightly Builds</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#platform-support">Platform Support</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#docker">Docker</a>
+<ul>
+<li><a href="2024-10-this-month-in-reactive-graph.html#run">Run</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#multiple-instances">Multiple Instances</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#dockerfile">Dockerfile</a></li>
+</ul>
+</li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#debian-packages">Debian Packages</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#cli-instance-management">CLI Instance Management</a>
+<ul>
+<li><a href="2024-10-this-month-in-reactive-graph.html#instance-initialization">Instance Initialization</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#configure-instances-via-cli">Configure Instances via CLI</a></li>
+</ul>
+</li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#continuous-integration">Continuous Integration</a></li>
+<li><a href="2024-10-this-month-in-reactive-graph.html#book">Book</a></li>
+</ul>
+<hr class="surface-2">
+<p>October 2024 was a very productive month for Reactive Graph. We focused on Continuous Integration and <a href="https://github.com/reactive-graph/reactive-graph/issues/228">Delivery</a>. The results are impressive:</p>
+<h2 id="self-info"><a class="header" href="#self-info">Self Info</a></h2>
+<p>The Reactive Graph binary can now output information about itself. This includes the version number, the rust compiler version, the rust compiler channel,
+the target triple, and the git commit hash.</p>
+<details>
+<summary><code>$ reactive-graph info</code></summary>
+<pre><code>+---------+--------------------------+---------+------------------------------------------+---------------+---------------+
+| version | target_triple            | git_tag | git_commit                               | rustc_channel | rustc_version |
++---------+--------------------------+---------+------------------------------------------+---------------+---------------+
+| 0.10.0  | x86_64-unknown-linux-gnu |         | 7d8b37cf5549a12a4da5feff5184778d25110e62 | stable        | 1.82.0        |
++---------+--------------------------+---------+------------------------------------------+---------------+---------------+
+</code></pre>
+</details>
+<details>
+<summary><code>$ reactive-graph info --output-format=json</code></summary>
+<pre><code class="language-json">[
+  {
+    "version": "0.10.0",
+    "target_triple": "x86_64-unknown-linux-gnu",
+    "git_tag": "",
+    "git_commit": "7d8b37cf5549a12a4da5feff5184778d25110e62",
+    "rustc_channel": "stable",
+    "rustc_version": "1.82.0"
+  }
+]
+</code></pre>
+</details>
+<h2 id="self-updater"><a class="header" href="#self-updater">Self Updater</a></h2>
+<p>What is probably most interesting for end users is that Reactive Graph now has the ability
+<a href="https://github.com/reactive-graph/reactive-graph/pull/212">to update itself</a>. Thanks to the Rust <a href="https://crates.io/crates/self_update">self_update library</a>,
+implementation was relatively easy.</p>
+<p>A new command has been implemented with which you can process the update:</p>
+<details>
+<summary><code>$ reactive-graph update --help</code></summary>
+<pre><code>Update the Reactive Graph binary
+
+Usage: reactive-graph update [OPTIONS] [COMMAND]
+
+Commands:
+  info  Shows information about the selected release
+  list  Lists the releases
+  help  Print this message or the help of the given subcommand(s)
+
+Options:
+  -n, --nightly                 Updates to the nightly release
+  -l, --latest                  Updates to the latest release. Currently, the latest release is the nightly release. This will change in the future
+  -c, --current                 Updates to the current release
+  -v, --version &lt;VERSION&gt;       Updates to a specific version
+      --hide-download-progress  Hides the download progress
+      --hide-output             Hides the output
+  -q, --quiet                   Hides the download progress and the output
+  -y, --no-confirm              Don't ask
+  -h, --help                    Print help
+</code></pre>
+</details>
+<p>You can use the subcommand info to find out which version would be updated to.</p>
+<details>
+<summary><code>$ reactive-graph update info</code></summary>
+<pre><code>+---------------+---------+------------+------------------------------------------+------------------------------------------+
+| Release Name  | Version | Date       | Asset Name                               | Download URL                             |
++---------------+---------+------------+------------------------------------------+------------------------------------------+
+| Nightly Build | nightly | 2024-10-29 | reactive-graph-nightly-x86_64-unknown-li | https://api.github.com/repos/reactive-gr |
+|               |         |            | nux-gnu.tar.gz                           | aph/reactive-graph/releases/assets/20270 |
+|               |         |            |                                          | 9875                                     |
++---------------+---------+------------+------------------------------------------+------------------------------------------+
+</code></pre>
+</details>
+<p>As you can see, the <code>nightly</code> version would be installed. It also shows the name of the asset to be downloaded and from which URL the download would occur.</p>
+<p>If you finally want to carry out the update, you can do this with the command:</p>
+<details>
+<summary><code>$ reactive-graph update</code></summary>
+<pre><code>Checking target-arch... x86_64-unknown-linux-gnu
+Checking current version... v0.10.0
+Looking for tag: nightly
+
+reactive-graph release status:
+  * Current exe: "/home/user/.cargo/bin/reactive-graph"
+  * New exe release: "reactive-graph-nightly-x86_64-unknown-linux-gnu.tar.gz"
+  * New exe download url: "https://api.github.com/repos/reactive-graph/reactive-graph/releases/assets/202709875"
+
+The new release will be downloaded/extracted and the existing binary will be replaced.
+Do you want to continue? [Y/n] Y
+Downloading...
+[00:00:02] [====================&gt;-------------------] 19.41 MiB/37.41 MiB (3s)  
+Extracting archive... Done
+Replacing binary file... Done
+Successfully updated to version: nightly
+</code></pre>
+</details>
+<p>You can use the <code>--no-confirm</code> option to ensure that the update is carried out without query.</p>
+<h3 id="specify-the-version-to-update-to"><a class="header" href="#specify-the-version-to-update-to">Specify the version to update to</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>--latest</code></td><td>Updates to the latest release. Currently, the latest release is the nightly release. This will change in the future.</td></tr>
+<tr><td><code>--nightly</code></td><td>Updates to the nightly release</td></tr>
+<tr><td><code>--version 0.10.0-alpha-2</code></td><td>Updates to a specific version</td></tr>
+</tbody></table>
+</div>
+<h3 id="list-of-releases"><a class="header" href="#list-of-releases">List of releases</a></h3>
+<p>You can find out which releases are available from the shell. These version numbers can be used with the <code>--version</code> option to install a specific version of Reactive Graph.</p>
+<details>
+<summary><code>$ reactive-graph update list</code></summary>
+<pre><code>+-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| Release Name    | Version        | Date       | Asset Name                               | Download URL                             |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| Nightly Build   | nightly        | 2024-10-29 | reactive-graph-nightly-x86_64-unknown-li | https://api.github.com/repos/reactive-gr |
+|                 |                |            | nux-gnu.tar.gz                           | aph/reactive-graph/releases/assets/20270 |
+|                 |                |            |                                          | 9875                                     |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| v0.10.0-alpha-2 | 0.10.0-alpha-2 | 2024-10-27 | reactive-graph-v0.10.0-alpha-2-x86_64-un | https://api.github.com/repos/reactive-gr |
+|                 |                |            | known-linux-gnu.tar.gz                   | aph/reactive-graph/releases/assets/20211 |
+|                 |                |            |                                          | 3533                                     |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| v0.10.0-alpha-1 | 0.10.0-alpha-1 | 2024-10-20 | reactive-graph-v0.10.0-alpha-1-x86_64-un | https://api.github.com/repos/reactive-gr |
+|                 |                |            | known-linux-gnu.tar.gz                   | aph/reactive-graph/releases/assets/20031 |
+|                 |                |            |                                          | 6307                                     |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| v0.9.1-25       | 0.9.1-25       | 2023-07-20 | inexor-rgf-rt-standalone-x86_64-unknown- | https://api.github.com/repos/reactive-gr |
+|                 |                |            | linux-gnu.tar.gz                         | aph/reactive-graph/releases/assets/11789 |
+|                 |                |            |                                          | 6809                                     |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| v0.9.1-22       | 0.9.1-22       | 2023-05-12 | inexor-rgf-rt-standalone-x86_64-unknown- | https://api.github.com/repos/reactive-gr |
+|                 |                |            | linux-gnu.tar.gz                         | aph/reactive-graph/releases/assets/10790 |
+|                 |                |            |                                          | 4471                                     |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+|                 | 0.9.1-3        | 2023-05-07 | Not available                            |                                          |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| v0.9.1          | 0.9.1          | 2023-05-01 | inexor-rgf-rt-standalone-x86_64-unknown- | https://api.github.com/repos/reactive-gr |
+|                 |                |            | linux-gnu.tar.gz                         | aph/reactive-graph/releases/assets/10621 |
+|                 |                |            |                                          | 6527                                     |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| v0.9.0-15       | 0.9.0-15       | 2023-05-01 | inexor-rgf-rt-standalone-x86_64-unknown- | https://api.github.com/repos/reactive-gr |
+|                 |                |            | linux-gnu.tar.gz                         | aph/reactive-graph/releases/assets/10621 |
+|                 |                |            |                                          | 3683                                     |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+| v0.2.1-alpha    | 0.2.1-alpha    | 2021-08-29 | Not available                            |                                          |
++-----------------+----------------+------------+------------------------------------------+------------------------------------------+
+</code></pre>
+</details>
+<hr class="celestial-blue">
+<h2 id="improved-release-process-and-distribution-channels"><a class="header" href="#improved-release-process-and-distribution-channels">Improved Release Process and Distribution Channels</a></h2>
+<p>In order for the self-updater to be useful, the release and distribution process needed to be improved. With the improved release process, different types of
+<a href="https://github.com/reactive-graph/reactive-graph/releases">releases</a> are now produced and
+<a href="https://github.com/reactive-graph/reactive-graph/issues/228">distributed via a number of channels</a>:</p>
+<div class="table-wrapper"><table><thead><tr><th>Channel</th><th>Description</th><th>Status</th></tr></thead><tbody>
+<tr><td>Source</td><td>The source code is available for download for each release.</td><td>Done</td></tr>
+<tr><td>Binary Packages</td><td>Binary packages are produced for each release. The binary distributions can be downloaded manually. See below for expanded support of supported platforms.</td><td>Done</td></tr>
+<tr><td>Self Updater</td><td>The self-updater is based on the binary distributions.</td><td>Done</td></tr>
+<tr><td>Debian Packages</td><td>Debian packages are produced for each release. The Debian packages can be downloaded manually.</td><td>Done</td></tr>
+<tr><td>Docker</td><td>Docker images are produced for each release. The Docker images are uploaded to ghcr.io and can be obtained from there.</td><td>Done</td></tr>
+<tr><td>Website Download</td><td>In the future, every release should be available for download via the website.</td><td>Planned</td></tr>
+<tr><td>crates.io</td><td>In the future, every regular release should be published on crates.io.</td><td>Planned</td></tr>
+<tr><td>APT</td><td>In the future, each release's Debian packages should be available via an APT repository.</td><td>Planned</td></tr>
+</tbody></table>
+</div>
+<p>In the following graphic you can see the process of a release.</p>
+<p>A submitted pull request can only be merged if a number of prerequisites are met:</p>
+<ol>
+<li>The code compiles under Rust Stable and Rust Nightly.</li>
+<li>The code compiles on Linux, Windows and MacOSx.</li>
+<li>Code Formatting is equivalent to automatic formatting.</li>
+<li>The minimum Rust compiler version has not increased.</li>
+<li>There are no warnings from the linter.</li>
+</ol>
+<p>After the merge, the checks are also repeated on the <code>main</code> branch and if successful, release builds and Docker builds are triggered.</p>
+<pre class="mermaid">flowchart LR
+    A@{ shape: circle, label: &quot;Start&quot; }
+    PR[Pull Request]
+    CI[CI Build an &lt;code&gt;main&lt;/code&gt; Branch]
+    Release[Release Build]
+    DB[Docker Build]
+    NBin@{ shape: doc, label: &quot;Nightly Binary Package&quot; }
+    RBin@{ shape: doc, label: &quot;Release Binary Package&quot; }
+    NDeb@{ shape: doc, label: &quot;Nightly Debian Package&quot; }
+    RDeb@{ shape: doc, label: &quot;Release Debian Package&quot; }
+    NDI@{ shape: doc, label: &quot;Nightly Docker Image&quot; }
+    RDI@{ shape: doc, label: &quot;Release Docker Image&quot; }
+
+    A-- created PR --&gt;PR
+    PR-- merge into main --&gt;CI
+    CI-- successful --&gt;Release
+    Release --&gt; NBin
+    Release-- &lt;code&gt;release tag&lt;/code&gt; --&gt;RBin
+    Release --&gt; NDeb
+    Release-- &lt;code&gt;release tag&lt;/code&gt; --&gt;RDeb
+    CI-- successful --&gt;DB
+    CI-- successful --&gt;DB
+    DB--&gt;NDI
+    DB-- &lt;code&gt;release tag&lt;/code&gt; --&gt;RDI
+</pre>
+<hr class="celestial-blue">
+<h2 id="nightly-builds"><a class="header" href="#nightly-builds">Nightly Builds</a></h2>
+<p>What's new is that the release process produces <a href="https://github.com/reactive-graph/reactive-graph/releases/tag/nightly">nightly builds</a>. This happens with every
+merge to the <code>main</code> branch. The existing <code>nightly</code> release is updated, the <a href="https://github.com/reactive-graph/reactive-graph/pull/202">Git tag nightly</a> is moved
+to the latest commit and finally new binary packages, new Debian packages and new Docker images are produced.</p>
+<p>We won't produce regular releases often in the near future because we can't guarantee compatibility yet. Instead, the constantly updated nightly releases are
+available.</p>
+<div class="alert alert--warning">
+    <h3>
+        <i class="ti ti-alert-triangle"></i>
+        Warning!
+    </h3>
+    <p>At this point, the software is not yet feature-complete and essential features are still missing, such as the flow editor, the persistence of the type system and instance system, and an authorization layer.</p>
+</div>
+<hr class="celestial-blue">
+<h2 id="platform-support"><a class="header" href="#platform-support">Platform Support</a></h2>
+<p>Rust is a compiled language. If the software should be able to run on different systems, we should ensure this during development. Reactive Graph has various
+application areas that go beyond the classic desktop system. For example, Reactive-Graph for smart home applications should run on a Raspberry Pi. This has
+an ARM processor.</p>
+<p>Fortunately, Rust supports cross-compiling for other CPU and OS platforms. This month we added
+<a href="(https://github.com/reactive-graph/reactive-graph/pull/205)">some new CPU architectures</a> to continuous integration and are producing binary packages and Debian
+packages for all of these platforms.</p>
+<p>This is the updated list of supported platforms:</p>
+<div class="table-wrapper"><table><thead><tr><th>target</th><th>New</th><th>Description</th><th>Tier</th></tr></thead><tbody>
+<tr><td>x86_64-unknown-linux-gnu</td><td></td><td>64-bit Linux (kernel 3.2+, glibc 2.17+)</td><td>1</td></tr>
+<tr><td>x86_64-pc-windows-msvc</td><td></td><td>64-bit MSVC (Windows 10+, Windows Server 2016+)</td><td>1</td></tr>
+<tr><td>aarch64-apple-darwin</td><td></td><td>ARM64 macOS (11.0+, Big Sur+)</td><td>1</td></tr>
+<tr><td>x86_64-apple-darwin</td><td></td><td>64-bit macOS (10.12+, Sierra+)</td><td>1</td></tr>
+<tr><td>universal-apple-darwin</td><td></td><td></td><td></td></tr>
+<tr><td>aarch64-unknown-linux-gnu</td><td></td><td>ARM64 Linux (kernel 4.1, glibc 2.17+)</td><td>1</td></tr>
+<tr><td>aarch64-unknown-linux-musl</td><td>Yes</td><td>ARM64 Linux with musl 1.2.3</td><td>2</td></tr>
+<tr><td>armv7-unknown-linux-gnueabihf</td><td>Yes</td><td>Armv7-A Linux, hardfloat (kernel 3.2, glibc 2.17)</td><td>2</td></tr>
+<tr><td>armv7-unknown-linux-musleabihf</td><td>Yes</td><td>Armv7-A Linux, hardfloat (kernel 3.2, glibc 2.17)</td><td>2</td></tr>
+<tr><td>i686-unknown-linux-gnu</td><td>Yes</td><td>32-bit Linux (kernel 3.2+, glibc 2.17+)</td><td>1</td></tr>
+<tr><td>powerpc-unknown-linux-gnu</td><td>Yes</td><td>PowerPC Linux (kernel 3.2, glibc 2.17)</td><td>2</td></tr>
+<tr><td>powerpc64-unknown-linux-gnu</td><td>Yes</td><td>PPC64 Linux (kernel 3.2, glibc 2.17)</td><td>2</td></tr>
+<tr><td>powerpc64le-unknown-linux-gnu</td><td>Yes</td><td>PPC64LE Linux (kernel 3.10, glibc 2.17)</td><td>2</td></tr>
+<tr><td>riscv64gc-unknown-linux-gnu</td><td>Yes</td><td>RISC-V Linux (kernel 4.20, glibc 2.29)</td><td>2</td></tr>
+<tr><td>x86_64-pc-windows-gnu</td><td>Yes</td><td>64-bit MinGW (Windows 10+, Windows Server 2016+)</td><td>1</td></tr>
+<tr><td>x86_64-unknown-linux-musl</td><td>Yes</td><td>64-bit Linux with musl 1.2.3</td><td>2</td></tr>
+</tbody></table>
+</div><hr class="celestial-blue">
+<h2 id="docker"><a class="header" href="#docker">Docker</a></h2>
+<p>Furthermore, the first Docker images are now available for both regular releases and as nightly builds. The Docker images are available via
+<a href="https://github.com/reactive-graph/reactive-graph/pkgs/container/reactive-graph">GitHub Packages</a> (i.e. via ghcr.io).</p>
+<h3 id="run"><a class="header" href="#run">Run</a></h3>
+<details>
+<summary><code>$ docker run -d -p 31415:31415 --name reactive-graph ghcr.io/reactive-graph/reactive-graph:latest</code></summary>
+<pre><code>85b3a6868f4bc91e336fb1033d349b70c48b207f0122b5284f77002bae2894c4
+</code></pre>
+</details>
+<details>
+<summary><code>$ docker ps</code></summary>
+<pre><code>CONTAINER ID   IMAGE                                          COMMAND              CREATED              STATUS              PORTS                                           NAMES                                                                                                                                                   │
+85b3a6868f4b   ghcr.io/reactive-graph/reactive-graph:latest   "./reactive-graph"   13 seconds ago       Up 12 seconds       0.0.0.0:31415-&gt;31415/tcp, :::31415-&gt;31415/tcp   reactive-graph
+</code></pre>
+</details>
+<details>
+<summary><code>$ docker stop 85b3a6868f4b</code></summary>
+<pre><code>85b3a6868f4b
+</code></pre>
+</details>
+<h3 id="multiple-instances"><a class="header" href="#multiple-instances">Multiple Instances</a></h3>
+<p>It is possible to run multiple instances of Reactive Graph in parallel. All you have to do is bind another port on the host system.</p>
+<details>
+<summary><code>$ docker run -d -p 31416:31415 --name reactive-graph-2 ghcr.io/reactive-graph/reactive-graph:latest</code></summary>
+<pre><code>7f689869a76df29179478d74872c6d6b4c9d144415bd3fc9d16225ecf8ae8f62
+</code></pre>
+</details>
+<details>
+<summary><code>$ docker ps</code></summary>
+<pre><code>CONTAINER ID   IMAGE                                          COMMAND              CREATED              STATUS              PORTS                                           NAMES
+85b3a6868f4b   ghcr.io/reactive-graph/reactive-graph:latest   "./reactive-graph"   13 seconds ago       Up 12 seconds       0.0.0.0:31415-&gt;31415/tcp, :::31415-&gt;31415/tcp   reactive-graph
+7f689869a76d   ghcr.io/reactive-graph/reactive-graph:latest   "./reactive-graph"   53 seconds ago       Up 52 seconds       0.0.0.0:31417-&gt;31415/tcp, :::31417-&gt;31415/tcp   reactive-graph-2
+</code></pre>
+</details>
+<h3 id="dockerfile"><a class="header" href="#dockerfile">Dockerfile</a></h3>
+<pre><code class="language-dockerfile">FROM alpine as reactive-graph
+RUN apk add zsh nano curl
+WORKDIR /opt/reactive-graph
+COPY --from=builder --chown=reactive-graph:reactive-graph /app/target/release/reactive-graph .
+RUN addgroup --gid 1000 reactive-graph
+RUN adduser -h /opt/reactive-graph -s /bin/bash -G reactive-graph -u 1000 -D reactive-graph
+USER reactive-graph
+RUN ./reactive-graph instances init --uid 1000 --gid 1000
+RUN ./reactive-graph instances config graphql --hostname "0.0.0.0" --secure true
+RUN ./reactive-graph instances config instance --instance-name "Reactive Graph" --instance-description "Docker"
+ENV PATH="$PATH:/opt/reactive-graph"
+EXPOSE 31415
+</code></pre>
+<hr class="celestial-blue">
+<h2 id="debian-packages"><a class="header" href="#debian-packages">Debian Packages</a></h2>
+<p>More platforms are now supported. Debian packages are also provided for regular releases and as nightly builds.
+The <a href="https://github.com/reactive-graph/reactive-graph/pull/204/files">new folder structure</a> is now taken into account.</p>
+<div class="table-wrapper"><table><thead><tr><th>Debian Package</th><th>Debian Target</th><th>Rust Target</th></tr></thead><tbody>
+<tr><td>reactive-graph_0.10.0-nightly_amd64.deb</td><td>amd64</td><td>x86_64-unknown-linux-gnu</td></tr>
+<tr><td>reactive-graph_0.10.0-nightly_arm64.deb</td><td>arm64</td><td>aarch64-unknown-linux-gnu</td></tr>
+<tr><td>reactive-graph_0.10.0-nightly_armhf.deb</td><td>armhf</td><td>armv7-unknown-linux-gnueabihf</td></tr>
+<tr><td>reactive-graph_0.10.0-nightly_i386.deb</td><td>i386</td><td>i686-unknown-linux-gnu</td></tr>
+<tr><td>reactive-graph_0.10.0-nightly_powerpc.deb</td><td>powerpc</td><td>powerpc-unknown-linux-gnu</td></tr>
+<tr><td>reactive-graph_0.10.0-nightly_ppc64.deb</td><td>ppc64</td><td>powerpc-unknown-linux-gnu</td></tr>
+<tr><td>reactive-graph_0.10.0-nightly_ppc64el.deb</td><td>ppc64el</td><td>powerpc64le-unknown-linux-gnu</td></tr>
+<tr><td>reactive-graph_0.10.0-nightly_riscv64.deb</td><td>riscv64</td><td>riscv64gc-unknown-linux-gnu</td></tr>
+</tbody></table>
+</div><hr class="celestial-blue">
+<h2 id="cli-instance-management"><a class="header" href="#cli-instance-management">CLI Instance Management</a></h2>
+<h3 id="instance-initialization"><a class="header" href="#instance-initialization">Instance Initialization</a></h3>
+<p>The Dockerfile benefits from another new feature: The Reactive Graph Binary can now
+<a href="https://github.com/reactive-graph/reactive-graph/issues/187">initialize a folder structure for new instances</a>.</p>
+<details>
+<summary><code>$ reactive-graph instances init --uid 1000 --gid 1000</code></summary>
+<pre><code>Created ./config
+Created ./log
+Created ./keys
+Created ./plugins/deploy
+Created ./plugins/installed
+Created ./repositories
+Created ./repositories/default/types/components
+Created ./repositories/default/types/entities
+Created ./repositories/default/types/relations
+Created ./repositories/default/types/flows
+Created ./repositories/default/instances/entities
+Created ./repositories/default/instances/relations
+Created ./repositories/default/instances/flows
+Wrote file ./config/flow_locations.toml
+Wrote file ./config/graphql.toml
+Wrote file ./config/instance.toml
+Wrote file ./config/logging.toml
+Wrote file ./config/plugins.toml
+Wrote file ./config/remotes.toml
+Created file ./log/reactive-graph.log
+Created file ./log/reactive-graph.error.log
+</code></pre>
+</details>
+<h3 id="configure-instances-via-cli"><a class="header" href="#configure-instances-via-cli">Configure Instances via CLI</a></h3>
+<p>Another feature is that you can set or overwrite configurations using a command.</p>
+<details>
+<summary><code>$ reactive-graph instances config graphql --hostname "0.0.0.0" --secure true</code></summary>
+<pre><code>(no output)
+</code></pre>
+</details>
+<hr class="celestial-blue">
+<h2 id="continuous-integration"><a class="header" href="#continuous-integration">Continuous Integration</a></h2>
+<ul>
+<li><a href="https://github.com/reactive-graph/reactive-graph/pull/218">Dependabot can automatically merge</a></li>
+<li>Automatic Labeling</li>
+<li>Upgraded nightly compiler version to <a href="https://github.com/reactive-graph/reactive-graph/pull/214">2024-10-19</a></li>
+</ul>
+<hr class="celestial-blue">
+<h2 id="book"><a class="header" href="#book">Book</a></h2>
+<p><a href="https://github.com/reactive-graph/reactive-graph/pull/215">Redesigned the book</a> using the <a href="https://design.reactive-graph.io/">design library</a></p>
+<hr class="celestial-blue">
+<hr class="mexican-pink">
+<hr class="celestial-blue">
+<div style="break-before: page; page-break-before: always;"></div><section class="rg-emphasis-box">
+    <h3 class="">This Month in Reactive Graph! <span class="tag rg-component">September 2024</span></h3>
+    <p class="intro">Hello and welcome to another issue of This Month in Reactive Graph! Reactive Graph is a runtime empowering everyone to build reliable and efficient software. This is a monthly summary of its progress and community. Want something mentioned? Send us a pull request. Want to get involved? We love contributions.</p>
+    <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
+</section>
+<hr class="surface-2">
+<h2 id="table-of-contents-1"><a class="header" href="#table-of-contents-1">Table of Contents</a></h2>
 <ul>
 <li><a href="2024-09-this-month-in-reactive-graph.html#build">Build</a>
 <ul>
@@ -404,7 +784,7 @@ moved into its own <code>benches/</code> folders.</p>
 </details>
 <p>A future task would be to write more benchmark tests and to execute benchmarking in the CI.</p>
 <hr class="celestial-blue">
-<h2 id="continuous-integration"><a class="header" href="#continuous-integration">Continuous Integration</a></h2>
+<h2 id="continuous-integration-1"><a class="header" href="#continuous-integration-1">Continuous Integration</a></h2>
 <h3 id="upgrade-workflows-and-improve-ci-performance"><a class="header" href="#upgrade-workflows-and-improve-ci-performance">Upgrade Workflows and Improve CI performance</a></h3>
 <p>We've <a href="https://github.com/reactive-graph/reactive-graph/pull/145">upgraded the workflow actions</a> to recent versions. Furthermore, we made some changes
 to <span class="token rg-component">speed up</span> the CI. We've merge workflow files and made build jobs and test jobs dependent on the formatting check job
@@ -787,7 +1167,7 @@ $ reactive-graph client relation-instances get &lt;namespace&gt; &lt;type_name&g
 </code></pre>
 <p>Profit!</p>
 <details>
-<summary><code>$ reactive-graph --</code> <span class="token rg-entity-type">Press TAB</span></summary>
+<summary><code>$ reactive-graph --</code> <kbd>TAB</kbd></summary>
 <pre><code>--daemon-group               -- If set will drop privileges to the specified group. Note: Both must be given: user and group
 --daemon                     -- If true, the process will run as daemon
 --daemon-name                -- Sets the name of the daemon
@@ -989,7 +1369,7 @@ manually.</p>
     <p>This Month in Reactive Graph is openly developed on GitHub and archives can be viewed at <a href="https://this-month-in.reactive-graph.io/">this-month-in.reactive-graph.io</a>. If you find any errors in this month's issue, please submit a PR.</p>
 </section>
 <hr class="surface-2">
-<h2 id="table-of-contents-1"><a class="header" href="#table-of-contents-1">Table of Contents</a></h2>
+<h2 id="table-of-contents-2"><a class="header" href="#table-of-contents-2">Table of Contents</a></h2>
 <ul>
 <li><a href="2024-08-this-month-in-reactive-graph.html#extended-the-rust-graphql-client">Extended the Rust GraphQL Client</a></li>
 <li><a href="2024-08-this-month-in-reactive-graph.html#extended-the-command-line-interface">Extended the Command Line Interface</a>
