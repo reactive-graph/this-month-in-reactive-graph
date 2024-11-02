@@ -557,7 +557,7 @@ $ zsh
 Profit!
 
 <details>
-<summary><code>$ reactive-graph --</code> <span class="token rg-entity-type">Press TAB</span></summary>
+<summary><code>$ reactive-graph --</code> <kbd>TAB</kbd></summary>
 
 ```
 --daemon-group               -- If set will drop privileges to the specified group. Note: Both must be given: user and group
