@@ -1,7 +1,7 @@
 name: Monthly Issue
 on:
   schedule:
-    - cron: "0 0 28 * *"
+    - cron: "0 0 15 * *"
   # Run manually
   workflow_dispatch:
 
