@@ -16,6 +16,10 @@ description: "The 'MONTH YYYY' issue of 'This Month in Reactive Graph' summarize
 
 <hr class="surface-2">
 
+## Introduction
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
 ## Topic 1
 
 ### Subtopic 1

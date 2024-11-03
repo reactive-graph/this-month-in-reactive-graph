@@ -16,6 +16,8 @@ description: "The 'October 2024' issue of 'This Month in Reactive Graph' summari
 
 <hr class="surface-2">
 
+## Introduction
+
 October 2024 was a very productive month for Reactive Graph. We focused on Continuous Integration and [Delivery](https://github.com/reactive-graph/reactive-graph/issues/228). The results are impressive:
 
 ## Self Info
