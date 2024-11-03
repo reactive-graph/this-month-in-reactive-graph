@@ -1,6 +1,6 @@
 ---
 pub_date: Thu, 31 Oct 2024 00:00:00 GMT
-description: "The 'October 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Manage the type system via the command line interface, Java GraphQL Client POC and the specification of the Identity and Permission System"
+description: "The 'October 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Self Updater, Release Process, Nightly Builds, Platform Support, Docker Images, Debian Packages, CLI Instance Management"
 ---
 
 {% import "header.tera" as header %}
