@@ -16,6 +16,7 @@ This Month in Reactive Graph is openly developed on GitHub and archives can be v
 
 | Date           | Link                                                                              |
 |----------------|-----------------------------------------------------------------------------------|
+| November 2024  | https://this-month-in.reactive-graph.io/2024-11-this-month-in-reactive-graph.html |
 | October 2024   | https://this-month-in.reactive-graph.io/2024-10-this-month-in-reactive-graph.html |
 | September 2024 | https://this-month-in.reactive-graph.io/2024-09-this-month-in-reactive-graph.html |
 | August 2024    | https://this-month-in.reactive-graph.io/2024-08-this-month-in-reactive-graph.html |

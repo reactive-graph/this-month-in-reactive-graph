@@ -1,12 +1,12 @@
 ---
-pub_date: Mon, 01 Jan 1900 00:00:00 GMT
-description: "The 'MONTH YYYY' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: Manage the type system via the command line interface, Java GraphQL Client POC and the specification of the Identity and Permission System"
+pub_date: Sun, 30 Nov 2024 00:00:00 GMT
+description: "The 'November 2024' issue of 'This Month in Reactive Graph' summarizes the progress of Reactive Graph. The topics of this issue are: "
 ---
 
 {% import "header.tera" as header %}
 {% import "footer.tera" as footer %}
 
-{{ header::print(year="YYYY",month="MONTH") }}
+{{ header::print(year="2024",month="November") }}
 
 <hr class="surface-2">
 
@@ -16,7 +16,7 @@ description: "The 'MONTH YYYY' issue of 'This Month in Reactive Graph' summarize
 
 <hr class="surface-2">
 
-## Introduction
+## Summary
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 
@@ -109,4 +109,4 @@ shell output
 
 <hr class="celestial-blue">
 
-{{ footer::print(issue_date_previous="", issue_date_next="2024-09-30") }}
+{{ footer::print(issue_date_previous="", issue_date_next="") }}

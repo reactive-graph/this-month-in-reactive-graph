@@ -298,4 +298,4 @@ step we <span class="token rg-component">specified the requirements and the data
 3. Start work on the Identity and Permission System
 4. Specify the Type System Persistence (<span class="token rg-component">Graph Relational Mapper</span>)
 
-{{ footer::print(issue_date_previous="", issue_date_next="2024-09-30") }}
+{{ footer::print(issue_date_previous="", issue_date_next="2024-09") }}
