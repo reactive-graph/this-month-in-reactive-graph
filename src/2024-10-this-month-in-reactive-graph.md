@@ -465,4 +465,4 @@ Another feature is that you can set or overwrite configurations using a command.
 
 <hr class="celestial-blue">
 
-{{ footer::print(issue_date_previous="", issue_date_next="2024-09-30") }}
+{{ footer::print(issue_date_previous="2024-09", issue_date_next="2024-11") }}

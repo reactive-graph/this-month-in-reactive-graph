@@ -818,4 +818,4 @@ We've extended the [Contribution Guidelines](https://github.com/reactive-graph/r
 
 <hr class="celestial-blue">
 
-{{ footer::print(issue_date_previous="2024-08-31", issue_date_next="") }}
+{{ footer::print(issue_date_previous="2024-08", issue_date_next="2024-10") }}
